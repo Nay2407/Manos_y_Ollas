@@ -6,5 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".actividades.InicioActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/logo_trans"/>
+
+        <Button
+            android:id="@+id/btnIngresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="100dp"
+            android:backgroundTint="@color/btnNaranja"
+            android:text="@string/btnIngresar"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/btnRegistrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRegistrate"
+            android:layout_marginHorizontal="100dp"
+            android:backgroundTint="@color/btnNaranja"
+            android:textAllCaps="false"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

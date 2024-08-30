@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="naranjaCarga">#BA6E57</color>
+    <color name="btnNaranja">#D27700</color>
 </resources>

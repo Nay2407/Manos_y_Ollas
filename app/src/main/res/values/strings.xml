@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Manos y Ollas</string>
+    <string name="btnIngresar">Ingresar</string>
+    <string name="btnRegistrate">Registrate</string>
 </resources>
