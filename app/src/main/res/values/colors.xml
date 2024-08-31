@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="naranjaCarga">#BA6E57</color>
     <color name="btnNaranja">#D27700</color>
+    <color name="lblOlvidaste">#CD5C08</color>
+    <color name="inputColor">#E6E0E9</color>
+
 </resources>
