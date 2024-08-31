@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Manos y Ollas</string>
     <string name="btnIngresar">Ingresar</string>
-    <string name="btnRegistrate">Registrate</string>
+    <string name="btnRegistrate">Registro</string>
 
     <string name="logTxtCorreo">Ingresa tu Correo</string>
-    <string name="logTxtContraseña">Ingresa tu Contraseña</string>
+    <string name="logTxtContrasena">Ingresa tu Contraseña</string>
     <string name="logBtnIngresar">Ingresar</string>
     <string name="logChkRecordar">Recordar sesión</string>
     <string name="logLblOlvidaste">¿Olvidaste tu contraseña?</string>
