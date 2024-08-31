@@ -2,4 +2,11 @@
     <string name="app_name">Manos y Ollas</string>
     <string name="btnIngresar">Ingresar</string>
     <string name="btnRegistrate">Registrate</string>
+
+    <string name="logTxtCorreo">Ingresa tu Correo</string>
+    <string name="logTxtContraseña">Ingresa tu Contraseña</string>
+    <string name="logBtnIngresar">Ingresar</string>
+    <string name="logChkRecordar">Recordar sesión</string>
+    <string name="logLblOlvidaste">¿Olvidaste tu contraseña?</string>
+    <string name="logLblCopyRight">Derechos Reservados - CNEV2 - UPN 2024</string>
 </resources>
