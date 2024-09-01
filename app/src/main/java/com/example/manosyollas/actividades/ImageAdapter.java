@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
     Context context;
-    ArrayList<String> arrayList;
+    ArrayList<Integer> arrayList;
     OnItemClickListener onItemClickListener;
 
-    public ImageAdapter(Context context, ArrayList<String> arrayList) {
+    public ImageAdapter(Context context, ArrayList<Integer> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -55,6 +55,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     }
 
     public interface OnItemClickListener {
-        void onClick(ImageView imageView, String path);
+        void onClick(ImageView imageView, int resourceId);
     }
 }

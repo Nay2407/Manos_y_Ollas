@@ -1,11 +1,10 @@
 package com.example.manosyollas.actividades;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.manosyollas.R;
 
 public class ImageViewActivity extends AppCompatActivity {
@@ -17,6 +16,10 @@ public class ImageViewActivity extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.imageView);
 
-        Glide.with(ImageViewActivity.this).load(getIntent().getStringExtra("image")).into(imageView);
+        // Recibir el identificador de recurso de la imagen
+        int resourceId = getIntent().getIntExtra("image", -1);
+        if (resourceId != -1) {
+            imageView.setImageResource(resourceId); // Muestra la imagen local en ImageView
+        }
     }
 }
