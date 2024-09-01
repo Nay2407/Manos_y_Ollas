@@ -23,12 +23,12 @@ public class PrincipalActivity extends AppCompatActivity {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
         // Agrega las imágenes locales desde res/drawable
-        arrayList.add(R.drawable.imagen1);
-        arrayList.add(R.drawable.imagen1);
-        arrayList.add(R.drawable.imagen1);
-        arrayList.add(R.drawable.imagen1);
-        arrayList.add(R.drawable.imagen1);
-        arrayList.add(R.drawable.imagen1);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
 
         ImageAdapter adapter = new ImageAdapter(PrincipalActivity.this, arrayList);
         recyclerView.setAdapter(adapter);

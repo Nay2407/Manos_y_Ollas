@@ -10,4 +10,14 @@
     <string name="logLblOlvidaste">¿Olvidaste tu contraseña?</string>
     <string name="logLblCopyRight">Derechos Reservados - CNEV2 - UPN 2024</string>
     <string name="desc_temporal">Descripcion Temporal</string>
+
+    <!--STRINGS PRINCIPAL VIEW-->
+    <string name="prinTxtVerPerfil">Ver Perfil</string>
+    <string name="prinTxtDonaciones">Donaciones</string>
+    <string name="prinTxtVerSedes">Ver Sedes</string>
+    <string name="prinTxtSobreNosotros">Sobre Nosotros</string>
+    <string name="prinTxtForos">Ver Foros</string>
+    <string name="prinTxtBienvenido">Bienvenido UwU</string>
+
+
 </resources>
