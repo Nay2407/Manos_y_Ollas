@@ -50,6 +50,7 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
             titleTextView = itemView.findViewById(R.id.forum_title);
             descriptionTextView = itemView.findViewById(R.id.forum_supporting_text);
         }
+        //Probando comentario
     }
 }
 
