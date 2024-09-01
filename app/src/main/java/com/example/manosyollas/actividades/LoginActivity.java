@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText txtCorreo, txtContrasena;
     Button btnIngresar;
     CheckBox checkRecordar;
+    ImageView icFlotante2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +37,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtContrasena = findViewById(R.id.logTxtPassword);
         btnIngresar = findViewById(R.id.LogBtnIngresar);
         checkRecordar = findViewById(R.id.logChkRecordar);
+        icFlotante2 = findViewById(R.id.ic_flotante2);
 
         btnIngresar.setOnClickListener(this);
+        icFlotante2.setOnClickListener(this);
     }
     @Override
     public void onClick(View v){
-        if(v.getId() == R.id.LogBtnIngresar)
+        if(v.getId() == R.id.LogBtnIngresar) {
             iniciarSesion(txtCorreo.getText().toString(), txtContrasena.getText().toString(), false);
+        }else if(v.getId() == R.id.ic_flotante2) {
+            Intent inicioIntent = new Intent(this, InicioActivity.class);
+            startActivity(inicioIntent);
+        }
     }
     private void iniciarSesion(String txtCorreo,String txtContrasena, boolean recordar) {
         if (txtCorreo.equals("novato@upn.pe")&& txtContrasena.equals("abc123$")){
