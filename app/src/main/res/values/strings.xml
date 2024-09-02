@@ -11,6 +11,23 @@
     <string name="logLblCopyRight">Derechos Reservados - CNEV2 - UPN 2024</string>
     <string name="desc_temporal">Descripcion Temporal</string>
 
+
+    <!--STRINGS ACTIVITY REGISTRAR-->
+    <string name="regLblTitulo">Crear Cuenta</string>
+    <string name="regTxtDni">DNI</string>
+    <string name="regTxtNombre">Nombre</string>
+    <string name="regTxtApellido">Apellidos</string>
+    <string name="regTxtFechaNac">Fecha de Nacimiento</string>
+    <string name="regTxtCorreo">Correo </string>
+    <string name="regRbtSinDefinir">Sin Definir </string>
+    <string name="regRbtFemenino">Femenino</string>
+    <string name="regRbtMasculino">Masculino</string>
+    <string name="regTxtContraseña">Contraseña</string>
+    <string name="regTxtContraseña2">Confirmar Contraseña</string>
+    <string name="regTxtTerminos">Terminos y Condiciones</string>
+    <string name="regTxtBtnCrear">Crear</string>
+    <string name="regTxtBtnRegresar">Regresar</string>
+
     <!--STRINGS PRINCIPAL VIEW-->
     <string name="prinTxtVerPerfil">Ver Perfil</string>
     <string name="prinTxtDonaciones">Donaciones</string>
@@ -18,6 +35,5 @@
     <string name="prinTxtSobreNosotros">Sobre Nosotros</string>
     <string name="prinTxtForos">Ver Foros</string>
     <string name="prinTxtBienvenido">Bienvenido UwU</string>
-
 
 </resources>
