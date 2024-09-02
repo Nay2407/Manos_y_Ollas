@@ -28,7 +28,7 @@
     <string name="regTxtBtnCrear">Crear</string>
     <string name="regTxtBtnRegresar">Regresar</string>
 
-    <!--STRINGS PRINCIPAL VIEW-->
+    !--STRINGS PRINCIPAL VIEW-->
     <string name="prinTxtVerPerfil">Ver Perfil</string>
     <string name="prinTxtDonaciones">Donaciones</string>
     <string name="prinTxtVerSedes">Ver Sedes</string>
