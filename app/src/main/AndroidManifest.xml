@@ -15,6 +15,18 @@
         android:theme="@style/Theme.ManosYOllas"
         tools:targetApi="31">
         <activity
+            android:name=".actividades.SobreNosotrosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.VerSedesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.DonacionesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.VerPerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".actividades.ForoActivity"
             android:exported="false" />
         <activity
