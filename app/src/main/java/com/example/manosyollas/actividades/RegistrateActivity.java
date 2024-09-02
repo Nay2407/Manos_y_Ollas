@@ -3,9 +3,11 @@ package com.example.manosyollas.actividades;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -13,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,8 +62,17 @@ public class RegistrateActivity extends AppCompatActivity implements View.OnClic
         chkTerminos.setOnClickListener(this);
         btnCrear.setOnClickListener(this);
         btnRegresar.setOnClickListener(this);
+        llenarDistritos();
 
 
+
+    }
+
+    private void llenarDistritos() {
+        String distritos[ ]={"Seleccione Distrito" , "San Juan de Lurigancho","Lince", "Comas"
+                , "San Miguel","Chorrillos", "San Anita","Los Olivos"};
+        cboDistritos.setAdapter(new ArrayAdapter<String>(this,android.R.layout.
+                simple_spinner_dropdown_item,distritos                           ));
     }
 
     @Override
@@ -78,9 +90,85 @@ public class RegistrateActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void regresar() {
+        Intent sesion = new Intent(this,InicioActivity.class );
+        startActivity(sesion);
+        finish();
+
     }
 
     private void crearCuenta() {
+        if (validarFormulario()){
+            Toast.makeText(this," Cuenta Creada",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private boolean validarFormulario() {
+        String dni = txtDni.getText().toString().trim();
+        String nombre = txtNombre.getText().toString().trim();
+        String apellido = txtApellido.getText().toString().trim();
+        String fechaNac = txtFechanac.getText().toString().trim();
+        String correo = txtCorreo.getText().toString().trim();
+        String contrasena = txtContraseña.getText().toString().trim();
+        String contrasena2 = txtContraseña2.getText().toString().trim();
+
+        if (dni.isEmpty()) {
+            Toast.makeText(this, "DNI no puede estar vacio",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (nombre.isEmpty()) {
+            Toast.makeText(this, "Nombre no puede estar vacío",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (apellido.isEmpty()) {
+            Toast.makeText(this, "Apellido no puede estar vacío",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (fechaNac.isEmpty()) {
+            Toast.makeText(this, "Fecha de nacimiento no puede estar vacía",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (correo.isEmpty()) {
+            Toast.makeText(this, "Correo no puede estar vacío",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (contrasena.isEmpty()) {
+            Toast.makeText(this, "Contraseña no puede estar vacía",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (contrasena2.isEmpty()) {
+            Toast.makeText(this, "Confirmación de contraseña no puede estar vacía",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!contrasena.equals(contrasena2)) {
+            Toast.makeText(this, "Las contraseñas no coinciden",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Verificar que se haya aceptado los términos y condiciones
+        if (!chkTerminos.isChecked()) {
+            Toast.makeText(this, "Debe aceptar los términos y condiciones!",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        int selectedSexId = grpSexo.getCheckedRadioButtonId();
+        if (selectedSexId == -1) {
+            Toast.makeText(this, "Debe seleccionar un sexo",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
     private void mostrarTerminos() {
@@ -96,6 +184,8 @@ public class RegistrateActivity extends AppCompatActivity implements View.OnClic
             }
         });
         AlertDialog terminos = builder.create() ;
+        terminos.setCancelable(false);
+        terminos.setCanceledOnTouchOutside(false);
         terminos.show();
     }
 
