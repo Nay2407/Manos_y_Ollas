@@ -7,6 +7,26 @@
     android:layout_height="match_parent"
     tools:context=".actividades.VerPerfilActivity">
 
-    
+    <TextView
+        android:id="@+id/vperTxtVerPerfil"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/vperTxtVerPerfil"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
+    <ImageView
+        android:id="@+id/ic_flotante"
+        android:layout_width="112dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_volver"
+        app:layout_constraintBottom_toBottomOf="@+id/vperTxtVerPerfil"
+        app:layout_constraintTop_toTopOf="@+id/vperTxtVerPerfil"
+        tools:layout_editor_absoluteX="40dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

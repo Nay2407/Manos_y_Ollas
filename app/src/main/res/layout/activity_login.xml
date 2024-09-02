@@ -31,8 +31,8 @@
             <!-- Icono sobre la imagen -->
             <ImageView
                 android:id="@+id/ic_flotante"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="41dp"
+                android:layout_height="43dp"
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_volver" />
         </RelativeLayout>

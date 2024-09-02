@@ -17,6 +17,13 @@
         android:textSize="30sp"
         />
 
+    <ImageView
+        android:id="@+id/ic_flotante"
+        android:layout_width="82dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_volver" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:orientation="horizontal"
         android:layout_width="match_parent"
