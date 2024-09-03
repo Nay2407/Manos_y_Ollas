@@ -28,11 +28,27 @@
     <string name="regTxtBtnCrear">Crear</string>
     <string name="regTxtBtnRegresar">Regresar</string>
 
+
     <string name="prinTxtVerPerfil">Ver Perfil</string>
     <string name="prinTxtDonaciones">Donaciones</string>
     <string name="prinTxtVerSedes">Ver Sedes</string>
     <string name="prinTxtSobreNosotros">Sobre Nosotros</string>
     <string name="prinTxtForos">Ver Foros</string>
     <string name="prinTxtBienvenido">Bienvenido UwU</string>
+
+    <!--STRINGS DE PERFIL -->
+    <string name="vperTxtVerPerfil">Perfil</string>
+
+    <!--STRINGS DE VER SEDES -->
+    <string name="vsedTxtVerSedes">Sedes</string>
+
+    <!--STRINGS DE DONACIONES -->
+    <string name="donTxtDonaciones">Donaciones</string>
+
+    <!--STRINGS DE SOBRE NOSOTROS -->
+    <string name="snosTxtSobreNosotros">Sobre Nosotros</string>
+
+    <!--STRINGS DE FOROS -->
+    <string name="forTxtForos">Foros</string>
 
 </resources>
