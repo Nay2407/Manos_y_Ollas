@@ -7,27 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".actividades.VerSedesActivity">
 
-    <TextView
-        android:id="@+id/vsedTxtVerSedes"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/vsedTxtVerSedes"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/ic_flotante"
-        android:layout_width="112dp"
-        android:layout_height="44dp"
-        android:src="@drawable/ic_volver"
-        app:layout_constraintBottom_toBottomOf="@+id/vsedTxtVerSedes"
-        app:layout_constraintTop_toTopOf="@+id/vsedTxtVerSedes"
-        tools:layout_editor_absoluteX="40dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ic_flotante"
+                android:layout_width="41dp"
+                android:layout_height="43dp"
+                android:src="@drawable/ic_volver"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
 
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/vsedTxtVerSedes"
+                android:gravity="center"
+                android:text="@string/vsedTxtVerSedes"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

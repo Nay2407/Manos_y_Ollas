@@ -58,4 +58,9 @@
     <!--STRINGS DE FOROS -->
     <string name="forTxtForos">Foros</string>
 
+    <!--STRINGS TRANSFERENCIA -->
+    <string name="transTxtTransferencia">Transferencia</string>
+
+    <!--SUMINISTRO-->
+    <string name="sumTxtSuministro">Suministro</string>
 </resources>

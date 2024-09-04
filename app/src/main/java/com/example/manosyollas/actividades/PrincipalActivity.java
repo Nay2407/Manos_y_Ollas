@@ -65,6 +65,18 @@ public class PrincipalActivity extends AppCompatActivity {
         btnVerPerfil.setOnClickListener(verPerfilClickListener);
         txtVerPerfil.setOnClickListener(verPerfilClickListener);
 
+        //Regresar
+
+        ImageView btnBack = findViewById(R.id.ic_flotante);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PrincipalActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // Cierra la actividad actual para que no quede en la pila
+            }
+        });
+
         //Boton Donaciones
 
         ImageButton btnDonaciones = findViewById(R.id.prinBtnDonaciones);
