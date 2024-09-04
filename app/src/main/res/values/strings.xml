@@ -39,6 +39,12 @@
 
     <!--STRINGS DE PERFIL -->
     <string name="vperTxtVerPerfil">Perfil</string>
+    <string name="vpertxtNombre">Lalito Ruiz Caceres</string>
+    <string name="vpertxtCorreo">Novato@upn.pe</string>
+    <string name="vperbtnEditPer">Editar Perfil</string>
+    <string name="vpertxtHisDona">Historial Donativos</string>
+    <string name="vpertxtAjustes">Ajustes</string>
+    <string name="vpertxtNotif">Notificaciones</string>
 
     <!--STRINGS DE VER SEDES -->
     <string name="vsedTxtVerSedes">Sedes</string>
