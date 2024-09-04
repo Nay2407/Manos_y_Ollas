@@ -7,27 +7,103 @@
     android:layout_height="match_parent"
     tools:context=".actividades.DonacionesActivity">
 
-    <TextView
-        android:id="@+id/donTxtDonaciones"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/donTxtDonaciones"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/ic_flotante"
-        android:layout_width="112dp"
-        android:layout_height="44dp"
-        android:src="@drawable/ic_volver"
-        app:layout_constraintBottom_toBottomOf="@+id/donTxtDonaciones"
-        app:layout_constraintTop_toTopOf="@+id/donTxtDonaciones"
-        tools:layout_editor_absoluteX="40dp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ic_flotante"
+                android:layout_width="41dp"
+                android:layout_height="43dp"
+                android:src="@drawable/ic_volver"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/donTxtDonaciones"
+                android:gravity="center"
+                android:text="@string/donTxtDonaciones"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+
+                />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/donTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Contribuye a nuestra causa"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Imagen -->
+        <ImageView
+            android:id="@+id/donImagen"
+            android:layout_width="268dp"
+            android:layout_height="150dp"
+            android:src="@drawable/donacion"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Descripción -->
+        <TextView
+            android:id="@+id/donDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Tu aporte ayuda a alimentar a las familias de nuestra comunidad."
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Botones de Donación -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btnDonarSuministro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Donar Suministro" />
+
+            <Button
+                android:id="@+id/btnTransferencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transferencia"
+                android:layout_marginStart="20dp" />
+        </LinearLayout>
+
+        <!-- Texto final -->
+        <TextView
+            android:id="@+id/donTxtFinal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Con tu donación, podemos continuar brindando alimentos nutritivos a familias que enfrentan tiempos difíciles."
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package com.example.manosyollas.actividades;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,46 +13,26 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
 
-public class DonacionesActivity extends AppCompatActivity {
+public class SuministroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_donaciones);
+        setContentView(R.layout.activity_suministro);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         ImageView icFlotante = findViewById(R.id.ic_flotante);
 
         icFlotante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DonacionesActivity.this, PrincipalActivity.class);
+                Intent intent = new Intent(SuministroActivity.this, DonacionesActivity.class);
                 startActivity(intent);
                 finish();
-            }
-        });
-        Button btnTransferencia = findViewById(R.id.btnTransferencia);
-
-        btnTransferencia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DonacionesActivity.this, TransferenciaActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btnDonarSuministro = findViewById(R.id.btnDonarSuministro);
-
-        btnDonarSuministro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DonacionesActivity.this, SuministroActivity.class);
-                startActivity(intent);
             }
         });
     }
