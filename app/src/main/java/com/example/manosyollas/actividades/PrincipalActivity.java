@@ -53,8 +53,6 @@ public class PrincipalActivity extends AppCompatActivity implements Menu{
             }
         });
         /*
-
-
         //Boton Perfil
 
         ImageButton btnVerPerfil = findViewById(R.id.prinBtnVerPerfil);//
