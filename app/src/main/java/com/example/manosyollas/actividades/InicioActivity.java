@@ -32,6 +32,7 @@ Button btnIngresar, btnRegistrar;
         btnRegistrar.setOnClickListener(this);
 
     }
+    //hola
 
     @Override
     public void onClick(View v) {
