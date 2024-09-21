@@ -12,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.Menu;
+import com.example.manosyollas.fragmentos.PerfilFragment;
 
 import java.util.ArrayList;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity implements Menu{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,9 @@ public class PrincipalActivity extends AppCompatActivity {
                 startActivity(intent, options.toBundle());
             }
         });
+        /*
+
+
         //Boton Perfil
 
         ImageButton btnVerPerfil = findViewById(R.id.prinBtnVerPerfil);//
@@ -58,7 +63,7 @@ public class PrincipalActivity extends AppCompatActivity {
         View.OnClickListener verPerfilClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PrincipalActivity.this, VerPerfilActivity.class);
+                Intent intent = new Intent(PrincipalActivity.this, PerfilFragment.class);
                 startActivity(intent);
             }
         };
@@ -134,8 +139,15 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         };
         btnForos.setOnClickListener(forosClickListener);
-        txtForos.setOnClickListener(forosClickListener);
+        txtForos.setOnClickListener(forosClickListener);*/
+    }
 
+    @Override
+    public void onClickMenu(int id) {
+        Intent menu = new Intent(this, MenuActivity.class);
+        menu.putExtra("id", id);
+        startActivity(menu);
+        finish();
     }
 }
 
