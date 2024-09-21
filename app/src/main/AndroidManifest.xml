@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ManosYOllas"
         tools:targetApi="31">
         <activity
+            android:name=".actividades.MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".actividades.SuministroActivity"
             android:exported="false" />
         <activity
