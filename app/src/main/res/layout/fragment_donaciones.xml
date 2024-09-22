@@ -94,13 +94,11 @@
 
 
     </LinearLayout>
-<<<<<<< HEAD
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
-=======
->>>>>>> e162a361420d5974b925341762558e33c5164ffb
+
 </FrameLayout>

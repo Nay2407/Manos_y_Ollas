@@ -73,6 +73,21 @@ public class ForosFragment extends Fragment {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_foros, container, false);
 
+        //super.onCreate(savedInstanceState);
+
+
+        recyclerView = vista.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Crear y agregar ítems a la lista
+        forumItemList = new ArrayList<>();
+        forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));
+        forumItemList.add(new ForumItem("Foro 2", "Descripción del foro 2", R.drawable.ollita));
+        // Añadir más ítems según sea necesario
+
+        forumAdapter = new ForumAdapter(forumItemList);
+        recyclerView.setAdapter(forumAdapter);
+
         return  vista;
     }
 }
