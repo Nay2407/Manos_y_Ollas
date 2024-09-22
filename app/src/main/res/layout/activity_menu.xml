@@ -18,16 +18,18 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
+            android:id="@+id/menusito"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom"
             android:orientation="horizontal">
+
             <fragment
                 android:id="@+id/frgMenu"
+                android:name="com.example.manosyollas.fragmentos.MenuFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.example.manosyollas.fragmentos.MenuFragment"
-                tools:layout="@layout/fragment_menu"/>
+                tools:layout="@layout/fragment_menu" />
         </LinearLayout>
     </LinearLayout>
 
