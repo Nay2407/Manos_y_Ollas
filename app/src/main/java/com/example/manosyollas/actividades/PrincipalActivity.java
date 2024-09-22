@@ -28,12 +28,12 @@ public class PrincipalActivity extends AppCompatActivity implements Menu{
         ArrayList<Integer> arrayList = new ArrayList<>();
 
         // Agrega las imágenes locales desde res/drawable
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.caritaslima);
+        arrayList.add(R.drawable.donacion);
+        arrayList.add(R.drawable.ollascomunes1);
+        arrayList.add(R.drawable.caritaslima);
+        arrayList.add(R.drawable.donacion);
+        arrayList.add(R.drawable.ollascomunes1);
 
         ImageAdapter adapter = new ImageAdapter(PrincipalActivity.this, arrayList);
         recyclerView.setAdapter(adapter);
