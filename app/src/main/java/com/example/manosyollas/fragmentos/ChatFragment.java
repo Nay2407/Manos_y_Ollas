@@ -1,9 +1,13 @@
 package com.example.manosyollas.fragmentos;
+import com.example.manosyollas.actividades.InicioActivity;
+import com.example.manosyollas.actividades.MenuActivity;
+import com.example.manosyollas.actividades.PrincipalActivity;
 import com.example.manosyollas.clases.Menu;
 import com.example.manosyollas.clases.Message;
 import com.example.manosyollas.controladores.MessageAdapter;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -12,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
@@ -124,13 +129,15 @@ public class ChatFragment extends Fragment {
 
         // Cambiar el título en el Toolbar o ActionBar
         //volver
+        // Configurar el evento click para el icono de retroceso
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent menusito = new Intent(getContext(), PrincipalActivity.class);
+                startActivity(menusito);
 
-        backButton.setOnClickListener(v -> {
-            // Show bottom navigation on back press
-            getActivity().onBackPressed();
-            //((ForosFragment) getActivity()).;
+            }
         });
-
 
         return view;
     }
