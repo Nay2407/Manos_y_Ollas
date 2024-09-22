@@ -37,7 +37,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp" />
 
-        <!-- Imagen -->
         <ImageView
             android:id="@+id/donImagen"
             android:layout_width="268dp"
@@ -46,7 +45,6 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20dp" />
 
-        <!-- Descripción -->
         <TextView
             android:id="@+id/donDescripcion"
             android:layout_width="match_parent"
@@ -57,7 +55,6 @@
             android:textSize="16sp"
             android:layout_marginBottom="20dp" />
 
-        <!-- Botones de Donación -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +76,6 @@
                 android:layout_marginStart="20dp" />
         </LinearLayout>
 
-        <!-- Texto final -->
         <TextView
             android:id="@+id/donTxtFinal"
             android:layout_width="match_parent"
@@ -91,10 +87,11 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
-
-
     </LinearLayout>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 965637949717c051adf97c54499172dca9d09d3c
 </FrameLayout>

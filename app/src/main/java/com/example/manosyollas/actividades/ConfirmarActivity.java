@@ -3,7 +3,6 @@ package com.example.manosyollas.actividades;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,43 +12,29 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
-import com.example.manosyollas.fragmentos.DonacionesFragment;
 
-public class TransferenciaActivity extends AppCompatActivity {
+public class ConfirmarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_transferencia);
+        setContentView(R.layout.activity_confirmar);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         ImageView icFlotante = findViewById(R.id.ic_flotante);
+
         icFlotante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(ConfirmarActivity.this, SuministroActivity.class);
+                startActivity(intent);
                 finish();
-            }
-        });
-
-        ImageButton btnYape = findViewById(R.id.btn_yape);
-        btnYape.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TransferenciaActivity.this, YapeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageButton btnPlin = findViewById(R.id.btn_plin);
-        btnPlin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TransferenciaActivity.this, PlinActivity.class);
-                startActivity(intent);
             }
         });
     }

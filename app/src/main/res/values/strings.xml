@@ -72,8 +72,29 @@
     <!--STRINGS TRANSFERENCIA -->
     <string name="transTxtTransferencia">Transferencia</string>
 
+    <string name="transTxtYape">Donar con Yape</string>
+    <string name="transTxtPlin">Donar con Plin</string>
+    <string name="transTxtVisa">Donar con Visa</string>
+
     <!--SUMINISTRO-->
     <string name="sumTxtSuministro">Suministro</string>
+
+    <!--MENU SEDES-->
+    <string name="frgmenSTxtLista">Lista</string>
+    <string name="frgmenSTxtMapa">Mapa</string>
+
+    <!--CONFIRMAR SUMINISTRO-->
+    <string name="conTxtSuministro">Confirmar Suministro</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--AJUSTES-->
+    <string name="ajusLblPreferencias">Preferencias</string>
+    <string name="ajusChkNotificaciones">Recibir Notificaciones</string>
+    <string name="ajusLblSonido">Control de Sonido</string>
+    <string name="ajusBtnAplicar">Aplicar</string>
+    <string name="ajusBtnRestaurar">Restaurar</string>
+    <string name="ajusChkTemaOscuro">Activar/Desactivar Tema Oscuro</string>
+
 </resources>
