@@ -13,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.actividades.AjustesActivity;
 import com.example.manosyollas.actividades.InicioActivity;
+import com.example.manosyollas.actividades.TransferenciaActivity;
 import com.example.manosyollas.clases.Menu;
 
 /**
@@ -23,8 +26,9 @@ import com.example.manosyollas.clases.Menu;
  * Use the {@link PerfilFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PerfilFragment extends Fragment {
+public class PerfilFragment extends Fragment implements View.OnClickListener{
     private Button btnCerrar;
+    ImageButton btnAjustes;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,6 +75,7 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_perfil, container, false);
         btnCerrar = vista.findViewById(R.id.vperbtnCerrarSesion);
+        btnAjustes = vista.findViewById(R.id.vperimgajustes);
 
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +85,7 @@ public class PerfilFragment extends Fragment {
 
             }
         });
+        btnAjustes.setOnClickListener(this);
         return vista;
     }
 
@@ -95,5 +101,16 @@ public class PerfilFragment extends Fragment {
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpia la pila de actividades
         startActivity(intent);
         getActivity().finish(); // Cierra la actividad actual para prevenir el regreso con el botón de atrás
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.vperimgajustes)
+            ingresarAjustes();
+    }
+
+    private void ingresarAjustes() {
+        Intent ajustes = new Intent(getActivity(), AjustesActivity.class);
+        startActivity(ajustes);
     }
 }
