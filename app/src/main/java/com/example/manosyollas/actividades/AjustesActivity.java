@@ -107,16 +107,12 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         editor.putBoolean("temaOscuro", chkTemaOscuro.isChecked());
         editor.apply();
 
-        // Aplicamos el tema de acuerdo a la selección del usuario
         if (chkTemaOscuro.isChecked()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
-
         Toast.makeText(this, "Preferencias Guardadas", Toast.LENGTH_SHORT).show();
-
-        // No reiniciamos la actividad, solo cerramos Ajustes y volvemos al fragmento
         finish();
     }
 
@@ -125,7 +121,7 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         chkNotificaciones.setChecked(false);
         barSonido.setProgress(100);
         chkTemaOscuro.setChecked(false);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Restauramos a tema claro
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     @Override
