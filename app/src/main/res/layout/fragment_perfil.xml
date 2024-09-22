@@ -19,14 +19,6 @@
             android:textColor="@android:color/black"
             android:textSize="30sp"
             tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/ic_flotante"
-            android:layout_width="82dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_volver"
-            tools:ignore="MissingConstraints" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +32,6 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_margin="20dp">
-                <!--Despues e puede cambiar a otra imagen :v-->
                 <ImageView
                     android:layout_width="210dp"
                     android:layout_height="173dp"

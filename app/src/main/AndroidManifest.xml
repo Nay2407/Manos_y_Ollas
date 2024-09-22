@@ -17,6 +17,9 @@
         <activity
             android:name=".actividades.AjustesActivity"
             android:exported="false" />
+       <activity
+            android:name=".actividades.ConfirmarActivity"
+            android:exported="false" />
         <activity
             android:name=".actividades.MenuActivity"
             android:exported="false" />
@@ -28,18 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".actividades.SobreNosotrosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".actividades.VerSedesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".actividades.DonacionesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".actividades.VerPerfilActivity"
-            android:exported="false" />
-        <activity
-            android:name=".actividades.ForoActivity"
             android:exported="false" />
         <activity
             android:name=".actividades.ImageViewActivity"

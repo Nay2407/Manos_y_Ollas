@@ -55,13 +55,13 @@ public class InicioFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
         ArrayList<Integer> arrayList = new ArrayList<>();
 
+        arrayList.add(R.drawable.caritaslima);
+        arrayList.add(R.drawable.donacion);
+        arrayList.add(R.drawable.ollascomunes1);
+        arrayList.add(R.drawable.caritaslima);
+        arrayList.add(R.drawable.donacion);
+        arrayList.add(R.drawable.ollascomunes1);
 
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
 
 
         ImageAdapter adapter = new ImageAdapter(getActivity(), arrayList);

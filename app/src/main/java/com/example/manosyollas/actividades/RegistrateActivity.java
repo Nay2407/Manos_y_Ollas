@@ -4,8 +4,11 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.text.LineBreaker;
 import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -173,8 +177,18 @@ public class RegistrateActivity extends AppCompatActivity implements View.OnClic
 
     private void mostrarTerminos() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Terminos y condiciones");
-        builder.setMessage("hola hola ");
+        builder.setTitle("            Terminos y condiciones");
+        TextView messageView = new TextView(this);
+        messageView.setText(
+                "Al utilizar esta aplicación, aceptas cumplir con nuestros términos y condiciones, que regulan el uso de la plataforma, la gestión de la información compartida y las responsabilidades de los usuarios. Te comprometes a usar la app de manera legal y respetuosa, evitando contenido inapropiado. Reconoces que somos responsables únicamente por el funcionamiento de la aplicación y no por los daños que puedan surgir del uso de la misma. Además, nos reservamos el derecho de modificar estos términos en cualquier momento, y tu uso continuado de la app se considerará como aceptación de los cambios. Te recomendamos revisar los términos periódicamente. Si no estás de acuerdo con alguna parte, te solicitamos que no utilices la aplicación");
+        messageView.setPadding(16, 16, 16, 16);
+        messageView.setTextSize(16);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            messageView.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+        }
+
+        builder.setView(messageView); // Establece el TextView en el diálogo
+
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
