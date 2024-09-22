@@ -51,7 +51,14 @@
     <string name="vsedTxtInicio">Inicio</string>
 
     <!--STRINGS DE VER SEDES -->
-    <string name="vsedTxtVerSedes">Sedes</string>
+    <string name="vsedTxtVerSedes">Direccion de Ollas Comunes Afiliadas</string>
+    <string name="vsedTxtnombreSede">Olla Comun 1</string>
+    <string name="vsedTxtDireccion">Av. El Sol 461, San Juan de Lurigancho 15434</string>
+    <string name="vsedTxtHorario">Horario de Atencion: 12 am - 4pm  </string>
+
+    <string name="vsedTxtnombreSede2">Olla Comun 2</string>
+    <string name="vsedTxtDireccion2">Av. Los Duraznos 382, San Juan de Lurigancho 15419</string>
+    <string name="vsedTxtHorario2">Horario de Atencion: 12 am - 4pm  </string>
 
     <!--STRINGS DE DONACIONES -->
     <string name="donTxtDonaciones">Donaciones</string>
