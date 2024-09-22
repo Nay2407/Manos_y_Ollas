@@ -3,6 +3,7 @@ package com.example.manosyollas.actividades;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -27,13 +28,28 @@ public class TransferenciaActivity extends AppCompatActivity {
             return insets;
         });
         ImageView icFlotante = findViewById(R.id.ic_flotante);
-
         icFlotante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransferenciaActivity.this, DonacionesFragment.class);
-                startActivity(intent);
                 finish();
+            }
+        });
+
+        ImageButton btnYape = findViewById(R.id.btn_yape);
+        btnYape.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransferenciaActivity.this, YapeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton btnPlin = findViewById(R.id.btn_plin);
+        btnPlin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransferenciaActivity.this, PlinActivity.class);
+                startActivity(intent);
             }
         });
     }
