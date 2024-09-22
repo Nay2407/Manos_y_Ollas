@@ -72,6 +72,10 @@
     <!--STRINGS TRANSFERENCIA -->
     <string name="transTxtTransferencia">Transferencia</string>
 
+    <string name="transTxtYape">Donar con Yape</string>
+    <string name="transTxtPlin">Donar con Plin</string>
+    <string name="transTxtVisa">Donar con Visa</string>
+
     <!--SUMINISTRO-->
     <string name="sumTxtSuministro">Suministro</string>
 
