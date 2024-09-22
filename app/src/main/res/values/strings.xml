@@ -88,4 +88,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--AJUSTES-->
+    <string name="ajusLblPreferencias">Preferencias</string>
+    <string name="ajusChkNotificaciones">Recibir Notificaciones</string>
+    <string name="ajusLblSonido">Control de Sonido</string>
+    <string name="ajusBtnAplicar">Aplicar</string>
+    <string name="ajusBtnRestaurar">Restaurar</string>
+    <string name="ajusChkTemaOscuro">Activar/Desactivar Tema Oscuro</string>
+
 </resources>

@@ -15,12 +15,16 @@
         android:theme="@style/Theme.ManosYOllas"
         tools:targetApi="31">
         <activity
+
             android:name=".actividades.PlinActivity"
             android:exported="false" />
         <activity
             android:name=".actividades.YapeActivity"
             android:exported="false" />
         <activity
+            android:name=".actividades.AjustesActivity"
+            android:exported="false" />
+       <activity
             android:name=".actividades.ConfirmarActivity"
             android:exported="false" />
         <activity
