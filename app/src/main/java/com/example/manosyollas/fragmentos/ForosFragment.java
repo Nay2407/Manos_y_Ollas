@@ -84,27 +84,28 @@ public class ForosFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Crear y agregar ítems a la lista
+        muestranavegacion();
         cargarForos();
         // Añadir más ítems según sea necesario
         
         forumAdapter=new ForumAdapter(forumItemList, new ForumAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(ForumItem foro) {
-                muestranavegacion();
+                ocultanavegacion();
 
                 abrirChat(foro);
             }
         });
-        //forumAdapter = new ForumAdapter(forumItemList);
+
         recyclerView.setAdapter(forumAdapter);
 
         return  vista;
     }
 
-    private void muestranavegacion() {
+    public void ocultanavegacion() {
         bottomNavBar.setVisibility(View.GONE);
     }
-    private void ocultanavegacion() {
+    public void muestranavegacion() {
         bottomNavBar.setVisibility(View.VISIBLE);
     }
 
