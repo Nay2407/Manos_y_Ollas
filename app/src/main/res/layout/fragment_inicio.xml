@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/donTxtInicio"
                 android:gravity="center"
-                android:text="Inicio"
+                android:text="@string/prinTxtBienvenido"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
                 android:layout_marginTop="20dp" />
