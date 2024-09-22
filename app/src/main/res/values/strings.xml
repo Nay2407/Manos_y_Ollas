@@ -46,6 +46,9 @@
     <string name="vpertxtAjustes">Ajustes</string>
     <string name="vpertxtNotif">Notificaciones</string>
 
+    <!--STRINGS DE VER Inicio -->
+    <string name="vsedTxtInicio">Inicio</string>
+
     <!--STRINGS DE VER SEDES -->
     <string name="vsedTxtVerSedes">Sedes</string>
 

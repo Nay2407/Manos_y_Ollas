@@ -2,25 +2,97 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragmentos.DonacionesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="fill"
-        android:orientation="horizontal">
-        <fragment
-            android:id="@+id/frgMenu"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/donTxtDonaciones"
+                android:gravity="center"
+                android:text="@string/donTxtDonaciones"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+
+                />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/donTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.example.manosyollas.fragmentos.MenuFragment"
-            tools:layout="@layout/fragment_menu"/>
+            android:gravity="center"
+            android:text="Contribuye a nuestra causa"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Imagen -->
+        <ImageView
+            android:id="@+id/donImagen"
+            android:layout_width="268dp"
+            android:layout_height="150dp"
+            android:src="@drawable/donacion"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Descripción -->
+        <TextView
+            android:id="@+id/donDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Tu aporte ayuda a alimentar a las familias de nuestra comunidad."
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Botones de Donación -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btnDonarSuministro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Donar Suministro" />
+
+            <Button
+                android:id="@+id/btnTransferencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transferencia"
+                android:layout_marginStart="20dp" />
+        </LinearLayout>
+
+        <!-- Texto final -->
+        <TextView
+            android:id="@+id/donTxtFinal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Con tu donación, podemos continuar brindando alimentos nutritivos a familias que enfrentan tiempos difíciles."
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+
     </LinearLayout>
 
 </FrameLayout>

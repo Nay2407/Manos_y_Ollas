@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragmentos.PerfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,13 +20,6 @@
             android:textSize="30sp"
             tools:ignore="MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/ic_flotante"
-            android:layout_width="82dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_volver"
-            tools:ignore="MissingConstraints" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
