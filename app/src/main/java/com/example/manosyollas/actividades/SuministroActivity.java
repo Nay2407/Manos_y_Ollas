@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.fragmentos.DonacionesFragment;
 
 public class SuministroActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class SuministroActivity extends AppCompatActivity {
         icFlotante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SuministroActivity.this, DonacionesActivity.class);
+                Intent intent = new Intent(SuministroActivity.this, DonacionesFragment.class);
                 startActivity(intent);
                 finish();
             }
