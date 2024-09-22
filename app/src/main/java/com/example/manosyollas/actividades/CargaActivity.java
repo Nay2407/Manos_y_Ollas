@@ -1,6 +1,7 @@
 package com.example.manosyollas.actividades;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
@@ -38,10 +39,21 @@ ProgressBar barCarga;
                     }
 
                 }
-                //llamar a la otra actividad
-                Intent sesion = new Intent(getApplicationContext(), InicioActivity.class);
-                startActivity(sesion);
-                finish(); //
+                SharedPreferences sharedPrefs = getSharedPreferences("userPreferences", MODE_PRIVATE);
+                boolean isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false);
+                if(isLoggedIn) {
+                    Intent principal = new Intent(getApplicationContext(), PrincipalActivity.class);
+                    principal.putExtra("nombre","Cachimbo UPN");
+                    startActivity(principal);
+                    finish();
+                }else{
+                    //llamar a la otra actividad
+                    Intent sesion = new Intent(getApplicationContext(), InicioActivity.class);
+                    startActivity(sesion);
+                    finish(); //
+
+                }
+
             }
         });//creamos hilo
         tCarga.start();

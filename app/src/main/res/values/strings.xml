@@ -42,6 +42,7 @@
     <string name="vpertxtNombre">Lalito Ruiz Caceres</string>
     <string name="vpertxtCorreo">Novato@upn.pe</string>
     <string name="vperbtnEditPer">Editar Perfil</string>
+    <string name="vperbtnCerrarSesion">Cerrar Sesión</string>
     <string name="vpertxtHisDona">Historial Donativos</string>
     <string name="vpertxtAjustes">Ajustes</string>
     <string name="vpertxtNotif">Notificaciones</string>
