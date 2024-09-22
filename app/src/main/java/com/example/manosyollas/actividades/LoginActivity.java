@@ -65,8 +65,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void iniciarSesion(String txtCorreo,String txtContrasena, boolean recordar) {
         if (txtCorreo.equals("user")&& txtContrasena.equals("user")){
-
-
             Intent principal = new Intent(this, PrincipalActivity.class);
             principal.putExtra("nombre","Cachimbo UPN");
             startActivity(principal);
