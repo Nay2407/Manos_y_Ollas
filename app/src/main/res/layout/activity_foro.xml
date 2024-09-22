@@ -29,7 +29,8 @@
         android:src="@drawable/ic_volver"
         app:layout_constraintBottom_toBottomOf="@+id/forTxtForos"
         app:layout_constraintTop_toTopOf="@+id/forTxtForos"
-        tools:layout_editor_absoluteX="40dp" />
+        tools:layout_editor_absoluteX="40dp"
+        tools:ignore="MissingConstraints" />
 
     <!-- activity_main.xml -->
     <LinearLayout
@@ -37,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
 
         <!-- RecyclerView que muestra la lista de elementos -->
         <androidx.recyclerview.widget.RecyclerView
