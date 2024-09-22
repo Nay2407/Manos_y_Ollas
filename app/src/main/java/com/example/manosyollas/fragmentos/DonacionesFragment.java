@@ -1,5 +1,6 @@
 package com.example.manosyollas.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,16 +8,22 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.actividades.PrincipalActivity;
+import com.example.manosyollas.actividades.RegistrateActivity;
+import com.example.manosyollas.actividades.SobreNosotrosActivity;
+import com.example.manosyollas.actividades.SuministroActivity;
+import com.example.manosyollas.actividades.TransferenciaActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link DonacionesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DonacionesFragment extends Fragment {
-
+public class DonacionesFragment extends Fragment implements View.OnClickListener {
+    Button btnDonar, btnTransferencia;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +68,30 @@ public class DonacionesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_donaciones, container, false);
+        View vista = inflater.inflate(R.layout.fragment_donaciones, container, false);
+        btnDonar = vista.findViewById(R.id.btnDonarSuministro);
+        btnTransferencia = vista.findViewById(R.id.btnTransferencia);
+
+        btnDonar.setOnClickListener(this);
+        btnTransferencia.setOnClickListener(this);
+        return vista;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btnDonarSuministro)
+            DonarSum();
+        if (view.getId() == R.id.btnTransferencia)
+            Tranferencia();
+    }
+
+    private void Tranferencia() {
+        Intent registro = new Intent(getActivity(), TransferenciaActivity.class);
+        startActivity(registro);
+    }
+
+    private void DonarSum() {
+        Intent registro = new Intent(getActivity(), SuministroActivity.class);
+        startActivity(registro);
     }
 }
