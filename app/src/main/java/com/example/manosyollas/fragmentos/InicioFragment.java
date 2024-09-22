@@ -1,28 +1,24 @@
 package com.example.manosyollas.fragmentos;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.actividades.ImageAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link InicioFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class InicioFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // Parámetros opcionales
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    // Variables para los parámetros
     private String mParam1;
     private String mParam2;
 
@@ -30,15 +26,7 @@ public class InicioFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment InicioFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+    // Método de fábrica para crear una nueva instancia del fragmento
     public static InicioFragment newInstance(String param1, String param2) {
         InicioFragment fragment = new InicioFragment();
         Bundle args = new Bundle();
@@ -60,7 +48,25 @@ public class InicioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_inicio, container, false);
+
+
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.imagen2);
+
+
+        ImageAdapter adapter = new ImageAdapter(getActivity(), arrayList);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 }
