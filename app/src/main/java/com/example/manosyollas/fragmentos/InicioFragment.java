@@ -56,12 +56,12 @@ public class InicioFragment extends Fragment {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
 
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
-        arrayList.add(R.drawable.imagen2);
+        arrayList.add(R.drawable.caritaslima);
+        arrayList.add(R.drawable.donacion);
+        arrayList.add(R.drawable.ollascomunes1);
+        arrayList.add(R.drawable.caritaslima);
+        arrayList.add(R.drawable.donacion);
+        arrayList.add(R.drawable.ollascomunes1);
 
 
         ImageAdapter adapter = new ImageAdapter(getActivity(), arrayList);
