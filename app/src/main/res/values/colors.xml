@@ -13,6 +13,16 @@
     <color name="inputColor">#E6E0E9</color>
     <color name="fondoMenu">#959595</color>
     <color name="red">#F21313</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#FF5722</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="textColor">#000000</color>
+    <color name="buttonColor">#6200EE</color>
+    <color name="radiobt">#F44336</color>
+    <color name="transparente">#00FFFFFF</color>
+
+
 
 
 
