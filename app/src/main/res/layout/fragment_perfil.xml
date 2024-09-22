@@ -20,6 +20,13 @@
             android:textSize="30sp"
             tools:ignore="MissingConstraints" />
 
+        <ImageView
+            android:id="@+id/ic_flotante"
+            android:layout_width="82dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_volver"
+            tools:ignore="MissingConstraints" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,15 +76,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginHorizontal="15sp"
                     android:gravity="center">
+
                     <ImageButton
                         android:id="@+id/vperimgHisDona"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_perfil"
-                        android:background="@android:color/transparent"
                         android:layout_gravity="center"
-                        />
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_donacion" />
                     <TextView
                         android:id="@+id/vpertxtHisDona"
                         android:layout_width="wrap_content"
@@ -91,12 +99,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginHorizontal="15sp"
                     android:gravity="center">
                     <ImageButton
                         android:id="@+id/vperimgajustes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_perfil"
+                        android:src="@drawable/ic_ajuste"
                         android:background="@android:color/transparent"
                         android:layout_gravity="center"
                         />
@@ -112,12 +121,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginHorizontal="15sp"
                     android:gravity="center">
                     <ImageButton
                         android:id="@+id/vperimgNotif"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_perfil"
+                        android:src="@drawable/ic_notificacion"
                         android:background="@android:color/transparent"
                         android:layout_gravity="center"
                         />

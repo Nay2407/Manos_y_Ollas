@@ -17,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.fragmentos.InicioFragment;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     EditText txtCorreo, txtContrasena;
