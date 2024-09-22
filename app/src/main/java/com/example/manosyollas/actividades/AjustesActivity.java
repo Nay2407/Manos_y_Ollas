@@ -1,12 +1,14 @@
 package com.example.manosyollas.actividades;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,6 +34,8 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
     TextView lblSonido;
     SeekBar barSonido;
     Button btnAplicar, btnRestaurar;
+    ImageView icVolver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +50,13 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         ajusChkTemaOscuro = findViewById(R.id.ajusChkTemaOscuro);
         sharedPreferences = getSharedPreferences("ajustes", MODE_PRIVATE);
 
-
         cboIdiomas = findViewById(R.id.ajusCboIdiomas);
         chkNotificaciones = findViewById(R.id.ajusChkNotificaciones);
         lblSonido = findViewById(R.id.ajusLblSonido);
         barSonido = findViewById(R.id.ajusBarSonido);
         btnAplicar = findViewById(R.id.ajusBtnAplicar);
         btnRestaurar = findViewById(R.id.ajusBtnRestaurar);
-        chkTemaOscuro = findViewById(R.id.ajusChkTemaOscuro); // Asegúrate de tener este CheckBox en tu layout
+        chkTemaOscuro = findViewById(R.id.ajusChkTemaOscuro);
 
         btnAplicar.setOnClickListener(this);
         btnRestaurar.setOnClickListener(this);
@@ -61,9 +64,6 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
 
         llenarIdiomas();
         cargarPreferencias();
-
-
-
     }
 
     private void cargarPreferencias() {
@@ -77,14 +77,13 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         chkNotificaciones.setChecked(notificaciones);
         barSonido.setProgress(sonido);
         chkTemaOscuro.setChecked(temaOscuro);
-        // Cambiar el tema basado en la preferencia
+
         if (temaOscuro) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
-
     private void llenarIdiomas() {
         String[] idiomas = {"Español", "Ingles", "Quechua", "Aymara", "Shipibo", "Aleman"};
         cboIdiomas.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, idiomas));
@@ -92,10 +91,11 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.ajusBtnAplicar)
+        if (view.getId() == R.id.ajusBtnAplicar) {
             aplicar();
-        else if (view.getId() == R.id.ajusBtnRestaurar)
+        } else if (view.getId() == R.id.ajusBtnRestaurar) {
             restaurar();
+        }
     }
 
     private void aplicar() {
@@ -104,10 +104,10 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         editor.putInt("idioma", cboIdiomas.getSelectedItemPosition());
         editor.putBoolean("notificaciones", chkNotificaciones.isChecked());
         editor.putInt("sonido", barSonido.getProgress());
-        editor.putBoolean("temaOscuro", chkTemaOscuro.isChecked()); // Guardar estado del tema oscuro
+        editor.putBoolean("temaOscuro", chkTemaOscuro.isChecked());
         editor.apply();
 
-        // Cambiar el tema de la actividad
+        // Aplicamos el tema de acuerdo a la selección del usuario
         if (chkTemaOscuro.isChecked()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
@@ -116,11 +116,8 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
 
         Toast.makeText(this, "Preferencias Guardadas", Toast.LENGTH_SHORT).show();
 
-        // Regresar al PerfilFragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.frgPerfil, new PerfilFragment()) // Asegúrate de usar el ID correcto de tu contenedor
-                .commit();
+        // No reiniciamos la actividad, solo cerramos Ajustes y volvemos al fragmento
+        finish();
     }
 
     private void restaurar() {
@@ -128,9 +125,8 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         chkNotificaciones.setChecked(false);
         barSonido.setProgress(100);
         chkTemaOscuro.setChecked(false);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Restaurar a tema claro
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Restauramos a tema claro
     }
-
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -152,12 +148,25 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
+    protected void onResume() {
+        super.onResume();
+        cargarPreferencias();
     }
 
     @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
+    public void onStartTrackingTouch(SeekBar seekBar) {}
 
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {}
+
+    public void aplicarTema() {
+        SharedPreferences preferences = getSharedPreferences("configuracion", Context.MODE_PRIVATE);
+        boolean temaOscuro = preferences.getBoolean("temaOscuro", false);
+
+        if (temaOscuro) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 }
