@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragmentos.InicioFragment">
 
     <LinearLayout
@@ -10,6 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- Título "Inicio" -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -19,13 +21,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/donTxtInicio"
                 android:gravity="center"
-                android:text="@string/vsedTxtInicio"
+                android:text="Inicio"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
-                android:layout_marginTop="20dp"
-
-                />
+                android:layout_marginTop="20dp" />
         </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="100dp"
+            android:id="@+id/recycler"
+            app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
 
 
     </LinearLayout>

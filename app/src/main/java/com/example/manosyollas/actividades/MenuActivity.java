@@ -35,7 +35,7 @@ public class MenuActivity extends AppCompatActivity implements Menu {
         fragments = new Fragment[5];
         fragments[0] = new PerfilFragment();
         fragments[1] = new SedesFragment();
-        fragments[2] = new MenuFragment();
+        fragments[2] = new InicioFragment();
         fragments[3] = new ForosFragment();
         fragments[4] = new DonacionesFragment();
 
