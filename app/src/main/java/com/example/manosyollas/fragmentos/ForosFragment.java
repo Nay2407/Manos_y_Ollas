@@ -1,8 +1,11 @@
 package com.example.manosyollas.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +29,7 @@ public class ForosFragment extends Fragment {
     private RecyclerView recyclerView;
     private ForumAdapter forumAdapter;
     private List<ForumItem> forumItemList;
+    private View bottomNavBar;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,20 +78,58 @@ public class ForosFragment extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_foros, container, false);
 
         //super.onCreate(savedInstanceState);
-
+        bottomNavBar= vista.findViewById(R.id.ContenedorLista);
 
         recyclerView = vista.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Crear y agregar ítems a la lista
-        forumItemList = new ArrayList<>();
-        forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));
-        forumItemList.add(new ForumItem("Foro 2", "Descripción del foro 2", R.drawable.ollita));
+        cargarForos();
         // Añadir más ítems según sea necesario
+        
+        forumAdapter=new ForumAdapter(forumItemList, new ForumAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ForumItem foro) {
+                muestranavegacion();
 
-        forumAdapter = new ForumAdapter(forumItemList);
+                abrirChat(foro);
+            }
+        });
+        //forumAdapter = new ForumAdapter(forumItemList);
         recyclerView.setAdapter(forumAdapter);
 
         return  vista;
+    }
+
+    private void muestranavegacion() {
+        bottomNavBar.setVisibility(View.GONE);
+    }
+    private void ocultanavegacion() {
+        bottomNavBar.setVisibility(View.VISIBLE);
+    }
+
+    private void abrirChat(ForumItem foro) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ChatFragment chatFragment = new ChatFragment();
+
+        // Aquí puedes pasar datos del foro seleccionado
+        Bundle args = new Bundle();
+        args.putString("foroId", foro.getForoId());
+        args.putString("foroTitle", foro.getTitle());
+        chatFragment.setArguments(args);
+
+
+
+        fragmentTransaction.replace(R.id.menusito, chatFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    private List<ForumItem> cargarForos() {
+        // Aquí iría la lógica para cargar la lista de foros (desde una API, base de datos, etc.)
+        forumItemList = new ArrayList<>();
+        forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));
+        forumItemList.add(new ForumItem("Foro 2", "Descripción del foro 2", R.drawable.ollita));
+        return forumItemList;
     }
 }

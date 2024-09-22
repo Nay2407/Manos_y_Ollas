@@ -5,6 +5,10 @@ public class ForumItem {
     private String description;
     private int iconResId; // ID del recurso para el ícono
 
+
+
+    private String foroId;
+
     public ForumItem(String title, String description, int iconResId) {
         this.title = title;
         this.description = description;
@@ -21,5 +25,8 @@ public class ForumItem {
 
     public int getIconResId() {
         return iconResId;
+    }
+    public String getForoId() {
+        return foroId;
     }
 }
