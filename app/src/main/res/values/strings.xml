@@ -97,4 +97,24 @@
     <string name="ajusBtnRestaurar">Restaurar</string>
     <string name="ajusChkTemaOscuro">Activar/Desactivar Tema Oscuro</string>
 
+    <!--EDITAR PERFIL-->
+    <string name="editPerLblEditarPerfil">Editar Perfil</string>
+    <string name="editPerTxtDni">DNI</string>
+    <string name="editPerTxtNombre">Nombre</string>
+    <string name="editPerTxtApellido">Apellidos</string>
+    <string name="editPerTxtFechaNac">Fecha de Nacimiento</string>
+    <string name="editPerTxtCorreo">Correo </string>
+    <string name="editPerRbtSinDefinir">Sin Definir </string>
+    <string name="editPerRbtFemenino">Femenino</string>
+    <string name="editPerRbtMasculino">Masculino</string>
+    <string name="editPerTxtContraseña">Contraseña</string>
+    <string name="editPerTxtContraseña2">Confirmar Contraseña</string>
+    <string name="editPerTxtTerminos">Terminos y Condiciones</string>
+    <string name="editPerTxtBtnCrear">Crear</string>
+    <string name="editPerTxtBtnRegresar">Regresar</string>
+
+    <!--FARGMENTO SEDES-->
+    <string name="menuSedeLista">Lista</string>
+    <string name="menuSedeMapa">Mapa</string>
+
 </resources>
