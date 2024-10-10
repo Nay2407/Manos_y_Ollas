@@ -17,6 +17,7 @@ import com.example.manosyollas.fragmentos.DonacionesFragment;
 import com.example.manosyollas.fragmentos.ForosFragment;
 import com.example.manosyollas.fragmentos.InicioFragment;
 import com.example.manosyollas.fragmentos.MenuFragment;
+import com.example.manosyollas.fragmentos.MenuLocalFragment;
 import com.example.manosyollas.fragmentos.PerfilFragment;
 import com.example.manosyollas.fragmentos.SedesFragment;
 
@@ -34,7 +35,7 @@ public class MenuActivity extends AppCompatActivity implements Menu {
         });
         fragments = new Fragment[5];
         fragments[0] = new PerfilFragment();
-        fragments[1] = new SedesFragment();
+        fragments[1] = new MenuLocalFragment();
         fragments[2] = new InicioFragment();
         fragments[3] = new ForosFragment();
         fragments[4] = new DonacionesFragment();

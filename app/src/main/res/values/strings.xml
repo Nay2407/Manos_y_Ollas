@@ -117,4 +117,11 @@
     <string name="menuSedeLista">Lista</string>
     <string name="menuSedeMapa">Mapa</string>
 
+    <!--PERFIL CHATS-->
+    <string name="chatPerfilNombre">Olla Comun SJL</string>
+    <string name="chatPerfilDescripcion">Descripcion</string>
+    <string name="chatPerfilTexDescripcion">Bienvenidos al grupo de la Olla Común, donde nos organizamos para preparar y compartir alimentos con quienes más lo necesitan. ¡Tu colaboración, ya sea con tiempo o donaciones, marca la diferencia!</string>
+    <string name="chatPerfNotificacionTex">Notificaciones</string>
+    <string name="chatPerfDonacionTex">Donacion</string>
+
 </resources>
