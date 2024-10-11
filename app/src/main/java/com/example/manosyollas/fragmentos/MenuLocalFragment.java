@@ -1,21 +1,17 @@
 package com.example.manosyollas.fragmentos;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.example.manosyollas.R;
-import com.example.manosyollas.actividades.MenuLocalActivity;
-import com.example.manosyollas.clases.Menu;
-import com.example.manosyollas.clases.MenuLocal;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +20,7 @@ import com.example.manosyollas.clases.MenuLocal;
  */
 public class MenuLocalFragment extends Fragment {
     private final static int BOTONES []= {R.id.btnmenuLista, R.id.btnmenuMapa};
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +60,7 @@ public class MenuLocalFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -70,7 +68,27 @@ public class MenuLocalFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_menu_local, container, false);
-        Button Boton;
+
+        Button btnLista = vista.findViewById(R.id.btnmenuLista);
+        Button btnMapa = vista.findViewById(R.id.btnmenuMapa);
+
+        loadFragment(new ListaFragment());
+
+        btnLista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new ListaFragment());  // Cambiar a MenuListaFragment
+            }
+        });
+
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new MapaFragment());  // Cambiar a MenuMapaFragment
+            }
+        });
+
+        /*Button Boton;
         for (int i=0; i< BOTONES.length; i++){
             Boton = vista.findViewById(BOTONES[i]);
             final  int ID = i;
@@ -81,7 +99,15 @@ public class MenuLocalFragment extends Fragment {
                     ((MenuLocal)activity).onClickMenuLocal(ID);
                 }
             });
-        }
+        }*/
         return vista;
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frgContainer, fragment);  // Cambia el FrameLayout por el nuevo fragmento
+        transaction.addToBackStack(null);  // Opción para agregar a la pila de retroceso
+        transaction.commit();
     }
 }

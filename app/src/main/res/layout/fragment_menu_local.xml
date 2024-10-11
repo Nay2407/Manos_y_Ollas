@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragmentos.MenuLocalFragment"
     app:cardCornerRadius="15dp"
@@ -13,24 +13,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="20dp">
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            tools:ignore="UselessParent">
 
-        <Button
-            android:id="@+id/btnmenuLista"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/menuSedeLista" />
+            <Button
+                android:id="@+id/btnmenuLista"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/menuSedeLista" />
 
-        <Button
-            android:id="@+id/btnmenuMapa"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/menuSedeMapa" />
+            <Button
+                android:id="@+id/btnmenuMapa"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/menuSedeMapa" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frgContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
-
-
 </FrameLayout>

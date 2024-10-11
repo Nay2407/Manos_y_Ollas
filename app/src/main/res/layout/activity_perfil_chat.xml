@@ -59,50 +59,153 @@
                 android:textColor="@android:color/black"
                  />
         </LinearLayout>
-        <!--NOTIFICACIONES-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="20dp">
-            <ImageButton
-                android:id="@+id/chatPerfNotificacion"
-                android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp">
+            <!--NOTIFICACIONES-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_notificacion" />
-            <TextView
-                android:id="@+id/chatPerfNotificacionTex"
-                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp"
+                >
+                <ImageButton
+                    android:id="@+id/chatPerfNotificacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_notifications_"
+                    android:layout_marginHorizontal="20dp"/>
+                <TextView
+                    android:id="@+id/chatPerfNotificacionTex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chatPerfNotificacionTex"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!--DONACIONES-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/chatPerfNotificacionTex"
-                android:textColor="@android:color/black"
-                android:layout_gravity="center"
-                android:textSize="14sp"/>
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+                <ImageButton
+                    android:id="@+id/chatPerfDonacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_volunteer"
+                    android:layout_marginHorizontal="20dp"/>
+                <TextView
+                    android:id="@+id/chatPerfDonacionTex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chatPerfDonacionTex"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!--AJUSTES-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+                <ImageButton
+                    android:id="@+id/chatPerfAjustes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_settings"
+                    android:layout_marginHorizontal="20dp"/>
+                <TextView
+                    android:id="@+id/chatPerfAjustesTex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chatPerfAjustesTex"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!--Aprobar Publicaciones-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+                <ImageButton
+                    android:id="@+id/chatPerfAprobarPubli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/check"
+                    android:layout_marginHorizontal="20dp"/>
+                <TextView
+                    android:id="@+id/chatPerfAprobarPubliTex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chatPerfAprobarPubliTex"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!--Agregar Donaciones-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+                <ImageButton
+                    android:id="@+id/chatPerfAgreDona"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_add"
+                    android:layout_marginHorizontal="20dp"/>
+                <TextView
+                    android:id="@+id/chatPerfAgreDonatext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chatPerfAgreDonaText"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <!--Salir del Canal-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp">
+                <ImageButton
+                    android:id="@+id/chatPerfSalir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_exit"
+                    android:layout_marginHorizontal="20dp"/>
+                <TextView
+                    android:id="@+id/chatPerfSalirtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chatPerfSalirText"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"/>
+            </LinearLayout>
         </LinearLayout>
-        <!--DONACIONES-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="2dp">
-            <ImageButton
-                android:id="@+id/chatPerfDonacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_donacion" />
-            <TextView
-                android:id="@+id/chatPerfDonacionTex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chatPerfDonacionTex"
-                android:textColor="@android:color/black"
-                android:layout_gravity="center"
-                android:textSize="14sp"/>
-        </LinearLayout>
+
 
     </LinearLayout>
 
