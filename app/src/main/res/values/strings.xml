@@ -123,5 +123,13 @@
     <string name="chatPerfilTexDescripcion">Bienvenidos al grupo de la Olla Común, donde nos organizamos para preparar y compartir alimentos con quienes más lo necesitan. ¡Tu colaboración, ya sea con tiempo o donaciones, marca la diferencia!</string>
     <string name="chatPerfNotificacionTex">Notificaciones</string>
     <string name="chatPerfDonacionTex">Donacion</string>
+    <string name="chatPerfAjustesTex">Ajustes</string>
+    <string name="chatPerfAprobarPubliTex">Aprobar Publicaciones</string>
+    <string name="chatPerfAgreDonaText">Agregar Donaciones</string>
+    <string name="chatPerfSalirText">Salir del Canal</string>
+
+    <!--HISTORIAL DE DONACIONES-->
+    <string name="HistDonText">Historial de Donaciones</string>
+    <string name="HistDonMes">Setiembre 2024</string>
 
 </resources>

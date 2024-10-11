@@ -33,6 +33,7 @@ public class MenuActivity extends AppCompatActivity implements Menu {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         fragments = new Fragment[5];
         fragments[0] = new PerfilFragment();
         fragments[1] = new MenuLocalFragment();
