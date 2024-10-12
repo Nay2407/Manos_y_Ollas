@@ -1,5 +1,6 @@
 package com.example.manosyollas.fragmentos;
 import com.example.manosyollas.actividades.MenuActivity;
+import com.example.manosyollas.actividades.PerfilChatActivity;
 import com.example.manosyollas.actividades.PrincipalActivity;
 
 import com.example.manosyollas.clases.ChatMessage;
@@ -157,6 +158,13 @@ public class ChatFragment extends Fragment {
                 startActivity(menu);
                 requireActivity().finish();
 
+            }
+        });
+        chatTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent perfil = new Intent(getContext(), PerfilChatActivity.class);
+                startActivity(perfil);
             }
         });
 

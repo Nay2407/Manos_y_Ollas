@@ -105,7 +105,7 @@
                     android:layout_marginHorizontal="20dp"/>
                 <TextView
                     android:id="@+id/chatPerfDonacionTex"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/chatPerfDonacionTex"
                     android:textColor="@android:color/black"
