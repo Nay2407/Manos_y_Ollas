@@ -1,6 +1,7 @@
 package com.example.manosyollas.fragmentos;
 import com.example.manosyollas.actividades.InicioActivity;
 import com.example.manosyollas.actividades.MenuActivity;
+import com.example.manosyollas.actividades.PerfilChatActivity;
 import com.example.manosyollas.actividades.PrincipalActivity;
 import com.example.manosyollas.clases.Menu;
 import com.example.manosyollas.clases.Message;
@@ -136,6 +137,13 @@ public class ChatFragment extends Fragment {
                 Intent menusito = new Intent(getContext(), PrincipalActivity.class);
                 startActivity(menusito);
 
+            }
+        });
+        chatTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent perfil = new Intent(getContext(), PerfilChatActivity.class);
+                startActivity(perfil);
             }
         });
 

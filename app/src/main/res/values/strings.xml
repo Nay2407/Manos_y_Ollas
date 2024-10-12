@@ -131,5 +131,9 @@
     <!--HISTORIAL DE DONACIONES-->
     <string name="HistDonText">Historial de Donaciones</string>
     <string name="HistDonMes">Setiembre 2024</string>
+    <string name="HistDonTipo1">Donación de Efectivo</string>
+    <string name="HistDonTipo2">Donación de Suministro</string>
+    <string name="HistDonMonto">Monto: S/50</string>
+    <string name="HistDonMetodo">Metodo: Plin</string>
 
 </resources>
