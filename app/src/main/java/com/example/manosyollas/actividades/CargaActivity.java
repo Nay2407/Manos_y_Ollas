@@ -42,10 +42,14 @@ ProgressBar barCarga;
                 SharedPreferences sharedPrefs = getSharedPreferences("userPreferences", MODE_PRIVATE);
                 boolean isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false);
                 if(isLoggedIn) {
-                    Intent principal = new Intent(getApplicationContext(), PrincipalActivity.class);
-                    principal.putExtra("nombre","Cachimbo UPN");
-                    startActivity(principal);
+
+                    Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
+                    menu.putExtra("nombre","Cachimbo UPN");
+                    menu.putExtra("id", 2);
+                    startActivity(menu);
                     finish();
+
+
                 }else{
                     //llamar a la otra actividad
                     Intent sesion = new Intent(getApplicationContext(), InicioActivity.class);

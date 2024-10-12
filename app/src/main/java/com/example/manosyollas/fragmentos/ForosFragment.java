@@ -14,7 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.AppDatabase;
+import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.clases.ForumItem;
+import com.example.manosyollas.clases.MessageDao;
 import com.example.manosyollas.controladores.ForumAdapter;
 
 import java.util.ArrayList;
@@ -69,11 +72,13 @@ public class ForosFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_foros, container, false);
 
@@ -94,6 +99,7 @@ public class ForosFragment extends Fragment {
                 ocultanavegacion();
 
                 abrirChat(foro);
+
             }
         });
 
@@ -127,6 +133,16 @@ public class ForosFragment extends Fragment {
         fragmentTransaction.commit();
     }
     private List<ForumItem> cargarForos() {
+        AppDatabase db = AppDatabase.getInstance(getContext());
+        MessageDao messageDao = db.messageDao();
+
+// Inserta mensajes de ejemplo para el foro 1
+        //messageDao.insert(new ChatMessage("Hola a todos", 1, "Usuario1", R.drawable.yape_icon)); // Asegúrate de tener esta imagen en res/drawable
+        //messageDao.insert(new ChatMessage("¿Cómo están?", 1, "Usuario2", R.drawable.yape_icon));
+
+// Inserta mensajes de ejemplo para el foro 2
+        //messageDao.insert(new ChatMessage("Bienvenidos al foro 2", 2, "Usuario3", R.drawable.yape_icon));
+        //messageDao.insert(new ChatMessage("Este es un mensaje de prueba", 2, "Usuario4", R.drawable.yape_icon));
         // Aquí iría la lógica para cargar la lista de foros (desde una API, base de datos, etc.)
         forumItemList = new ArrayList<>();
         forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));

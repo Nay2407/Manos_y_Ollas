@@ -1,24 +1,21 @@
 package com.example.manosyollas.fragmentos;
-import com.example.manosyollas.actividades.InicioActivity;
 import com.example.manosyollas.actividades.MenuActivity;
 import com.example.manosyollas.actividades.PrincipalActivity;
-import com.example.manosyollas.clases.Menu;
-import com.example.manosyollas.clases.Message;
+
+import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.controladores.MessageAdapter;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -27,7 +24,6 @@ import android.widget.TextView;
 
 import com.example.manosyollas.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,10 +39,12 @@ public class ChatFragment extends Fragment {
     private RecyclerView recyclerViewMessages;
 
     private MessageAdapter messageAdapter;
-    private List<Message> messageList;
     private EditText editTextMessage;
     private ImageButton buttonSend;
     private TextView chatTitle;
+    private int currentForumId; // ID del foro actual
+
+    private List<ChatMessage> messageList;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,40 +81,60 @@ public class ChatFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        currentForumId = getArguments().getInt("FORUM_ID");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent menu = new Intent(requireActivity(), MenuActivity.class);
+                menu.putExtra("nombre", "Cachimbo UPN");
+                menu.putExtra("id", 3);
+                startActivity(menu);
+                requireActivity().finish();
+            }
+        });
     }
 
-    @SuppressLint("MissingInflatedId")
-    @Nullable
+    //@SuppressLint("MissingInflatedId")
+    //@Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
-        recyclerViewMessages = view.findViewById(R.id.recyclerViewMessages);
+        recyclerViewMessages = view.findViewById(R.id.recyclerView_chat);
+        recyclerViewMessages.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Cargar mensajes en el RecyclerView
+        //loadMessages();
+
+
+
+
         editTextMessage = view.findViewById(R.id.editTextMessage);
         buttonSend = view.findViewById(R.id.buttonSend);
         chatTitle = view.findViewById(R.id.chatTitle);
         ImageButton backButton = view.findViewById(R.id.backButton);
 
-        messageList = new ArrayList<>();
-        messageAdapter = new MessageAdapter(messageList);
-        recyclerViewMessages.setAdapter(messageAdapter);
-        recyclerViewMessages.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         // Evento para enviar el mensaje
+        /*
         buttonSend.setOnClickListener(v -> {
             String messageText = editTextMessage.getText().toString().trim();
             if (!messageText.isEmpty()) {
-                Message message = new Message(messageText, true); // true indica que es el usuario quien envía
-                messageList.add(message);
+                ChatMessage chatMessage = new ChatMessage(messageText, true); // true indica que es el usuario quien envía
+                chatMessageList.add(chatMessage);
                 messageAdapter.notifyDataSetChanged();
                 editTextMessage.setText("");
             }
         });
+
+         */
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -133,14 +151,20 @@ public class ChatFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent menusito = new Intent(getContext(), PrincipalActivity.class);
-                startActivity(menusito);
+                Intent menu = new Intent(getActivity(), MenuActivity.class);
+                menu.putExtra("nombre","Cachimbo UPN");
+                menu.putExtra("id", 3);
+                startActivity(menu);
+                requireActivity().finish();
 
             }
         });
 
         return view;
     }
+
+
+
 
     private void cargarMensajes(String foroId) {
         //Aquí proximamente irá la lógica para llamar a todos los mensajes de la BD
