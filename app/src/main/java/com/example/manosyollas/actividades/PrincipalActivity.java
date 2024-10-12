@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.clases.Menu;
+import com.example.manosyollas.clases.MessageDao;
 import com.example.manosyollas.fragmentos.PerfilFragment;
 
 import java.util.ArrayList;
