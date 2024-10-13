@@ -52,5 +52,15 @@ public class TransferenciaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ImageButton btn_visa = findViewById(R.id.btn_visa);
+        btn_visa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransferenciaActivity.this, CuentasActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
