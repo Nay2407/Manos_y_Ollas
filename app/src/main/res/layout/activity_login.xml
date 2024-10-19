@@ -77,16 +77,15 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
             android:orientation="horizontal">
+
             <Button
+                android:id="@+id/LogBtnIngresar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/LogBtnIngresar"
-                android:text="@string/logBtnIngresar"
-                android:paddingVertical="12dp"
                 android:layout_weight="1"
-                android:textAllCaps="false"
-                >
-            </Button>
+                android:paddingVertical="12dp"
+                android:text="@string/logBtnIngresar"
+                android:textAllCaps="false"></Button>
 
         </LinearLayout>
 
