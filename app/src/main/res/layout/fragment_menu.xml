@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:background="#0000"
             android:layout_gravity="center"
-            android:src="@drawable/ic_perfil"
+            android:src="@drawable/img_mper"
             android:layout_weight="1"/>
 
         <ImageButton
@@ -34,7 +34,7 @@
             android:background="#0000"
             android:padding="10dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_sedes"
+            android:src="@drawable/img_msed"
             android:layout_weight="1"/>
         <ImageButton
             android:id="@+id/frgInicio"
@@ -43,7 +43,7 @@
             android:background="#0000"
             android:padding="10dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/img_mhous"
             android:layout_weight="1"/>
         <ImageButton
             android:id="@+id/frgForos"
@@ -52,7 +52,7 @@
             android:background="#0000"
             android:padding="10dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_foros"
+            android:src="@drawable/img_mcan"
             android:layout_weight="1"/>
         <ImageButton
             android:id="@+id/frgDonaciones"
@@ -61,7 +61,7 @@
             android:background="#0000"
             android:padding="10dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_donativo"
+            android:src="@drawable/img_mdon"
             android:layout_weight="1"/>
     </LinearLayout>
 

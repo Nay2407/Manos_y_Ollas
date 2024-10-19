@@ -1,13 +1,19 @@
 package com.example.manosyollas.clases;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "forums")
 public class ForumItem {
+    @PrimaryKey
+    @NonNull
+    public String foroId;
+
     private String title;
     private String description;
     private int iconResId; // ID del recurso para el ícono
 
-
-
-    private String foroId;
 
     public ForumItem(String title, String description, int iconResId) {
         this.title = title;

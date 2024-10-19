@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.AppDatabase;
+import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.clases.Menu;
+import com.example.manosyollas.clases.MessageDao;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +61,9 @@ public class MenuFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
     }
 
     @Override
