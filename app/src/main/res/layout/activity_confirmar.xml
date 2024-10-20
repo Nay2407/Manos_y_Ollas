@@ -89,6 +89,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/btnConfirmar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,6 +99,7 @@
             android:textSize="16sp" />
 
         <Button
+            android:textAllCaps="false"
             android:id="@+id/btnEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

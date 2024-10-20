@@ -66,14 +66,18 @@
                 android:id="@+id/btnDonarSuministro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Donar Suministro" />
+                android:text="Donar Suministro"
+                android:textAllCaps="false"
+                />
 
             <Button
                 android:id="@+id/btnTransferencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Transferencia"
-                android:layout_marginStart="20dp" />
+                android:layout_marginStart="20dp"
+                android:textAllCaps="false"
+                />
         </LinearLayout>
 
         <TextView

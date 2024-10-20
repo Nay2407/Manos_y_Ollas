@@ -19,6 +19,8 @@ import android.widget.ImageButton;
 import com.example.manosyollas.R;
 import com.example.manosyollas.actividades.AjustesActivity;
 import com.example.manosyollas.actividades.EditarPerfilActivity;
+import com.example.manosyollas.actividades.HistDonacionActivity;
+import com.example.manosyollas.actividades.HistUsuarioActivity;
 import com.example.manosyollas.actividades.InicioActivity;
 import com.example.manosyollas.actividades.TransferenciaActivity;
 import com.example.manosyollas.clases.Menu;
@@ -30,7 +32,7 @@ import com.example.manosyollas.clases.Menu;
  */
 public class PerfilFragment extends Fragment implements View.OnClickListener{
     private Button btnCerrar;
-    ImageButton btnAjustes;
+    ImageButton btnAjustes,btnDonaciones;
      Button btnEditarPerfil;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,6 +82,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         View vista = inflater.inflate(R.layout.fragment_perfil, container, false);
         btnCerrar = vista.findViewById(R.id.vperbtnCerrarSesion);
         btnAjustes = vista.findViewById(R.id.vperimgajustes);
+        btnDonaciones=vista.findViewById(R.id.vperimgHisDona);
         btnEditarPerfil = vista.findViewById(R.id.vperbtnEditarPerfil);
 
         btnCerrar.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +95,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         });
         btnAjustes.setOnClickListener(this);
         btnEditarPerfil.setOnClickListener(this);
+        btnDonaciones.setOnClickListener(this);
         return vista;
     }
 
@@ -115,6 +119,13 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
             ingresarAjustes();
         if (view.getId()==R.id.vperbtnEditarPerfil)
             editarPerfil();
+        if (view.getId() == R.id.vperimgHisDona)
+            ingresarDonaciones();
+    }
+
+    private void ingresarDonaciones() {
+        Intent donaciones = new Intent(getActivity(), HistUsuarioActivity.class);
+        startActivity(donaciones);
     }
 
     private void editarPerfil() {
