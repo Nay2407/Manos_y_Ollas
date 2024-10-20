@@ -21,8 +21,7 @@
         android:id="@+id/tvTituloPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="        Ayuda a nuestras Ollas
-                     Comunes"
+        android:text="Colabora con Nosotros"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
@@ -63,7 +62,7 @@
     <ImageView
         android:id="@+id/ivImagenCentral"
         android:layout_width="389dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/ollascomunes1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -215,9 +214,24 @@
                 android:layout_height="wrap_content"
                 android:text="CCI: 009-123-00004567890123-11" />
         </LinearLayout>
+
+
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
+        <fragment
+            android:id="@+id/frgMenu"
+            android:name="com.example.manosyollas.fragmentos.MenuFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_menu" />
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

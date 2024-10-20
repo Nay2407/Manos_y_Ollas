@@ -41,7 +41,7 @@
     <string name="prinTxtVerSedes">Ver Sedes</string>
     <string name="prinTxtSobreNosotros">Sobre Nosotros</string>
     <string name="prinTxtForos">Ver Foros</string>
-    <string name="prinTxtBienvenido">Bienvenido UwU</string>
+    <string name="prinTxtBienvenido">Bienvenid@ </string>
 
     <!--STRINGS DE PERFIL -->
     <string name="vperTxtVerPerfil">Perfil</string>
@@ -52,6 +52,7 @@
     <string name="vpertxtHisDona">Historial Donativos</string>
     <string name="vpertxtAjustes">Ajustes</string>
     <string name="vpertxtNotif">Notificaciones</string>
+    <string name="editPerTxtBtnEditar">Editar</string>
 
     <!--STRINGS DE VER Inicio -->
     <string name="vsedTxtInicio">Inicio</string>
@@ -68,6 +69,8 @@
 
     <!--STRINGS DE DONACIONES -->
     <string name="donTxtDonaciones">Donaciones</string>
+    <string name="btnAceptar">Aceptar</string>
+
 
     <!--STRINGS DE SOBRE NOSOTROS -->
     <string name="snosTxtSobreNosotros">Sobre Nosotros</string>

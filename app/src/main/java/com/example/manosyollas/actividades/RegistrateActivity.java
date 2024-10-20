@@ -353,13 +353,3 @@ public class RegistrateActivity extends AppCompatActivity implements View.OnClic
 
     }
 }
-
-
-
-
-
-
-
-
-
-

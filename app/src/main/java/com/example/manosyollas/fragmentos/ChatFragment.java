@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -193,12 +194,8 @@ public class ChatFragment extends Fragment {
 
             }
         });
-        chatTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent perfil = new Intent(getContext(), PerfilChatActivity.class);
-                startActivity(perfil);
-            }
+        chatTitle.setOnClickListener(v-> {
+            selectFragment(new PerfilChatFragment());
         });
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,7 +213,10 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
-
+    private void selectFragment(PerfilChatFragment pf) {
+        FragmentTransaction t = getParentFragmentManager().beginTransaction();
+        t.replace(R.id.menRelArea,pf).commit();
+    }
 
 
 
