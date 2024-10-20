@@ -1,21 +1,26 @@
 package com.example.manosyollas.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.actividades.AjustesActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ListaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListaFragment extends Fragment {
+public class ListaFragment extends Fragment implements View.OnClickListener {
+    LinearLayout espacio, espacio1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +66,34 @@ public class ListaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista, container, false);
+        View vista = inflater.inflate(R.layout.fragment_lista, container, false);
+        espacio = vista.findViewById(R.id.espacioolla);
+        espacio.setOnClickListener(this);
+        return vista;
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId()== R.id.espacioolla)
+            enviarMapa();
+    }
+    private void enviarMapa() {
+        // Crea una instancia del fragmento que deseas mostrar
+        MapaFragment mapaFragment = new MapaFragment();
+
+        // Utiliza el FragmentTransaction para reemplazar el fragmento actual con el nuevo fragmento
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+
+        // Reemplaza el fragmento actual con MapaFragment
+        transaction.add(R.id.listaolla, mapaFragment);
+
+
+        // Añade la transacción a la pila de retroceso (opcional)
+        transaction.addToBackStack(null);
+
+        // Ejecuta la transacción
+        transaction.commit();
     }
 }
