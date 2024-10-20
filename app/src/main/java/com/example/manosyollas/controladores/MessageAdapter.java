@@ -16,28 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
-    private List<MessageItem> messages = new ArrayList<>();
 
-    public static class MessageViewHolder extends RecyclerView.ViewHolder {
-        private TextView sender;
-        private TextView messageContent;
-        private ImageView profilePicture;
+    private List<MessageItem> messageList;
 
-        public MessageViewHolder(View itemView) {
-            super(itemView);
-            sender = itemView.findViewById(R.id.textUsername);
-            messageContent = itemView.findViewById(R.id.textMessage);
-            profilePicture = itemView.findViewById(R.id.userProfileImage);
-        }
-
-        public void bind(MessageItem message) {
-            sender.setText(message.getUserName());
-            messageContent.setText(message.getContent());
-            // Aquí puedes usar Glide o Picasso para cargar la imagen de perfil
-            Glide.with(profilePicture.getContext())
-                    .load(message.getUserProfileImage())
-                    .into(profilePicture);
-        }
+    public MessageAdapter(List<MessageItem> messageList) {
+        this.messageList = messageList;
     }
 
     @NonNull
@@ -49,17 +32,34 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
-        MessageItem currentMessage = messages.get(position);
-        holder.bind(currentMessage);
+        MessageItem messageItem = messageList.get(position);
+        holder.txtMessageContent.setText(messageItem.getContent());
+        holder.txtMessageTimestamp.setText(messageItem.getTimestamp());
+        holder.txtUserName.setText(messageItem.getUserName());  // Mostrar el nombre de usuario
+
+        // Cargar la imagen de perfil usando Glide
+        Glide.with(holder.imgUserProfile.getContext())
+                .load(messageItem.getUserProfileImage())
+                .into(holder.imgUserProfile);
     }
 
     @Override
     public int getItemCount() {
-        return messages.size();
+        return messageList.size();
     }
 
-    public void setMessages(List<MessageItem> messages) {
-        this.messages = messages;
-        notifyDataSetChanged();
+    public class MessageViewHolder extends RecyclerView.ViewHolder {
+        public TextView txtMessageContent;
+        public TextView txtMessageTimestamp;
+        public TextView txtUserName;  // Nuevo TextView para el nombre del usuario
+        public ImageView imgUserProfile;
+
+        public MessageViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtMessageContent = itemView.findViewById(R.id.txtMessageContent);
+            txtMessageTimestamp = itemView.findViewById(R.id.txtMessageTimestamp);
+            txtUserName = itemView.findViewById(R.id.txtUserName);  // Asignar el TextView del nombre del usuario
+            imgUserProfile = itemView.findViewById(R.id.imgUserProfile);
+        }
     }
 }

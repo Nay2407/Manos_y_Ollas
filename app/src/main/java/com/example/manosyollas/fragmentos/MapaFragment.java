@@ -10,6 +10,13 @@ import android.view.ViewGroup;
 
 import com.example.manosyollas.R;
 
+import org.osmdroid.config.Configuration;
+import org.osmdroid.library.BuildConfig;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MapaFragment#newInstance} factory method to
@@ -17,6 +24,7 @@ import com.example.manosyollas.R;
  */
 public class MapaFragment extends Fragment {
 
+    private MapView map;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,7 +70,35 @@ public class MapaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_mapa, container, false);
+        // Configuración inicial de osmdroid
+        Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
+
+        map = vista.findViewById(R.id.map);
+        map.setTileSource(TileSourceFactory.MAPNIK);
+
+        // Establecer el zoom y la ubicación inicial
+        map.getController().setZoom(10.0);
+        GeoPoint startPoint = new GeoPoint(-11.979693, -77.008095); // Ciudad de México
+        map.getController().setCenter(startPoint);
+
+        // Agregar un marcador en la ubicación
+        Marker startMarker = new Marker(map);
+        startMarker.setPosition(startPoint);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        startMarker.setTitle("Perulandia");
+        map.getOverlays().add(startMarker);
 
         return vista;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        map.onResume(); // Para osmdroid
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        map.onPause();  // Para osmdroid
     }
 }
