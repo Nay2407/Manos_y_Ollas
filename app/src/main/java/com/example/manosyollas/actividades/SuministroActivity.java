@@ -14,10 +14,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.Menu;
 
 import java.util.ArrayList;
 
-public class SuministroActivity extends AppCompatActivity {
+public class SuministroActivity extends AppCompatActivity implements Menu {
 
     private ArrayList<String> itemsSeleccionados;
 
@@ -99,5 +100,13 @@ public class SuministroActivity extends AppCompatActivity {
             imageView.setAlpha(0.5f);
             Toast.makeText(this, item + " seleccionado", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onClickMenu(int id) {
+        Intent menu = new Intent(this, MenuActivity.class);
+        menu.putExtra("id", id);
+        startActivity(menu);
+        finish();
     }
 }

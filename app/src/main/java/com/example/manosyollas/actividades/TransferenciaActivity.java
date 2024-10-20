@@ -13,9 +13,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.Menu;
 import com.example.manosyollas.fragmentos.DonacionesFragment;
 
-public class TransferenciaActivity extends AppCompatActivity {
+public class TransferenciaActivity extends AppCompatActivity implements Menu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,5 +63,13 @@ public class TransferenciaActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onClickMenu(int id) {
+        Intent menu = new Intent(this, MenuActivity.class);
+        menu.putExtra("id", id);
+        startActivity(menu);
+        finish();
     }
 }

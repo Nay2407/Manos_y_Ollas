@@ -8,108 +8,107 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/menuFragmentos">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Título "Inicio" -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/donTxtInicio"
-                    android:gravity="center"
-                    android:text="@string/prinTxtBienvenido"
-                    android:textColor="@android:color/black"
-                    android:textSize="30sp"
-                    android:layout_marginTop="30dp" />
-            </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="40dp"
-                android:id="@+id/recycler"
-                app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
-
-            <LinearLayout
-                android:layout_gravity="center"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="100dp"
-                android:layout_marginHorizontal="15dp"
-                android:background="@color/sobnos_ini"
-                android:padding="10dp"
+                android:id="@+id/donTxtInicio"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:text="@string/prinTxtBienvenido"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:layout_marginTop="30dp" />
+        </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/snosTxtInicio"
-                    android:gravity="center"
-                    android:text="@string/snosTxtSobreNosotros"
-                    android:textColor="@android:color/black"
-                    android:textSize="30sp"
-                    android:layout_marginTop="10dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="40dp"
+            android:id="@+id/recycler"
+            app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_margin="8dp">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@color/sobnos_ini"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/sobnosbtnInicio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/img_sobno"
-                        android:layout_gravity="center"
-                        android:paddingLeft="5dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="@string/sobnosbtnInicio"
-                        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/snosTxtInicio"
+            android:gravity="center"
+            android:text="@string/snosTxtSobreNosotros"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp" />
 
-                    <TextView
-                        android:id="@+id/sobnosdescTxtInicio"
-                        android:layout_width="wrap_content"
-                        android:padding="10dp"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sobnosdescTxtInicio"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"/>
-                </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="8dp">
 
-            </LinearLayout>
+        <ImageButton
+            android:id="@+id/sobnosbtnInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_sobno"
+            android:layout_gravity="center"
+            android:paddingLeft="5dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/sobnosbtnInicio"
+            />
 
-        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/sobnosdescTxtInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sobnosdescTxtInicio"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
+    </ScrollView>
+</LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
 
     </ScrollView>
 
-
- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:orientation="horizontal">
-        <fragment
-            android:id="@+id/frgMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.example.manosyollas.fragmentos.MenuFragment"
-            tools:layout="@layout/fragment_menu"/>
-    </LinearLayout>
-
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="horizontal">
+<fragment
+    android:id="@+id/frgMenu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:name="com.example.manosyollas.fragmentos.MenuFragment"
+    tools:layout="@layout/fragment_menu"/>
+</LinearLayout>
 </RelativeLayout>
