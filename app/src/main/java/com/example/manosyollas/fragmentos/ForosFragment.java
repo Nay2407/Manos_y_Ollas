@@ -12,16 +12,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.Util.BurrosVolanteSQLite;
 import com.example.manosyollas.clases.AppDatabase;
 import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.clases.ForumItem;
 import com.example.manosyollas.clases.MessageDao;
 import com.example.manosyollas.controladores.ForumAdapter;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,9 +39,10 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class ForosFragment extends Fragment {
+    private final static String urlMostrarForos="http://manosyollas.atwebpages.com/services/MostrarForosPorUsuario.php?idUsuario=4";
     private RecyclerView recyclerView;
     private ForumAdapter forumAdapter;
-    private List<ForumItem> forumItemList;
+    private List<ForumItem> forumItemList = new ArrayList<>();
     private View bottomNavBar;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,47 +103,39 @@ public class ForosFragment extends Fragment {
         muestranavegacion();
         cargarForos();
         // Añadir más ítems según sea necesario
-        
-        forumAdapter=new ForumAdapter(forumItemList, new ForumAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(ForumItem foro) {
-                ocultanavegacion();
 
-                abrirChat(foro);
 
-            }
-        });
-
-        recyclerView.setAdapter(forumAdapter);
 
         return  vista;
     }
 
     public void ocultanavegacion() {
-        bottomNavBar.setVisibility(View.GONE);
+        //bottomNavBar.setVisibility(View.GONE);
     }
     public void muestranavegacion() {
-        bottomNavBar.setVisibility(View.VISIBLE);
+        //bottomNavBar.setVisibility(View.VISIBLE);
     }
 
     private void abrirChat(ForumItem foro) {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ChatFragment chatFragment = new ChatFragment();
 
         // Aquí puedes pasar datos del foro seleccionado
         Bundle args = new Bundle();
-        args.putString("foroId", foro.getForoId());
+        args.putString("foroId", String.valueOf(foro.getForoId()));
         args.putString("foroTitle", foro.getTitle());
         chatFragment.setArguments(args);
 
 
-
-        fragmentTransaction.replace(R.id.menusito, chatFragment);
+        //fragmentTransaction.add(chatFragment,"s");
+        fragmentTransaction.replace(R.id.menRelArea, chatFragment);
+        //fragmentTransaction.(R.id.menRelArea, chatFragment);
+        //fragmentTransaction.add(R.id.menRelArea, chatFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
-    private List<ForumItem> cargarForos() {
+    private void cargarForos() {
         AppDatabase db = AppDatabase.getInstance(getContext());
         MessageDao messageDao = db.messageDao();
 
@@ -144,9 +147,86 @@ public class ForosFragment extends Fragment {
         //messageDao.insert(new ChatMessage("Bienvenidos al foro 2", 2, "Usuario3", R.drawable.yape_icon));
         //messageDao.insert(new ChatMessage("Este es un mensaje de prueba", 2, "Usuario4", R.drawable.yape_icon));
         // Aquí iría la lógica para cargar la lista de foros (desde una API, base de datos, etc.)
-        forumItemList = new ArrayList<>();
-        forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));
-        forumItemList.add(new ForumItem("Foro 2", "Descripción del foro 2", R.drawable.ollita));
-        return forumItemList;
+        //forumItemList = new ArrayList<>();
+        //forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));
+        //forumItemList.add(new ForumItem("Foro 2", "Descripción del foro 2", R.drawable.ollita));
+
+        //crear onjeto para realizar tarea asincrona hacia en web services
+
+        AsyncHttpClient ahcMostrarForos=new AsyncHttpClient();
+
+
+        //crear un adaptador por defecto al spinner
+        ahcMostrarForos.post(urlMostrarForos, new BaseJsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
+                if(statusCode==200){
+                    try {
+                        JSONArray jsonArray=new JSONArray(rawJsonResponse);
+                        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+                        dbHelper.deleteAllForos(); // Elimina los foros antiguos
+                        //forumItemList.clear();
+                        // Procesar cada objeto JSON en el array
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                            // Crear un nuevo objeto ForumItem
+                            Integer foroId = Integer.parseInt(jsonObject.getString("idForo"));
+                            String title = jsonObject.getString("titulo");
+                            String description = jsonObject.getString("descripcion");
+                            String fecCreacion=jsonObject.getString("fecha_creacion");
+                            String rol=jsonObject.getString("rol");
+
+                            ForumItem forumItem = new ForumItem( title, description, R.drawable.ollita);
+                            forumItem.setForoId(foroId);
+                            forumItem.setRol(rol);
+                            forumItem.setFecCracion(fecCreacion);
+
+                            // Verificamos si el foro ya existe y lo actualizamos
+                            int rowsUpdated = dbHelper.updateForum(forumItem);
+
+                            // Si no se actualizó ninguna fila (no existía el foro), lo insertamos
+                            if (rowsUpdated == 0) {
+                                dbHelper.insertForum(forumItem);
+                            }
+
+                        }
+
+                        cargarForosLocalmente();
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Object errorResponse) {
+                Toast.makeText(getActivity().getApplicationContext(), "ERROR: "+statusCode, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected Object parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+                return null;
+            }
+        });
+
+
+
+    }
+
+    private void cargarForosLocalmente() {
+        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+        List<ForumItem> forumList = dbHelper.getAllForos();
+
+        forumAdapter = new ForumAdapter(forumList, new ForumAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ForumItem foro) {
+                ocultanavegacion();
+                abrirChat(foro);
+            }
+        });
+
+        recyclerView.setAdapter(forumAdapter);
     }
 }
