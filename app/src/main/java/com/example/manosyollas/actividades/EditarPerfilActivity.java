@@ -36,10 +36,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.manosyollas.R;
-<<<<<<< HEAD
-=======
 import com.example.manosyollas.fragmentos.PerfilFragment;
->>>>>>> ef0f59149392ce65bd344a7aec08ebf82d4cfa0f
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -60,11 +57,9 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
     Integer idUsuario;
     RadioGroup grpSexo;
     RadioButton rbtSinDefinir, rbtFemenino, rbtMasculino;
-<<<<<<< HEAD
     Button btnCrear;
-=======
-    Button btnCrear, btnRegresar;
->>>>>>> ef0f59149392ce65bd344a7aec08ebf82d4cfa0f
+    Button  btnRegresar;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -85,10 +80,8 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         editTxtFechaNac = findViewById(R.id.editPerTxtFechanac);
         btnCrear = findViewById(R.id.editPerBtnCrear);
         editTxtContrasena = findViewById(R.id.editPerTxtContraseña);
-<<<<<<< HEAD
-=======
+
         btnRegresar = findViewById(R.id.editPerBtnRegresar);
->>>>>>> ef0f59149392ce65bd344a7aec08ebf82d4cfa0f
 
         grpSexo = findViewById(R.id.editPerRgpSexo);
         rbtSinDefinir = findViewById(R.id.editPerRbtSinDefinir);
@@ -104,10 +97,9 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         }
         editTxtFechaNac.setOnClickListener(this);
         btnCrear.setOnClickListener(this);
-<<<<<<< HEAD
-=======
+
         btnRegresar.setOnClickListener(this);
->>>>>>> ef0f59149392ce65bd344a7aec08ebf82d4cfa0f
+
 
         llenarDistritos();
     }
@@ -216,11 +208,6 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
             seleccionarFecha();
         else if (view.getId() == R.id.editPerBtnCrear)
             editarCuenta();
-<<<<<<< HEAD
-
-
-    }
-=======
         else if (view.getId() == R.id.editPerBtnRegresar)
             regresar();
 
@@ -231,7 +218,6 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         startActivity(sesion);
 
     }
->>>>>>> ef0f59149392ce65bd344a7aec08ebf82d4cfa0f
 
 
     private void seleccionarFecha() {
