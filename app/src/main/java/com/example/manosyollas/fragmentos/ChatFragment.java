@@ -1,9 +1,8 @@
 package com.example.manosyollas.fragmentos;
 import com.example.manosyollas.actividades.MenuActivity;
 import com.example.manosyollas.actividades.PerfilChatActivity;
-import com.example.manosyollas.actividades.PrincipalActivity;
 
-import com.example.manosyollas.clases.ChatMessage;
+import com.example.manosyollas.clases.MessageItem;
 import com.example.manosyollas.controladores.MessageAdapter;
 
 import android.content.Intent;
@@ -45,7 +44,7 @@ public class ChatFragment extends Fragment {
     private TextView chatTitle;
     private int currentForumId; // ID del foro actual
 
-    private List<ChatMessage> messageList;
+    private List<MessageItem> messageList;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -128,7 +127,7 @@ public class ChatFragment extends Fragment {
         buttonSend.setOnClickListener(v -> {
             String messageText = editTextMessage.getText().toString().trim();
             if (!messageText.isEmpty()) {
-                ChatMessage chatMessage = new ChatMessage(messageText, true); // true indica que es el usuario quien envía
+                MessageItem chatMessage = new MessageItem(messageText, true); // true indica que es el usuario quien envía
                 chatMessageList.add(chatMessage);
                 messageAdapter.notifyDataSetChanged();
                 editTextMessage.setText("");

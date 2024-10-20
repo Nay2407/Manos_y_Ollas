@@ -1,6 +1,5 @@
 package com.example.manosyollas.fragmentos;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import com.example.manosyollas.R;
 import com.example.manosyollas.Util.BurrosVolanteSQLite;
 import com.example.manosyollas.clases.AppDatabase;
-import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.clases.ForumItem;
 import com.example.manosyollas.clases.MessageDao;
 import com.example.manosyollas.controladores.ForumAdapter;
@@ -140,12 +138,12 @@ public class ForosFragment extends Fragment {
         MessageDao messageDao = db.messageDao();
 
 // Inserta mensajes de ejemplo para el foro 1
-        //messageDao.insert(new ChatMessage("Hola a todos", 1, "Usuario1", R.drawable.yape_icon)); // Asegúrate de tener esta imagen en res/drawable
-        //messageDao.insert(new ChatMessage("¿Cómo están?", 1, "Usuario2", R.drawable.yape_icon));
+        //messageDao.insert(new MessageItem("Hola a todos", 1, "Usuario1", R.drawable.yape_icon)); // Asegúrate de tener esta imagen en res/drawable
+        //messageDao.insert(new MessageItem("¿Cómo están?", 1, "Usuario2", R.drawable.yape_icon));
 
 // Inserta mensajes de ejemplo para el foro 2
-        //messageDao.insert(new ChatMessage("Bienvenidos al foro 2", 2, "Usuario3", R.drawable.yape_icon));
-        //messageDao.insert(new ChatMessage("Este es un mensaje de prueba", 2, "Usuario4", R.drawable.yape_icon));
+        //messageDao.insert(new MessageItem("Bienvenidos al foro 2", 2, "Usuario3", R.drawable.yape_icon));
+        //messageDao.insert(new MessageItem("Este es un mensaje de prueba", 2, "Usuario4", R.drawable.yape_icon));
         // Aquí iría la lógica para cargar la lista de foros (desde una API, base de datos, etc.)
         //forumItemList = new ArrayList<>();
         //forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));

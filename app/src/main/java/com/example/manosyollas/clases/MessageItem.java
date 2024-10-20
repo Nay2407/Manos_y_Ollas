@@ -4,15 +4,19 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "ChatMessages")
-public class ChatMessage {
+public class MessageItem {
 
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String content;
-    private int forumId; // ID del foro al que pertenece el mensaje
 
-    public ChatMessage(String content, int forumId, String userName, String timestamp, String userProfileImage) {
+    private int forumId; // ID del foro al que pertenece el mensaje
+    private String content;
+    private String userName; // Nombre del usuario
+    private String timestamp; // Para gestionar la fecha y hora del mensaje
+    private int userProfileImage; // Recurso de la imagen del perfil (id del drawable)
+
+    public MessageItem(String content, int forumId, String userName, String timestamp, int userProfileImage) {
         this.content = content;
         this.forumId = forumId;
         this.userName = userName;
@@ -20,9 +24,7 @@ public class ChatMessage {
         this.userProfileImage = userProfileImage;
     }
 
-    private String userName; // Nombre del usuario
-    private String timestamp; // Para gestionar la fecha y hora del mensaje
-    private String userProfileImage; // Recurso de la imagen del perfil (id del drawable)
+
 
     // Getters y Setters
     public int getId() {
@@ -57,11 +59,11 @@ public class ChatMessage {
         this.userName = userName;
     }
 
-    public String getUserProfileImage() {
+    public int getUserProfileImage() {
         return userProfileImage; // Devuelve el id del recurso
     }
 
-    public void setUserProfileImage(String userProfileImage) {
+    public void setUserProfileImage(int userProfileImage) {
         this.userProfileImage = userProfileImage;
     }
 
