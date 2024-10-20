@@ -181,13 +181,11 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    // Aquí asume que el JSON tiene los campos esperados
                     editTxtDni.setText(response.getString("dni"));
                     editTxtNombre.setText(response.getString("nombre"));
                     editTxtApellido.setText(response.getString("apellidos"));
                     editTxtCorreo.setText(response.getString("correo"));
                     editTxtFechaNac.setText(response.getString("fecha_nac"));
-                    // Si tienes la lógica para seleccionar el distrito en el Spinner, también puedes hacerlo aquí.
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

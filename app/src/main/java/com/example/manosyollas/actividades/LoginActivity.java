@@ -119,8 +119,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editor.putString("correo", correo);
         editor.apply();
     }
-
-    // Método para hashear la contraseña con SHA-256
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
