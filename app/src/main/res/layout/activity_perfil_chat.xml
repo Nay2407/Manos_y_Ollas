@@ -74,12 +74,13 @@
                 >
                 <ImageButton
                     android:id="@+id/chatPerfNotificacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_notifications_"
-                    android:layout_marginHorizontal="20dp"/>
+                    android:src="@drawable/notificacion"
+                    android:layout_marginHorizontal="19dp"
+                    android:scaleType="fitCenter"/>
                 <TextView
                     android:id="@+id/chatPerfNotificacionTex"
                     android:layout_width="wrap_content"
@@ -96,14 +97,17 @@
                 android:orientation="horizontal"
                 android:layout_marginVertical="10dp">
                 <ImageButton
+
                     android:id="@+id/chatPerfDonacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_volunteer"
-                    android:layout_marginHorizontal="20dp"/>
+                    android:src="@drawable/dar_dinero"
+                    android:layout_marginHorizontal="18dp"
+                    android:scaleType="fitCenter"/>
                 <TextView
+                    android:layout_marginHorizontal="5dp"
                     android:id="@+id/chatPerfDonacionTex"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,20 +124,23 @@
                 android:layout_marginVertical="10dp">
                 <ImageButton
                     android:id="@+id/chatPerfAjustes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_settings"
-                    android:layout_marginHorizontal="20dp"/>
+                    android:src="@drawable/configuraciones"
+                    android:layout_marginHorizontal="16dp"
+                    android:scaleType="fitCenter"/>
+
                 <TextView
+                    android:layout_marginHorizontal="10dp"
                     android:id="@+id/chatPerfAjustesTex"
-                    android:layout_width="wrap_content"
+                    android:layout_width="65dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="@string/chatPerfAjustesTex"
                     android:textColor="@android:color/black"
-                    android:layout_gravity="center"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
             </LinearLayout>
             <!--Aprobar Publicaciones-->
             <LinearLayout
@@ -143,13 +150,15 @@
                 android:layout_marginVertical="10dp">
                 <ImageButton
                     android:id="@+id/chatPerfAprobarPubli"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/check"
-                    android:layout_marginHorizontal="20dp"/>
+                    android:src="@drawable/aprobado"
+                    android:layout_marginHorizontal="18dp"
+                    android:scaleType="fitCenter"/>
                 <TextView
+                    android:layout_marginHorizontal="5dp"
                     android:id="@+id/chatPerfAprobarPubliTex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,14 +174,16 @@
                 android:orientation="horizontal"
                 android:layout_marginVertical="10dp">
                 <ImageButton
+                    android:scaleType="fitCenter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:id="@+id/chatPerfAgreDona"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_add"
-                    android:layout_marginHorizontal="20dp"/>
+                    android:src="@drawable/botonagregar"
+                    android:layout_marginHorizontal="21dp"/>
                 <TextView
+                    android:layout_marginHorizontal="5dp"
                     android:id="@+id/chatPerfAgreDonatext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -189,13 +200,15 @@
                 android:layout_marginVertical="10dp">
                 <ImageButton
                     android:id="@+id/chatPerfSalir"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_exit"
-                    android:layout_marginHorizontal="20dp"/>
+                    android:src="@drawable/cerrarsesion"
+                    android:layout_marginHorizontal="23dp"/>
                 <TextView
+                    android:layout_marginHorizontal="1dp"
                     android:id="@+id/chatPerfSalirtext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

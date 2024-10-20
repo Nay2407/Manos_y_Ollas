@@ -27,14 +27,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/menuSedeLista" />
+                android:text="@string/menuSedeLista"
+                android:textAllCaps="false"
+                />
 
             <Button
                 android:id="@+id/btnmenuMapa"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/menuSedeMapa" />
+                android:text="@string/menuSedeMapa"
+                android:textAllCaps="false"
+                />
         </LinearLayout>
 
         <FrameLayout
