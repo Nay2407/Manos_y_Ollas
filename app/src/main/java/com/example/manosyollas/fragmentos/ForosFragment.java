@@ -1,5 +1,7 @@
 package com.example.manosyollas.fragmentos;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,7 +19,6 @@ import com.example.manosyollas.R;
 import com.example.manosyollas.Util.BurrosVolanteSQLite;
 import com.example.manosyollas.clases.AppDatabase;
 import com.example.manosyollas.clases.ForumItem;
-import com.example.manosyollas.clases.MessageDao;
 import com.example.manosyollas.controladores.ForumAdapter;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
@@ -37,9 +38,11 @@ import cz.msebera.android.httpclient.Header;
  * create an instance of this fragment.
  */
 public class ForosFragment extends Fragment {
-    private final static String urlMostrarForos="http://manosyollas.atwebpages.com/services/MostrarForosPorUsuario.php?idUsuario=4";
+    private final static String URL_MOSTRAR_FOROS ="http://manosyollas.atwebpages.com/services/MostrarForosPorUsuario.php";
     private RecyclerView recyclerView;
     private ForumAdapter forumAdapter;
+    private SharedPreferences sharedPreferences;
+    Integer idUsuario;
     private List<ForumItem> forumItemList = new ArrayList<>();
     private View bottomNavBar;
     // TODO: Rename parameter arguments, choose names that match
@@ -93,13 +96,15 @@ public class ForosFragment extends Fragment {
 
         //super.onCreate(savedInstanceState);
         bottomNavBar= vista.findViewById(R.id.ContenedorLista);
+        sharedPreferences = getActivity().getSharedPreferences("IdUsuario", Context.MODE_PRIVATE);
+        idUsuario = sharedPreferences.getInt("idUsuario", -1);
 
         recyclerView = vista.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Crear y agregar ítems a la lista
         muestranavegacion();
-        cargarForos();
+        cargarForos(idUsuario);
         // Añadir más ítems según sea necesario
 
 
@@ -133,49 +138,32 @@ public class ForosFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
-    private void cargarForos() {
+    private void cargarForos(int idUsuario) {
+        String url = URL_MOSTRAR_FOROS + "?idUsuario=" + idUsuario;
         AppDatabase db = AppDatabase.getInstance(getContext());
-        MessageDao messageDao = db.messageDao();
 
-// Inserta mensajes de ejemplo para el foro 1
-        //messageDao.insert(new MessageItem("Hola a todos", 1, "Usuario1", R.drawable.yape_icon)); // Asegúrate de tener esta imagen en res/drawable
-        //messageDao.insert(new MessageItem("¿Cómo están?", 1, "Usuario2", R.drawable.yape_icon));
+        AsyncHttpClient ahcMostrarForos = new AsyncHttpClient();
 
-// Inserta mensajes de ejemplo para el foro 2
-        //messageDao.insert(new MessageItem("Bienvenidos al foro 2", 2, "Usuario3", R.drawable.yape_icon));
-        //messageDao.insert(new MessageItem("Este es un mensaje de prueba", 2, "Usuario4", R.drawable.yape_icon));
-        // Aquí iría la lógica para cargar la lista de foros (desde una API, base de datos, etc.)
-        //forumItemList = new ArrayList<>();
-        //forumItemList.add(new ForumItem("Foro 1", "Descripción del foro 1", R.drawable.ollita));
-        //forumItemList.add(new ForumItem("Foro 2", "Descripción del foro 2", R.drawable.ollita));
-
-        //crear onjeto para realizar tarea asincrona hacia en web services
-
-        AsyncHttpClient ahcMostrarForos=new AsyncHttpClient();
-
-
-        //crear un adaptador por defecto al spinner
-        ahcMostrarForos.post(urlMostrarForos, new BaseJsonHttpResponseHandler() {
+        ahcMostrarForos.get(url, new BaseJsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
-                if(statusCode==200){
+                if (statusCode == 200) {
                     try {
-                        JSONArray jsonArray=new JSONArray(rawJsonResponse);
+                        JSONArray jsonArray = new JSONArray(rawJsonResponse);
                         BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
                         dbHelper.deleteAllForos(); // Elimina los foros antiguos
-                        //forumItemList.clear();
-                        // Procesar cada objeto JSON en el array
+
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                             // Crear un nuevo objeto ForumItem
-                            Integer foroId = Integer.parseInt(jsonObject.getString("idForo"));
+                            int foroId = jsonObject.getInt("idForo"); // Cambia a getInt
                             String title = jsonObject.getString("titulo");
                             String description = jsonObject.getString("descripcion");
-                            String fecCreacion=jsonObject.getString("fecha_creacion");
-                            String rol=jsonObject.getString("rol");
+                            String fecCreacion = jsonObject.getString("fecha_creacion");
+                            String rol = jsonObject.getString("rol");
 
-                            ForumItem forumItem = new ForumItem( title, description, R.drawable.ollita);
+                            ForumItem forumItem = new ForumItem(title, description, R.drawable.ollita);
                             forumItem.setForoId(foroId);
                             forumItem.setRol(rol);
                             forumItem.setFecCracion(fecCreacion);
@@ -187,31 +175,33 @@ public class ForosFragment extends Fragment {
                             if (rowsUpdated == 0) {
                                 dbHelper.insertForum(forumItem);
                             }
-
                         }
 
                         cargarForosLocalmente();
 
                     } catch (JSONException e) {
-                        throw new RuntimeException(e);
+                        e.printStackTrace(); // Cambiado para imprimir el stack trace
+                        Toast.makeText(getContext(), "Error en los datos recibidos", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(getContext(), "Error al cargar foros: " + statusCode, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Object errorResponse) {
-                Toast.makeText(getActivity().getApplicationContext(), "ERROR: "+statusCode, Toast.LENGTH_LONG).show();
+
             }
 
             @Override
             protected Object parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
                 return null;
             }
+
+
         });
-
-
-
     }
+
 
     private void cargarForosLocalmente() {
         BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());

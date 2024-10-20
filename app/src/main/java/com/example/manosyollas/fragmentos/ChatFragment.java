@@ -1,16 +1,25 @@
 package com.example.manosyollas.fragmentos;
+import com.example.manosyollas.Util.BurrosVolanteSQLite;
+import com.example.manosyollas.actividades.InicioActivity;
 import com.example.manosyollas.actividades.MenuActivity;
 import com.example.manosyollas.actividades.PerfilChatActivity;
 
+import com.example.manosyollas.actividades.RegistrateActivity;
+import com.example.manosyollas.clases.AppDatabase;
+import com.example.manosyollas.clases.ForumItem;
 import com.example.manosyollas.clases.MessageItem;
+import com.example.manosyollas.controladores.ForumAdapter;
 import com.example.manosyollas.controladores.MessageAdapter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 
 import androidx.fragment.app.FragmentTransaction;
@@ -22,10 +31,25 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.manosyollas.R;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,16 +58,19 @@ import java.util.List;
  */
 public class ChatFragment extends Fragment {
 
-    private String foroId;
+    private final static String URL_MOSTRAR_MENSAJES ="http://manosyollas.atwebpages.com/services/LeerMensajesPorForo.php";
+    private final static String URL_CREAR_MENSAJES ="http://manosyollas.atwebpages.com/services/CrearMensaje.php";
+    private int foroId;
     private String foroNombre;
     private TextView foroTitle;
-    private RecyclerView recyclerViewMessages;
-
+    private RecyclerView recyclerView;
+    private SharedPreferences sharedPreferences;
     private MessageAdapter messageAdapter;
     private EditText editTextMessage;
     private ImageButton buttonSend;
     private TextView chatTitle;
     private int currentForumId; // ID del foro actual
+    Integer idUsuario;
 
     private List<MessageItem> messageList;
 
@@ -107,16 +134,17 @@ public class ChatFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
-        recyclerViewMessages = view.findViewById(R.id.recyclerView_chat);
-        recyclerViewMessages.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView = view.findViewById(R.id.recyclerView_chat);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Cargar mensajes en el RecyclerView
         //loadMessages();
-
+        //cargarMensajes(int forumId);
 
 
 
         editTextMessage = view.findViewById(R.id.editTextMessage);
+
         buttonSend = view.findViewById(R.id.buttonSend);
         chatTitle = view.findViewById(R.id.chatTitle);
         ImageButton backButton = view.findViewById(R.id.backButton);
@@ -141,10 +169,16 @@ public class ChatFragment extends Fragment {
         if (bundle != null) {
 
             String title = bundle.getString("foroTitle", "Chat");
+            foroId = Integer.parseInt(getArguments().getString("foroId"));
 
             // Set the icon and title
             chatTitle.setText(title);
         }
+        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+        //dbHelper.deleteAllMensajes();
+        cargarMensajesFromNube(foroId);
+        ;
+
 
         // Cambiar el título en el Toolbar o ActionBar
         //volver
@@ -163,6 +197,18 @@ public class ChatFragment extends Fragment {
         chatTitle.setOnClickListener(v-> {
             selectFragment(new PerfilChatFragment());
         });
+        buttonSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTextMessage=view.findViewById(R.id.editTextMessage);
+                sharedPreferences = getActivity().getSharedPreferences("IdUsuario", Context.MODE_PRIVATE);
+                idUsuario = sharedPreferences.getInt("idUsuario", -1);
+
+                enviarMensaje(foroId,editTextMessage.getText().toString(),String.valueOf(idUsuario),R.drawable.botonagregar,"Usuario2");
+                editTextMessage.setText("");
+
+            }
+        });
 
         return view;
     }
@@ -173,8 +219,140 @@ public class ChatFragment extends Fragment {
     }
 
 
-    private void cargarMensajes(String foroId) {
-        //Aquí proximamente irá la lógica para llamar a todos los mensajes de la BD
+
+
+    private void enviarMensaje(int forumId, String content, String userId, int userProfileImage, String userName) {
+        String messageId = UUID.randomUUID().toString(); // Generar un ID único para el mensaje
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
+
+        MessageItem messageItem = new MessageItem(messageId, forumId, content, userId, timestamp, userProfileImage, userName);
+
+        crearMensaje(forumId,Integer.parseInt(userId),content);
+
+        cargarMensajesFromNube(forumId); // Recargar mensajes después de enviar uno nuevo
+
+
+
+
+
     }
+
+    private void cargarMensajesFromNube(int idForo) {
+        AppDatabase db = AppDatabase.getInstance(getContext());
+        String url = URL_MOSTRAR_MENSAJES + "?idForo=" + idForo; // Asegúrate de que esta URL sea correcta
+        AsyncHttpClient ahcMostrarMensajes = new AsyncHttpClient();
+
+        ahcMostrarMensajes.get(url, new BaseJsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
+                //Log.d("MensajesResponse", rawJsonResponse); // Para depuración
+                if (statusCode == 200) {
+                    try {
+                        if (rawJsonResponse.startsWith("{") || rawJsonResponse.startsWith("[")) {
+                            JSONArray jsonArray = new JSONArray(rawJsonResponse);
+                            BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+                            dbHelper.deleteAllMensajes(); // Elimina los mensajes antiguos
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                // Crear un nuevo objeto MessageItem
+                                String contenido = jsonObject.getString("contenido");
+                                String idUsuario = jsonObject.getString("idUsuario");
+                                String idMensaje = jsonObject.getString("idMensaje");
+                                String nombre = jsonObject.getString("nombre");
+                                String photo = jsonObject.getString("photo");
+                                String fecha_envio = jsonObject.getString("fecha_envio");
+
+                                MessageItem messageItem = new MessageItem(idMensaje, idForo, contenido, idUsuario, fecha_envio, R.drawable.charmander, nombre);
+
+                                // Verificamos si el mensaje ya existe y lo actualizamos
+                                int rowsUpdated = dbHelper.updateMessage(messageItem);
+
+                                // Si no se actualizó ninguna fila (no existía el mensaje), lo insertamos
+                                if (rowsUpdated == 0) {
+                                    dbHelper.insertMessage(messageItem);
+                                }
+                            }
+
+                            cargarChatsLocalmente(idForo);
+
+                        } else {
+                            //Log.e("MensajesResponse", "Respuesta inesperada: " + rawJsonResponse);
+                            Toast.makeText(getContext(), "Respuesta del servidor no válida", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getContext(), "Error en los datos recibidos", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Error al cargar mensajes: " + statusCode, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Object errorResponse) {
+                Toast.makeText(getActivity().getApplicationContext(), "ERROR: " + statusCode, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected Object parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+                return null;
+            }
+        });
+    }
+
+    private List<MessageItem> cargarChatsLocalmente(int forumId) {
+        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+        List<MessageItem> messageList = dbHelper.getMessagesByForumId(forumId);
+        MessageAdapter messageAdapter = new MessageAdapter(messageList);
+
+
+        recyclerView.setAdapter(messageAdapter);
+
+
+
+        // Desplazar el RecyclerView hasta el último mensaje
+        if (messageList.size() > 0) {
+            recyclerView.scrollToPosition(messageList.size() - 1);
+        }
+        return messageList;
+
+    }
+    private void crearMensaje(int idForo, int idUsuario, String contenido) {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.put("idForo", idForo);
+        params.put("idUsuario", idUsuario);
+        params.put("contenido", contenido);
+
+
+        client.post(URL_CREAR_MENSAJES, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if (response.getBoolean("success")) {
+                        Toast.makeText(getContext(), "Mensaje enviado correctamente", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(getContext(), "Error al enviar mensaje", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Toast.makeText(getContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+
+
 
 }

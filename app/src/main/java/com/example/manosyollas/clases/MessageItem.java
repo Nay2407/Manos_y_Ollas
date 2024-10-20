@@ -1,77 +1,57 @@
 package com.example.manosyollas.clases;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "ChatMessages")
 public class MessageItem {
-
-
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-
-    private int forumId; // ID del foro al que pertenece el mensaje
+    @PrimaryKey
+    @NonNull
+    private String messageId;
+    private int forumId;
     private String content;
-    private String userName; // Nombre del usuario
-    private String timestamp; // Para gestionar la fecha y hora del mensaje
-    private int userProfileImage; // Recurso de la imagen del perfil (id del drawable)
+    private String userId;
+    private String timestamp;
+    private int userProfileImage;
+    private String userName;  // Nuevo campo para el nombre del usuario
 
-    public MessageItem(String content, int forumId, String userName, String timestamp, int userProfileImage) {
-        this.content = content;
+    public MessageItem(String messageId, Integer forumId, String content, String userId, String timestamp, int userProfileImage, String userName) {
+        this.messageId = messageId;
         this.forumId = forumId;
-        this.userName = userName;
+        this.content = content;
+        this.userId = userId;
         this.timestamp = timestamp;
         this.userProfileImage = userProfileImage;
+        this.userName = userName;
     }
 
-
-
-    // Getters y Setters
-    public int getId() {
-        return id;
+    public String getMessageId() {
+        return messageId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Integer getForumId() {
+        return forumId;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getForumId() {
-        return forumId;
-    }
-
-    public void setForumId(int forumId) {
-        this.forumId = forumId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public int getUserProfileImage() {
-        return userProfileImage; // Devuelve el id del recurso
-    }
-
-    public void setUserProfileImage(int userProfileImage) {
-        this.userProfileImage = userProfileImage;
+    public String getUserId() {
+        return userId;
     }
 
     public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public int getUserProfileImage() {
+        return userProfileImage;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }
+

@@ -7,7 +7,7 @@
 
     <!-- Imagen de perfil del usuario que envía el mensaje -->
     <ImageView
-        android:id="@+id/userProfileImage"
+        android:id="@+id/imgUserProfile"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/yape_icon"
@@ -24,7 +24,7 @@
 
         <!-- Nombre de usuario -->
         <TextView
-            android:id="@+id/textUsername"
+            android:id="@+id/txtUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Usuario"
@@ -33,13 +33,13 @@
 
         <!-- Mensaje -->
         <TextView
-            android:id="@+id/textMessage"
+            android:id="@+id/txtMessageContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mensaje"
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/timestamp"
+            android:id="@+id/txtMessageTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp" />

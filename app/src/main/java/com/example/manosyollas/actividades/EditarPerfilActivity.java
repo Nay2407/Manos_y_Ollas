@@ -57,7 +57,9 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
     Integer idUsuario;
     RadioGroup grpSexo;
     RadioButton rbtSinDefinir, rbtFemenino, rbtMasculino;
-    Button btnCrear, btnRegresar;
+    Button btnCrear;
+    Button  btnRegresar;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -78,6 +80,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         editTxtFechaNac = findViewById(R.id.editPerTxtFechanac);
         btnCrear = findViewById(R.id.editPerBtnCrear);
         editTxtContrasena = findViewById(R.id.editPerTxtContraseña);
+
         btnRegresar = findViewById(R.id.editPerBtnRegresar);
 
         grpSexo = findViewById(R.id.editPerRgpSexo);
@@ -94,7 +97,9 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         }
         editTxtFechaNac.setOnClickListener(this);
         btnCrear.setOnClickListener(this);
+
         btnRegresar.setOnClickListener(this);
+
 
         llenarDistritos();
     }
