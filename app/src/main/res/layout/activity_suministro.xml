@@ -316,6 +316,7 @@
             android:layout_marginTop="40dp"
             android:backgroundTint="@color/orange"
             android:text="@string/btnAceptar"
+            android:inputType="textCapWords"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
