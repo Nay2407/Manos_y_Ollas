@@ -1,5 +1,6 @@
 package com.example.manosyollas.actividades;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,8 +12,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.Menu;
 
-public class CuentasActivity extends AppCompatActivity {
+public class CuentasActivity extends AppCompatActivity implements Menu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +33,14 @@ public class CuentasActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+    @Override
+    public void onClickMenu(int id) {
+        Intent menu = new Intent(this, MenuActivity.class);
+        menu.putExtra("id", id);
+        startActivity(menu);
+        finish();
     }
 }

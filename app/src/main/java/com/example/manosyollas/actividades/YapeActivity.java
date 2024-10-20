@@ -13,8 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.Menu;
 
-public class YapeActivity extends AppCompatActivity {
+public class YapeActivity extends AppCompatActivity implements Menu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +35,13 @@ public class YapeActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onClickMenu(int id) {
+        Intent menu = new Intent(this, MenuActivity.class);
+        menu.putExtra("id", id);
+        startActivity(menu);
+        finish();
     }
 }
