@@ -93,7 +93,7 @@ public class MapaFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        map.onResume(); // Para osmdroid
+        map.onResume(); // Para osmdroidf
     }
 
     @Override
