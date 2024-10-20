@@ -6,16 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.manosyollas.R;
-import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.clases.Menu;
-import com.example.manosyollas.clases.MessageDao;
-import com.example.manosyollas.fragmentos.PerfilFragment;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,5 @@
 package com.example.manosyollas.clases;
 
-import android.content.Context;
-
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
@@ -15,11 +13,11 @@ public class MessageRepository {
         messageDao = db.messageDao();
     }
 
-    public LiveData<List<ChatMessage>> getMessagesByForum(int forumId) {
+    public LiveData<List<MessageItem>> getMessagesByForum(int forumId) {
         return messageDao.getMessagesByForum(forumId); // Obtén los mensajes por ID de foro
     }
 
-    public void insert(ChatMessage message) {
+    public void insert(MessageItem message) {
         // Puedes usar un ExecutorService o corutinas para ejecutar esta operación en un hilo diferente
         new Thread(() -> messageDao.insert(message)).start(); // Ejecuta la inserción en un hilo separado
     }

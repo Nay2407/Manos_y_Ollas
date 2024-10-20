@@ -11,9 +11,9 @@ import java.util.List;
 @Dao
 public interface MessageDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(ChatMessage message);
+    void insert(MessageItem message);
 
     @Query("SELECT * FROM ChatMessages WHERE forumId = :forumId ORDER BY timestamp ASC")
-    LiveData<List<ChatMessage>> getMessagesByForum(int forumId);
+    LiveData<List<MessageItem>> getMessagesByForum(int forumId);
 }
 

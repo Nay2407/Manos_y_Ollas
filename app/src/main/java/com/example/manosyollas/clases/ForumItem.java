@@ -6,10 +6,32 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "forums")
 public class ForumItem {
+    public void setForoId(@NonNull Integer foroId) {
+        this.foroId = foroId;
+    }
+
     @PrimaryKey
     @NonNull
-    public String foroId;
+    private Integer foroId;
 
+    public String getFecCracion() {
+        return fecCracion;
+    }
+
+    public void setFecCracion(String fecCracion) {
+        this.fecCracion = fecCracion;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    private String fecCracion;
+    private String rol;
     private String title;
     private String description;
     private int iconResId; // ID del recurso para el ícono
@@ -32,7 +54,7 @@ public class ForumItem {
     public int getIconResId() {
         return iconResId;
     }
-    public String getForoId() {
+    public Integer getForoId() {
         return foroId;
     }
 }

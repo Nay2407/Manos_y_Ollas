@@ -4,7 +4,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {ChatMessage.class}, version = 1, exportSchema = false) // Añade tus entidades aquí
+@Database(entities = {MessageItem.class}, version = 1, exportSchema = false) // Añade tus entidades aquí
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE; // Instancia singleton

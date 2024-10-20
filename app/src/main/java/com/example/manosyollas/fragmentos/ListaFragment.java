@@ -87,7 +87,8 @@ public class ListaFragment extends Fragment implements View.OnClickListener {
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
 
         // Reemplaza el fragmento actual con MapaFragment
-        transaction.add(R.id.listaolla, mapaFragment);
+        //transaction.add(R.id.listaolla, mapaFragment);
+        transaction.replace(R.id.frgContainer, mapaFragment);
 
 
         // Añade la transacción a la pila de retroceso (opcional)

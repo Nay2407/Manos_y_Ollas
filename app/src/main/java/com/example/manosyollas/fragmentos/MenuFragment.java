@@ -11,10 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.manosyollas.R;
-import com.example.manosyollas.clases.AppDatabase;
-import com.example.manosyollas.clases.ChatMessage;
 import com.example.manosyollas.clases.Menu;
-import com.example.manosyollas.clases.MessageDao;
 
 /**
  * A simple {@link Fragment} subclass.
