@@ -52,6 +52,7 @@
     <string name="vpertxtHisDona">Historial Donativos</string>
     <string name="vpertxtAjustes">Ajustes</string>
     <string name="vpertxtNotif">Notificaciones</string>
+    <string name="editPerTxtBtnEditar">Editar</string>
 
     <!--STRINGS DE VER Inicio -->
     <string name="vsedTxtInicio">Inicio</string>
