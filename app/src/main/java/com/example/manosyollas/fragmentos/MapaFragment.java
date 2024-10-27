@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.manosyollas.R;
-import com.google.android.gms.maps.MapView;
+
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.library.BuildConfig;
