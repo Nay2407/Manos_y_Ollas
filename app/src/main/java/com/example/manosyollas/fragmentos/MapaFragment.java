@@ -76,6 +76,7 @@ public class MapaFragment extends Fragment {
         map = vista.findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
 
+        //COMENTARIO PARA VER SI SIRVE
         // Establecer el zoom y la ubicación inicial
         map.getController().setZoom(10.0);
         GeoPoint startPoint = new GeoPoint(-11.979693, -77.008095); // Ciudad de México
