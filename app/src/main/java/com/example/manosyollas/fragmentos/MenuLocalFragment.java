@@ -84,7 +84,7 @@ public class MenuLocalFragment extends Fragment {
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new MapaFragment());  // Cambiar a MenuMapaFragment
+                loadFragment(new MapsFragment());  // Cambiar a MenuMapaFragment
             }
         });
 
