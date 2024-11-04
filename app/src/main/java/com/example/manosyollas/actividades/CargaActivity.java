@@ -12,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.manosyollas.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class CargaActivity extends AppCompatActivity {
 ProgressBar barCarga;
@@ -41,14 +43,14 @@ ProgressBar barCarga;
                 }
                 SharedPreferences sharedPrefs = getSharedPreferences("userPreferences", MODE_PRIVATE);
                 boolean isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false);
-                if(isLoggedIn) {
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                if(isLoggedIn || currentUser != null) {
 
                     Intent menu = new Intent(getApplicationContext(), MenuActivity.class);
                     menu.putExtra("nombre","Cachimbo UPN");
                     menu.putExtra("id", 2);
                     startActivity(menu);
                     finish();
-
 
                 }else{
                     //llamar a la otra actividad

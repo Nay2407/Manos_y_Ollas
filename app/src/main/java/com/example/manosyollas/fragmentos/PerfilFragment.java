@@ -24,6 +24,7 @@ import com.example.manosyollas.actividades.HistUsuarioActivity;
 import com.example.manosyollas.actividades.InicioActivity;
 import com.example.manosyollas.actividades.TransferenciaActivity;
 import com.example.manosyollas.clases.Menu;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,6 +109,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
 
         // 2. Redirigir al usuario a la pantalla de inicio
         Intent intent = new Intent(getActivity(), InicioActivity.class);
+        FirebaseAuth.getInstance().signOut();
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpia la pila de actividades
         startActivity(intent);
         getActivity().finish(); // Cierra la actividad actual para prevenir el regreso con el botón de atrás
