@@ -38,7 +38,6 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:23.1.0")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
 
-
     implementation("com.loopj.android:android-async-http:1.4.9")
     implementation("com.android.volley:volley:1.2.1")
     implementation ("org.osmdroid:osmdroid-android:6.1.10")
