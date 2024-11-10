@@ -45,7 +45,7 @@
                 android:layout_marginRight="3dp"
                 app:cardCornerRadius="16dp"
                 android:layout_marginTop="50dp"
-                app:cardBackgroundColor="@color/card_color"
+                app:cardBackgroundColor="@color/naranjaCarga"
                 >
                 <LinearLayout
                     android:layout_gravity="center"
