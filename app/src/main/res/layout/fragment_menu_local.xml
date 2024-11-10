@@ -19,13 +19,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="10dp"
             tools:ignore="UselessParent">
 
             <Button
                 android:id="@+id/btnmenuLista"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:text="@string/menuSedeLista"
                 android:textAllCaps="false"
@@ -35,6 +36,7 @@
                 android:id="@+id/btnmenuMapa"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:text="@string/menuSedeMapa"
                 android:textAllCaps="false"

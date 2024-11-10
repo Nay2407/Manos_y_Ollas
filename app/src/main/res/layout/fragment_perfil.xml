@@ -47,17 +47,17 @@
                     android:text="@string/vpertxtCorreo"/>
                 <Button
                     android:id="@+id/vperbtnEditarPerfil"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="@string/vperbtnEditPer"
                     android:textAllCaps="false"/>
                 <Button
                     android:id="@+id/vperbtnCerrarSesion"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="@string/vperbtnCerrarSesion"
                     android:textAllCaps="false"
-                    android:backgroundTint="@color/red"/>
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
