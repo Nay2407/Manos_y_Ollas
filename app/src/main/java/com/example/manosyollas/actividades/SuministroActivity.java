@@ -1,6 +1,9 @@
+
 package com.example.manosyollas.actividades;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +20,16 @@ import com.example.manosyollas.R;
 import com.example.manosyollas.clases.Menu;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SuministroActivity extends AppCompatActivity implements Menu {
 
     private ArrayList<String> itemsSeleccionados;
+    private SharedPreferences preferences;
+    private static final String PREFS_NAME = "SeleccionPrefs";
+    private static final String KEY_ITEMS = "itemsSeleccionados";
+    private boolean goingToConfirmarActivity = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,32 +43,83 @@ public class SuministroActivity extends AppCompatActivity implements Menu {
             return insets;
         });
 
-        itemsSeleccionados = new ArrayList<>();
+        preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        itemsSeleccionados = new ArrayList<>(preferences.getStringSet(KEY_ITEMS, new HashSet<>()));
 
         ImageView btnVolver = findViewById(R.id.ic_flotante);
-        btnVolver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        btnVolver.setOnClickListener(v -> finish());
 
         configurarProductos();
+        restaurarSeleccion();
 
         Button btnAceptar = findViewById(R.id.btnAceptar);
-        btnAceptar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (itemsSeleccionados.isEmpty()) {
-                    Toast.makeText(SuministroActivity.this, "No se ha seleccionado ningún ítem", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                Intent intent = new Intent(SuministroActivity.this, ConfirmarActivity.class);
-                intent.putStringArrayListExtra("itemsSeleccionados", itemsSeleccionados);
-                startActivity(intent);
+        btnAceptar.setOnClickListener(v -> {
+            if (itemsSeleccionados.isEmpty()) {
+                Toast.makeText(SuministroActivity.this, "No se ha seleccionado ningún ítem", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putStringSet(KEY_ITEMS, new HashSet<>(itemsSeleccionados));
+            editor.apply();
+
+            goingToConfirmarActivity = true;
+            Intent intent = new Intent(SuministroActivity.this, ConfirmarActivity.class);
+            intent.putStringArrayListExtra("itemsSeleccionados", itemsSeleccionados);
+            startActivity(intent);
+            finish();
         });
+    }
+
+    private void restaurarSeleccion() {
+        if (itemsSeleccionados.contains("Arroz - 5kg")) {
+            ImageView icArroz = findViewById(R.id.ic_arroz);
+            icArroz.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Aceite - 1L")) {
+            ImageView icAceite = findViewById(R.id.ic_aceite);
+            icAceite.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Harina - 3kg")) {
+            ImageView icHarina = findViewById(R.id.ic_harina);
+            icHarina.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Sal - 10kg")) {
+            ImageView icSal = findViewById(R.id.ic_sal);
+            icSal.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Azúcar - 2kg")) {
+            ImageView icAzucar = findViewById(R.id.ic_azucar);
+            icAzucar.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Leche - 1L")) {
+            ImageView icLeche = findViewById(R.id.ic_leche);
+            icLeche.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Fideos - 500g")) {
+            ImageView icFideos = findViewById(R.id.ic_fideos);
+            icFideos.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Lentejas - 1kg")) {
+            ImageView icLentejas = findViewById(R.id.ic_lentejas);
+            icLentejas.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Conservas - 400g")) {
+            ImageView icConservas = findViewById(R.id.ic_conservas);
+            icConservas.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Huevos - docena")) {
+            ImageView icHuevos = findViewById(R.id.ic_huevos);
+            icHuevos.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Atún - lata")) {
+            ImageView icAtun = findViewById(R.id.ic_atun);
+            icAtun.setAlpha(0.5f);
+        }
+        if (itemsSeleccionados.contains("Cereales - 500g")) {
+            ImageView icCereales = findViewById(R.id.ic_cereales);
+            icCereales.setAlpha(0.5f);
+        }
     }
 
     private void configurarProductos() {
@@ -103,10 +163,19 @@ public class SuministroActivity extends AppCompatActivity implements Menu {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        if (!goingToConfirmarActivity) {
+            preferences.edit().clear().apply();
+        }
+    }
+
+    @Override
     public void onClickMenu(int id) {
         Intent menu = new Intent(this, MenuActivity.class);
         menu.putExtra("id", id);
         startActivity(menu);
+
         finish();
     }
 }
