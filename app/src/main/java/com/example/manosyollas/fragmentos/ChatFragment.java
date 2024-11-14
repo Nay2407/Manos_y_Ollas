@@ -1,14 +1,9 @@
 package com.example.manosyollas.fragmentos;
-import com.example.manosyollas.Util.BurrosVolanteSQLite;
-import com.example.manosyollas.actividades.InicioActivity;
+import com.example.manosyollas.Util.ManosyOllasSQLite;
 import com.example.manosyollas.actividades.MenuActivity;
-import com.example.manosyollas.actividades.PerfilChatActivity;
 
-import com.example.manosyollas.actividades.RegistrateActivity;
 import com.example.manosyollas.clases.AppDatabase;
-import com.example.manosyollas.clases.ForumItem;
 import com.example.manosyollas.clases.MessageItem;
-import com.example.manosyollas.controladores.ForumAdapter;
 import com.example.manosyollas.controladores.MessageAdapter;
 
 import android.content.Context;
@@ -19,7 +14,6 @@ import android.os.Bundle;
 import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 
-import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 
 import androidx.fragment.app.FragmentTransaction;
@@ -174,7 +168,7 @@ public class ChatFragment extends Fragment {
             // Set the icon and title
             chatTitle.setText(title);
         }
-        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
         //dbHelper.deleteAllMensajes();
         cargarMensajesFromNube(foroId);
         ;
@@ -231,10 +225,6 @@ public class ChatFragment extends Fragment {
 
         cargarMensajesFromNube(forumId); // Recargar mensajes después de enviar uno nuevo
 
-
-
-
-
     }
 
     private void cargarMensajesFromNube(int idForo) {
@@ -250,7 +240,7 @@ public class ChatFragment extends Fragment {
                     try {
                         if (rawJsonResponse.startsWith("{") || rawJsonResponse.startsWith("[")) {
                             JSONArray jsonArray = new JSONArray(rawJsonResponse);
-                            BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+                            ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
                             dbHelper.deleteAllMensajes(); // Elimina los mensajes antiguos
 
                             for (int i = 0; i < jsonArray.length(); i++) {
@@ -303,7 +293,7 @@ public class ChatFragment extends Fragment {
     }
 
     private List<MessageItem> cargarChatsLocalmente(int forumId) {
-        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
         List<MessageItem> messageList = dbHelper.getMessagesByForumId(forumId);
         MessageAdapter messageAdapter = new MessageAdapter(messageList);
 

@@ -14,7 +14,7 @@ import com.example.manosyollas.clases.MessageItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BurrosVolanteSQLite extends SQLiteOpenHelper {
+public class ManosyOllasSQLite extends SQLiteOpenHelper {
     private static final String nombreDB="BurrosVolante.db";
     private static final int versionDB=1;
 
@@ -72,7 +72,7 @@ public class BurrosVolanteSQLite extends SQLiteOpenHelper {
     private static final String dropTableMensajesLocales="drop table if exists MensajesLocales;";
 
 
-    public BurrosVolanteSQLite(@Nullable Context context) {
+    public ManosyOllasSQLite(@Nullable Context context) {
         super(context,nombreDB,null,versionDB);
     }
 

@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.Util.ManosyOllasSQLite;
+import com.example.manosyollas.clases.AppDatabase;
+import com.example.manosyollas.clases.ForumItem;
+import com.example.manosyollas.controladores.ForumAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,6 +31,9 @@ import com.loopj.android.http.BaseJsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -73,7 +80,6 @@ public class MapsFragment extends Fragment {
                                 lugar =new LatLng(latitud,longitud);
                                 titulo = jsonArray.getJSONObject(i).getString("olla_nombre");
                                 marker = googleMap.addMarker(new MarkerOptions().position(lugar).title(titulo));
-
                                 if(i==0)
                                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lugar,13));
                             }
@@ -116,4 +122,5 @@ public class MapsFragment extends Fragment {
             mapFragment.getMapAsync(callback);
         }
     }
+
 }
