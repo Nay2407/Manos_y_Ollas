@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.manosyollas.R;
-import com.example.manosyollas.Util.BurrosVolanteSQLite;
+import com.example.manosyollas.Util.ManosyOllasSQLite;
 import com.example.manosyollas.clases.AppDatabase;
 import com.example.manosyollas.clases.ForumItem;
 import com.example.manosyollas.controladores.ForumAdapter;
@@ -150,7 +150,7 @@ public class ForosFragment extends Fragment {
                 if (statusCode == 200) {
                     try {
                         JSONArray jsonArray = new JSONArray(rawJsonResponse);
-                        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+                        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
                         dbHelper.deleteAllForos(); // Elimina los foros antiguos
 
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -204,7 +204,7 @@ public class ForosFragment extends Fragment {
 
 
     private void cargarForosLocalmente() {
-        BurrosVolanteSQLite dbHelper = new BurrosVolanteSQLite(getActivity().getApplicationContext());
+        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
         List<ForumItem> forumList = dbHelper.getAllForos();
 
         forumAdapter = new ForumAdapter(forumList, new ForumAdapter.OnItemClickListener() {

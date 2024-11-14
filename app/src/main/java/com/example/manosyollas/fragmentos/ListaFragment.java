@@ -5,14 +5,31 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.Util.ManosyOllasSQLite;
 import com.example.manosyollas.actividades.AjustesActivity;
+import com.example.manosyollas.clases.AppDatabase;
+import com.example.manosyollas.clases.ForumItem;
+import com.example.manosyollas.controladores.ForumAdapter;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,7 +37,11 @@ import com.example.manosyollas.actividades.AjustesActivity;
  * create an instance of this fragment.
  */
 public class ListaFragment extends Fragment implements View.OnClickListener {
+    private final static String urlMostrarOlla = "";
     LinearLayout espacio, espacio1;
+
+    private ForumAdapter forumAdapter;
+    private RecyclerView recyclerView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,6 +90,7 @@ public class ListaFragment extends Fragment implements View.OnClickListener {
         View vista = inflater.inflate(R.layout.fragment_lista, container, false);
         espacio = vista.findViewById(R.id.espacioolla);
         espacio.setOnClickListener(this);
+
         return vista;
 
     }
@@ -81,20 +103,16 @@ public class ListaFragment extends Fragment implements View.OnClickListener {
     }
     private void enviarMapa() {
         // Crea una instancia del fragmento que deseas mostrar
-        MapaFragment mapaFragment = new MapaFragment();
-
+        MapsFragment mapsFragment = new MapsFragment();
         // Utiliza el FragmentTransaction para reemplazar el fragmento actual con el nuevo fragmento
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-
         // Reemplaza el fragmento actual con MapaFragment
         //transaction.add(R.id.listaolla, mapaFragment);
-        transaction.replace(R.id.frgContainer, mapaFragment);
-
-
+        transaction.replace(R.id.frgContainer, mapsFragment);
         // Añade la transacción a la pila de retroceso (opcional)
         transaction.addToBackStack(null);
-
         // Ejecuta la transacción
         transaction.commit();
     }
+
 }
