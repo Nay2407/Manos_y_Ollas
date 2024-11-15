@@ -16,10 +16,8 @@ import com.example.manosyollas.clases.Menu;
 import com.example.manosyollas.fragmentos.DonacionesFragment;
 import com.example.manosyollas.fragmentos.ForosFragment;
 import com.example.manosyollas.fragmentos.InicioFragment;
-import com.example.manosyollas.fragmentos.MenuFragment;
 import com.example.manosyollas.fragmentos.MenuLocalFragment;
 import com.example.manosyollas.fragmentos.PerfilFragment;
-import com.example.manosyollas.fragmentos.SedesFragment;
 
 public class MenuActivity extends AppCompatActivity implements Menu {
     Fragment[] fragments;

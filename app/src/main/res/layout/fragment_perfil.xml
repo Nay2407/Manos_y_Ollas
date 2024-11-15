@@ -1,143 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    android:foregroundTint="#FFFFFF"
     tools:context=".fragmentos.PerfilFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/prinTxtBienvenido"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/vperTxtVerPerfil"
-            android:textColor="@android:color/black"
-            android:textSize="30sp"
-            tools:ignore="MissingConstraints" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/vperimgajustes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:src="@drawable/ajustes" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_margin="20dp"
             android:gravity="center"
-            android:layout_marginTop="30dp"
-            android:padding="20dp">
-            <LinearLayout
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="210dp"
+                android:layout_height="173dp"
+                android:layout_gravity="center"
+                android:src="@drawable/cereales" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_margin="20dp">
-                <ImageView
-                    android:layout_width="210dp"
-                    android:layout_height="173dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/logo_trans" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/vpertxtNombre"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/vpertxtCorreo"/>
-                <Button
-                    android:id="@+id/vperbtnEditarPerfil"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/vperbtnEditPer"
-                    android:textAllCaps="false"/>
-                <Button
-                    android:id="@+id/vperbtnCerrarSesion"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/vperbtnCerrarSesion"
-                    android:textAllCaps="false"
-                    />
-            </LinearLayout>
-            <LinearLayout
+                android:text="@string/vpertxtNombre"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginHorizontal="15sp"
-                    android:gravity="center">
+                android:text="@string/vpertxtCorreo"
+                android:textColor="#000000" />
 
-                    <ImageButton
-                        android:scaleType="fitCenter"
-                        android:id="@+id/vperimgHisDona"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/dar_dinero" />
-
-                    <TextView
-                        android:id="@+id/vpertxtHisDona"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/vpertxtHisDona"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginHorizontal="15sp"
-                    android:gravity="center">
-                    <ImageButton
-                        android:scaleType="fitCenter"
-                        android:id="@+id/vperimgajustes"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/configuraciones"
-                        android:background="@android:color/transparent"
-                        android:layout_gravity="center"
-                        />
-                    <TextView
-                        android:id="@+id/vpertxtAjustes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/vpertxtAjustes"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginHorizontal="15sp"
-                    android:gravity="center">
-                    <ImageButton
-                        android:scaleType="fitCenter"
-                        android:id="@+id/vperimgNotif"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/notificacion"
-                        android:background="@android:color/transparent"
-                        android:layout_gravity="center"
-                        />
-                    <TextView
-                        android:id="@+id/vpertxtNotif"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/vpertxtNotif"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"/>
-                </LinearLayout>
-            </LinearLayout>
 
         </LinearLayout>
-    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/vperbtnEditarPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/vperbtnEditPer"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/vperbtnCerrarSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/vperbtnCerrarSesion"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPerDona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/backgroundColor"
+                android:text="Hist. Donaciones"
+                android:textAllCaps="false"
+                android:textColor="@color/orange"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btnPerNoti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/backgroundColor"
+                android:text="Notificaciones"
+                android:textAllCaps="false"
+                android:textColor="@color/btnNaranja" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frgContainerCambio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </FrameLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

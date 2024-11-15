@@ -54,7 +54,6 @@ public class MapsFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             googleMap.getUiSettings().setZoomControlsEnabled(true);
-            googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                     requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION }, 10);
