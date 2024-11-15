@@ -1,14 +1,13 @@
 package com.example.manosyollas.fragmentos;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +18,7 @@ import android.widget.ImageButton;
 import com.example.manosyollas.R;
 import com.example.manosyollas.actividades.AjustesActivity;
 import com.example.manosyollas.actividades.EditarPerfilActivity;
-import com.example.manosyollas.actividades.HistDonacionActivity;
-import com.example.manosyollas.actividades.HistUsuarioActivity;
 import com.example.manosyollas.actividades.InicioActivity;
-import com.example.manosyollas.actividades.TransferenciaActivity;
-import com.example.manosyollas.clases.Menu;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -32,9 +27,12 @@ import com.google.firebase.auth.FirebaseAuth;
  * create an instance of this fragment.
  */
 public class PerfilFragment extends Fragment implements View.OnClickListener{
+    private final static int BOTONES []= {R.id.btnPerDona, R.id.btnPerNoti};
     private Button btnCerrar;
     ImageButton btnAjustes,btnDonaciones;
-     Button btnEditarPerfil;
+    Button btnEditarPerfil;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,17 +73,19 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_perfil, container, false);
-        btnCerrar = vista.findViewById(R.id.vperbtnCerrarSesion);
-        btnAjustes = vista.findViewById(R.id.vperimgajustes);
-        btnDonaciones=vista.findViewById(R.id.vperimgHisDona);
-        btnEditarPerfil = vista.findViewById(R.id.vperbtnEditarPerfil);
 
+        Button btnDona = vista.findViewById(R.id.btnPerDona);
+        Button btnNoti = vista.findViewById(R.id.btnPerNoti);
+
+
+        btnCerrar = vista.findViewById(R.id.vperbtnCerrarSesion);
+        btnEditarPerfil = vista.findViewById(R.id.vperbtnEditarPerfil);
+        btnAjustes = vista.findViewById(R.id.vperimgajustes);
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,12 +94,26 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
 
             }
         });
-        btnAjustes.setOnClickListener(this);
         btnEditarPerfil.setOnClickListener(this);
-        btnDonaciones.setOnClickListener(this);
+        btnAjustes.setOnClickListener(this);
+
+        loadFragment(new HistDonUsuFragment());
+
+        btnDona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new HistDonUsuFragment());  // Cambiar a MenuListaFragment
+            }
+        });
+
+        btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new NotificacionesFragment());  // Cambiar a MenuMapaFragment
+            }
+        });
         return vista;
     }
-
     private void cerrarSesion() {
         // 1. Eliminar los datos de SharedPreferences
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userPreferences", Context.MODE_PRIVATE);
@@ -115,26 +129,23 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         getActivity().finish(); // Cierra la actividad actual para prevenir el regreso con el botón de atrás
     }
 
-    @Override
+    private void loadFragment(Fragment Fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frgContainerCambio, Fragment);  // Cambia el FrameLayout por el nuevo fragmento
+        transaction.addToBackStack(null);  // Opción para agregar a la pila de retroceso
+        transaction.commit();
+    }
     public void onClick(View view) {
         if (view.getId() == R.id.vperimgajustes)
             ingresarAjustes();
         if (view.getId()==R.id.vperbtnEditarPerfil)
             editarPerfil();
-        if (view.getId() == R.id.vperimgHisDona)
-            ingresarDonaciones();
     }
-
-    private void ingresarDonaciones() {
-        Intent donaciones = new Intent(getActivity(), HistUsuarioActivity.class);
-        startActivity(donaciones);
-    }
-
     private void editarPerfil() {
         Intent editarP = new Intent(getActivity(), EditarPerfilActivity.class);
         startActivity(editarP);
     }
-
     private void ingresarAjustes() {
         Intent ajustes = new Intent(getActivity(), AjustesActivity.class);
         startActivity(ajustes);

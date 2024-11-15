@@ -2,14 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragmentos.SuministroFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -32,25 +31,41 @@
                 android:layout_marginTop="20dp" />
 
         </RelativeLayout>
-
-        <TextView
-            android:id="@+id/sumTitulo"
+        <Spinner
+            android:id="@+id/sumCboOllasComunes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Ayuda a nuestra comunidad donando los suministros que más necesitamos. Cada donación cuenta para apoyar a las familias en necesidad."
-            android:textSize="18sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingVertical="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/sumTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="18dp"
+                android:padding="2dp"
+                android:gravity="center"
+                android:text="Ayuda a nuestra comunidad donando los suministros que más necesitamos. Cada donación cuenta para apoyar a las familias en necesidad."
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
 
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="395dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
             android:columnCount="3"
-            android:paddingLeft="70dp"
-            android:paddingRight="50dp"
-            android:rowCount="6">
+            android:rowCount="4"
+            android:layout_gravity="center_horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -307,17 +322,27 @@
 
         </GridLayout>
 
-        <Button
-            android:id="@+id/btnAceptar"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="@color/orange"
-            android:text="Aceptar"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnAceptar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/orange"
+                android:text="Aceptar"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
+
 
 </FrameLayout>

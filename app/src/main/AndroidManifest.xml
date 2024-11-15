@@ -50,7 +50,8 @@
             android:exported="false" />
         <activity
             android:name=".actividades.EditarPerfilActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".actividades.PlinActivity"
             android:exported="false" />
@@ -65,7 +66,8 @@
             android:exported="false" />
         <activity
             android:name=".actividades.MenuActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".actividades.SuministroActivity"
             android:exported="false" />
@@ -80,10 +82,12 @@
             android:exported="false" />
         <activity
             android:name=".actividades.PrincipalActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".actividades.RegistrateActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".actividades.LoginActivity"
             android:exported="false" />
