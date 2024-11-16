@@ -1,6 +1,7 @@
 package com.example.manosyollas.actividades;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Lifecycle;
 
 import com.example.manosyollas.R;
 import com.example.manosyollas.clases.Menu;
@@ -18,6 +20,8 @@ import com.example.manosyollas.fragmentos.ForosFragment;
 import com.example.manosyollas.fragmentos.InicioFragment;
 import com.example.manosyollas.fragmentos.MenuLocalFragment;
 import com.example.manosyollas.fragmentos.PerfilFragment;
+
+import java.util.List;
 
 public class MenuActivity extends AppCompatActivity implements Menu {
     Fragment[] fragments;
@@ -48,6 +52,9 @@ public class MenuActivity extends AppCompatActivity implements Menu {
         FragmentManager fr = getSupportFragmentManager();
         FragmentTransaction ft = fr.beginTransaction();
         ft.replace(R.id.menRelArea, fragments[id]);
+        ft.setMaxLifecycle(fragments[id], Lifecycle.State.RESUMED);
+        List<Fragment> fragments = fr.getFragments();
+        Log.d("FragmentCount", "Active fragments: " + fragments.size());
         ft.commit();
     }
 }

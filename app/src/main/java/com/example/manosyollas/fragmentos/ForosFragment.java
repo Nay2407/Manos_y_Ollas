@@ -149,8 +149,11 @@ public class ForosFragment extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
                 if (statusCode == 200) {
                     try {
+                        if (!isAdded()) {
+                            return; // Salir si el fragmento ya no está activo
+                        }
                         JSONArray jsonArray = new JSONArray(rawJsonResponse);
-                        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
+                        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(requireActivity().getApplicationContext());
                         dbHelper.deleteAllForos(); // Elimina los foros antiguos
 
                         for (int i = 0; i < jsonArray.length(); i++) {

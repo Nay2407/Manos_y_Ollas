@@ -3,105 +3,48 @@
     android:id="@+id/listaolla"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragmentos.ListaFragment">
+
     <LinearLayout
+        android:id="@+id/ContenedorListaOllas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/forTxtOllas"
+                android:gravity="center"
+                android:text="@string/forTxtOllas"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+
+                />
+        </RelativeLayout>
+        <!-- activity_main.xml -->
         <LinearLayout
-            android:id="@+id/espacioolla"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-            <ImageView
-                android:id="@+id/forum_icon"
-                android:layout_width="55dp"
-                android:layout_height="66dp"
-                android:src="@drawable/ollita" />
-
-
-            <LinearLayout
-
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/titollaubi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Olla Comun Manos de dios "
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/zonaollaubi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Zona: Zarate"
-                    android:textSize="14sp" />
-                <TextView
-                    android:id="@+id/ubiollaubi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Jr. Villac Umo 832"
-                    android:textSize="14sp" />
-            </LinearLayout>
+            <!-- RecyclerView que muestra la lista de elementos -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewOllas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/espacioolla1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-
-            <ImageView
-                android:id="@+id/forum_icon1"
-                android:layout_width="55dp"
-                android:layout_height="66dp"
-                android:src="@drawable/ollita" />
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/titollaubi1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Olla Comun Manos de dios "
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/zonaollaubi1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Zona: Zarate"
-                    android:textSize="14sp" />
-                <TextView
-                    android:id="@+id/ubiollaubi1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Jr. Villac Umo 832"
-                    android:textSize="14sp" />
-            </LinearLayout>
 
 
 
-        </LinearLayout>
     </LinearLayout>
 
 
