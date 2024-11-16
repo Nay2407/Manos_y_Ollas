@@ -1,6 +1,5 @@
 package com.example.manosyollas.fragmentos;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,10 +15,11 @@ import android.widget.Toast;
 
 import com.example.manosyollas.R;
 import com.example.manosyollas.Util.ManosyOllasSQLite;
-import com.example.manosyollas.actividades.AjustesActivity;
 import com.example.manosyollas.clases.AppDatabase;
 import com.example.manosyollas.clases.ForumItem;
+import com.example.manosyollas.clases.OllaItem;
 import com.example.manosyollas.controladores.ForumAdapter;
+import com.example.manosyollas.controladores.OllaAdapter;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 
@@ -37,10 +37,10 @@ import cz.msebera.android.httpclient.Header;
  * create an instance of this fragment.
  */
 public class ListaFragment extends Fragment implements View.OnClickListener {
-    private final static String urlMostrarOlla = "";
+    private final static String urlMostrarOlla = "http://manosyollas.atwebpages.com/services/MostrarOlla.php";
     LinearLayout espacio, espacio1;
 
-    private ForumAdapter forumAdapter;
+    private OllaAdapter ollaAdapter;
     private RecyclerView recyclerView;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -88,11 +88,122 @@ public class ListaFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_lista, container, false);
-        espacio = vista.findViewById(R.id.espacioolla);
+        espacio = vista.findViewById(R.id.ContenedorListaOllas);
+
+        recyclerView = vista.findViewById(R.id.recyclerViewOllas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        cargarOllasComunes();
         espacio.setOnClickListener(this);
 
         return vista;
 
+    }
+
+    private void cargarOllasComunes() {
+
+        AppDatabase db = AppDatabase.getInstance(getContext());
+
+        AsyncHttpClient ahcMostrarOllas = new AsyncHttpClient();
+
+        ahcMostrarOllas.get(urlMostrarOlla, new BaseJsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
+                if (statusCode == 200) {
+                    try {
+                        if (!isAdded()) {
+                            return; // Salir si el fragmento ya no está activo
+                        }
+                        JSONArray jsonArray = new JSONArray(rawJsonResponse);
+                        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(requireActivity().getApplicationContext());
+                        dbHelper.deleteAllOllas(); // Elimina las Ollas antiguas
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                            // Crear un nuevo objeto OllaItem
+                            int ollaId = jsonObject.getInt("olla_id"); // Cambia a getInt
+                            String nombre = jsonObject.getString("olla_nombre");
+                            String description = jsonObject.getString("olla_descripcion");
+                            String fecCreacion = jsonObject.getString("olla_fc");
+                            String distrito = jsonObject.getString("nombre_distrito");
+                            String zona = jsonObject.getString("zona_nombre");
+                            String latitud = jsonObject.getString("latitud");
+                            String longitud = jsonObject.getString("longitud");
+                            String direccion = jsonObject.getString("direccion");
+
+                            OllaItem ollaItem = new OllaItem(nombre,zona,direccion,latitud,longitud, R.drawable.ollita);
+                            ollaItem.setDescription(description);
+                            ollaItem.setNombreDistrito(distrito);
+                            ollaItem.setFecCreacion(fecCreacion);
+                            ollaItem.setOllaId(ollaId);
+
+                            // Verificamos si la olla ya existe y la actualizamos
+                            int rowsUpdated = dbHelper.updateOlla(ollaItem);
+
+                            // Si no se actualizó ninguna fila (no existía la olla), la insertamos
+                            if (rowsUpdated == 0) {
+                                dbHelper.insertOlla(ollaItem);
+                            }
+                        }
+
+                        cargarOllasLocalmente();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace(); // Cambiado para imprimir el stack trace
+                        Toast.makeText(getContext(), "Error en los datos recibidos", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Error al cargar foros: " + statusCode, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Object errorResponse) {
+
+            }
+
+            @Override
+            protected Object parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+                return null;
+            }
+
+
+        });
+    }
+
+    private void cargarOllasLocalmente() {
+        ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
+        List<OllaItem> ollaList = dbHelper.getAllOllas();
+
+        ollaAdapter = new OllaAdapter(ollaList, new OllaAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(OllaItem olla) {
+                abrirMapita(olla);
+            }
+        });
+
+        recyclerView.setAdapter(ollaAdapter);
+    }
+
+    private void abrirMapita(OllaItem olla) {
+        // Crea una instancia del MapsFragment
+        MapsFragment mapsFragment = new MapsFragment();
+
+        // Crea un Bundle para pasar las coordenadas
+        Bundle bundle = new Bundle();
+        bundle.putString("titulo", olla.getNombre());
+        bundle.putDouble("latitud", Double.parseDouble(olla.getLatitud()));
+        bundle.putDouble("longitud", Double.parseDouble(olla.getLongitud()));
+
+        // Asigna el Bundle al fragmento
+        mapsFragment.setArguments(bundle);
+
+        // Reemplaza el fragmento actual por el MapsFragment
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.frgContainer, mapsFragment);
+        transaction.addToBackStack(null); // Para poder volver al fragmento anterior
+        transaction.commit();
     }
 
 

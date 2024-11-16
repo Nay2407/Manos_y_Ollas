@@ -8,8 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.manosyollas.R;
 import com.example.manosyollas.clases.ForumItem;
 import com.example.manosyollas.clases.MessageItem;
+import com.example.manosyollas.clases.OllaItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
 
     // Nombre de la tabla
     public static final String TABLE_FOROS = "ForosLocales";
+    public static final String TABLE_OLLAS = "OllasLocales";
     public static final String TABLE_MESSAGES = "Messages";
 
 
@@ -35,6 +38,17 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
     public static final String COLUMN_FEC_CREACION = "fecCreacion";
     public static final String COLUMN_ROL_LOCAL = "rolLocal";
     public static final String COLUMN_ICON_RES_ID = "iconResId";
+
+    //NOMBRES DE COLUMMNAS PARA OLLAS
+    public static final String COLUMN_OLLA_ID = "idOlla";
+    public static final String COLUMN_OLLA_TITLE = "nombre";
+    public static final String COLUMN_OLLA_DESCRIPTION = "descripcion";
+    public static final String COLUMN_OLLA_FEC_CREACION = "fecCreacion";
+    public static final String COLUMN_OLLA_DISTRITO = "distrito";
+    public static final String COLUMN_OLLA_ZONA = "zona";
+    public static final String COLUMN_OLLA_LATITUD = "latitud";
+    public static final String COLUMN_OLLA_LONGITUD = "longitud";
+    public static final String COLUMN_OLLA_DIRECCION = "direccion";
 
 
 
@@ -67,6 +81,18 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
             COLUMN_USER_PROFILE_IMAGE + " INTEGER" +
             ");";
 
+    private static final String TABLE_CREATE_OLLAS = "CREATE TABLE " + TABLE_OLLAS + " (" +
+            COLUMN_OLLA_ID + " TEXT PRIMARY KEY," +
+            COLUMN_OLLA_TITLE + " TEXT," +
+            COLUMN_OLLA_DESCRIPTION + " TEXT," +
+            COLUMN_OLLA_FEC_CREACION + " TEXT," +
+            COLUMN_OLLA_DISTRITO + " TEXT," +
+            COLUMN_OLLA_ZONA + " TEXT," +
+            COLUMN_OLLA_LATITUD + " TEXT," +
+            COLUMN_OLLA_LONGITUD + " TEXT," +
+            COLUMN_OLLA_DIRECCION + " TEXT" +
+            ");";
+
 
     private static final String createTableMensajesLocales="create table if not exists MensajesLocales(id INTEGER PRIMARY KEY, idForo INTEGER,idUsuario INTEGER,contenido TEXT not null,fecha_envio TEXT,FOREIGN KEY (idForo) REFERENCES ForosLocales(idForo));";
     private static final String dropTableMensajesLocales="drop table if exists MensajesLocales;";
@@ -82,6 +108,7 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
         //sqLiteDatabase.execSQL(createTableUsuario);
         sqLiteDatabase.execSQL(TABLE_CREATE_FOROS);
         sqLiteDatabase.execSQL(TABLE_CREATE_MESSAGES);
+        sqLiteDatabase.execSQL(TABLE_CREATE_OLLAS);
         //sqLiteDatabase.execSQL(createTableMensajesLocales);
 
 
@@ -96,6 +123,9 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MESSAGES); // Elimina la tabla si ya existe
+        onCreate(sqLiteDatabase);
+
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_OLLAS); // Elimina la tabla si ya existe
         onCreate(sqLiteDatabase);
 
         //sqLiteDatabase.execSQL(dropTableMensajesLocales);
@@ -115,6 +145,26 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
         values.put(COLUMN_ROL_LOCAL, forumItem.getRol());
 
         db.insert(TABLE_FOROS, null, values);
+        db.close();
+    }
+
+    // Insertar una Olla
+    public void insertOlla(OllaItem ollaItem) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_OLLA_ID, ollaItem.getOllaId());
+        values.put(COLUMN_OLLA_TITLE , ollaItem.getNombre());
+        values.put(COLUMN_OLLA_DESCRIPTION , ollaItem.getDescription());
+        values.put(COLUMN_OLLA_FEC_CREACION , ollaItem.getFecCreacion());
+        values.put(COLUMN_OLLA_DISTRITO , ollaItem.getNombreDistrito());
+        values.put(COLUMN_OLLA_ZONA , ollaItem.getZona());
+        values.put(COLUMN_OLLA_LATITUD  , ollaItem.getLatitud());
+        values.put(COLUMN_OLLA_LONGITUD  , ollaItem.getLongitud());
+        values.put(COLUMN_OLLA_DIRECCION  , ollaItem.getDireccion());
+
+
+        db.insert(TABLE_OLLAS, null, values);
         db.close();
     }
 
@@ -177,6 +227,29 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
         return rowsAffected; // Devuelve el número de filas afectadas (debería ser 1 si todo sale bien)
     }
 
+
+    // Método para actualizar una olla
+    public int updateOlla(OllaItem ollaItem) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_OLLA_ID, ollaItem.getOllaId());
+        values.put(COLUMN_OLLA_TITLE , ollaItem.getNombre());
+        values.put(COLUMN_OLLA_DESCRIPTION , ollaItem.getDescription());
+        values.put(COLUMN_OLLA_FEC_CREACION , ollaItem.getFecCreacion());
+        values.put(COLUMN_OLLA_DISTRITO , ollaItem.getNombreDistrito());
+        values.put(COLUMN_OLLA_ZONA , ollaItem.getZona());
+        values.put(COLUMN_OLLA_LATITUD  , ollaItem.getLatitud());
+        values.put(COLUMN_OLLA_LONGITUD  , ollaItem.getLongitud());
+        values.put(COLUMN_OLLA_DIRECCION  , ollaItem.getDireccion());
+
+        // Actualiza la olla donde idOlla sea igual al id del OllaItem
+        int rowsAffected = db.update(TABLE_OLLAS, values, COLUMN_OLLA_ID + " = ?", new String[]{String.valueOf(ollaItem.getOllaId())});
+        db.close();
+
+        return rowsAffected; // Devuelve el número de filas afectadas (debería ser 1 si todo sale bien)
+    }
+
     public int updateMessage(MessageItem messageItem) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -226,10 +299,51 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
         return forumList;
     }
 
+    // Obtener todas las ollas
+    public List<OllaItem> getAllOllas() {
+        List<OllaItem> ollaList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_OLLAS, null, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Integer ollaId = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_ID )));
+                String nombre = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_TITLE ));
+                String description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_DESCRIPTION ));
+                String fecCreacion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_FEC_CREACION ));
+                String distrito = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_DISTRITO ));
+                String zona = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_ZONA  ));
+                String latitud = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_LATITUD  ));
+                String longitud = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_LONGITUD  ));
+                String direccion = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OLLA_DIRECCION  ));
+
+
+                OllaItem ollaItem = new OllaItem(nombre,zona,direccion,latitud,longitud, R.drawable.ollita);
+                ollaItem.setDescription(description);
+                ollaItem.setNombreDistrito(distrito);
+                ollaItem.setFecCreacion(fecCreacion);
+                ollaItem.setOllaId(ollaId);
+
+                ollaList.add(ollaItem);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return ollaList;
+    }
+
     // Eliminar todos los foros
     public void deleteAllForos() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_FOROS, null, null);
+        db.close();
+    }
+    // Eliminar todas las OLLAS
+    public void deleteAllOllas() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_OLLAS, null, null);
         db.close();
     }
     //eLIMINAR MENSAJES

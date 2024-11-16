@@ -58,11 +58,38 @@ public class MapsFragment extends Fragment {
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                     requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION }, 10);
             }
-            else
+            else{
                 googleMap.setMyLocationEnabled(true);
+                }
+
+            // Bandera para verificar si el Bundle procesó un marcador válido
+            boolean isBundleProcessed = false;
+
+            // Obtén las coordenadas del Bundle
+            Bundle bundle = getArguments();
+            if (bundle != null) {
+                String titulo= bundle.getString("titulo","");
+                double latitud = bundle.getDouble("latitud", 0.0);
+                double longitud = bundle.getDouble("longitud", 0.0);
+
+                // Centra el mapa en las coordenadas recibidas
+                LatLng posicion = new LatLng(latitud, longitud);
+                Marker marker = googleMap.addMarker(new MarkerOptions()
+                        .position(posicion)
+                        .title("Ubicación Seleccionada: "+titulo)); // Título del marcador
+
+
+                // Muestra la ventana de información automáticamente
+                if (marker != null) {
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(posicion, 15)); // Zoom nivel 15
+                    marker.showInfoWindow();
+                    isBundleProcessed = true; // Marca que el Bundle fue procesado
+                }
+            }
 
             AsyncHttpClient ahcMostrarUbi = new AsyncHttpClient();
 
+            boolean finalIsBundleProcessed = isBundleProcessed;
             ahcMostrarUbi.get(urlMostrarDirecciones, new BaseJsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
@@ -71,7 +98,9 @@ public class MapsFragment extends Fragment {
                         Marker marker;
                         String titulo;
                         double latitud, longitud;
+
                         try {
+                            LatLng primerLugar = null;
                             JSONArray jsonArray = new JSONArray(rawJsonResponse);
                             for(int i=0; i<jsonArray.length();i++){
                                 latitud = jsonArray.getJSONObject(i).getDouble("latitud");
@@ -80,7 +109,11 @@ public class MapsFragment extends Fragment {
                                 titulo = jsonArray.getJSONObject(i).getString("olla_nombre");
                                 marker = googleMap.addMarker(new MarkerOptions().position(lugar).title(titulo));
                                 if(i==0)
-                                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lugar,13));
+                                    primerLugar=lugar;
+                            }
+                            // Si el Bundle no procesó una posición, centra en el primer marcador
+                            if (!finalIsBundleProcessed && primerLugar != null) {
+                                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(primerLugar, 13)); // Ajusta el zoom según sea necesario
                             }
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
@@ -98,10 +131,12 @@ public class MapsFragment extends Fragment {
                     return null;
                 }
             });
-            LatLng sydney = new LatLng(-11.934168293721731, -76.98670738502317);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
+
+
         }
+
     };
 
     @Nullable

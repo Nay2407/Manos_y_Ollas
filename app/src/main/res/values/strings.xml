@@ -79,6 +79,7 @@
     <string name="sobnosdescTxtInicio">En Manos y Ollas, creemos en la fuerza de la solidaridad y el poder de la comunidad. Nuestra misión es apoyar a las ollas comunes, un pilar fundamental para muchas familias en situación de vulnerabilidad en Perú. \n Por ello, hemos creado esta plataforma con el objetivo de conectar a personas generosas como tú con las áreas que requieren ayuda urgente. A través de Manos y Ollas, te ofrecemos la oportunidad de donar, colaborar y apoyar de manera directa a las ollas comunes de tu comunidad o de cualquier rincón de Lima Metropolitana.\n Tu contribución puede marcar una gran diferencia en la vida de quienes más lo necesitan. Juntos, podemos construir un futuro más solidario y esperanzador.</string>
     <!--STRINGS DE FOROS -->
     <string name="forTxtForos">Canales</string>
+    <string name="forTxtOllas">Ollas Comunes</string>
     <!--Strings Cuentas -->
 
     <string name="tvTituloPrincipal"> Ayuda a nuestras Ollas
