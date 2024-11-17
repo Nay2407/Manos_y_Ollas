@@ -1,5 +1,9 @@
 package com.example.manosyollas.controladores;
 
+import static com.example.manosyollas.fragmentos.PerfilFragment.convertBase64ToUri;
+import static com.example.manosyollas.fragmentos.PerfilFragment.decodeBase64ToUtf8;
+
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +41,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         holder.txtMessageTimestamp.setText(messageItem.getTimestamp());
         holder.txtUserName.setText(messageItem.getUserName());  // Mostrar el nombre de usuario
 
+        String userUrl = messageItem.getUserProfileImage();
+
+        String intermedio= decodeBase64ToUtf8(userUrl);
+        Uri uri= convertBase64ToUri(intermedio);
+
         // Cargar la imagen de perfil usando Glide
-        Glide.with(holder.imgUserProfile.getContext())
-                .load(messageItem.getUserProfileImage())
-                .into(holder.imgUserProfile);
+        holder.imgUserProfile.setImageURI(uri);
     }
+
+
 
     @Override
     public int getItemCount() {

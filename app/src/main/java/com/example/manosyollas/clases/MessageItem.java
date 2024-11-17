@@ -13,10 +13,10 @@ public class MessageItem {
     private String content;
     private String userId;
     private String timestamp;
-    private int userProfileImage;
+    private String userProfileImage;
     private String userName;  // Nuevo campo para el nombre del usuario
 
-    public MessageItem(String messageId, Integer forumId, String content, String userId, String timestamp, int userProfileImage, String userName) {
+    public MessageItem(String messageId, Integer forumId, String content, String userId, String timestamp, String userProfileImage, String userName) {
         this.messageId = messageId;
         this.forumId = forumId;
         this.content = content;
@@ -46,7 +46,7 @@ public class MessageItem {
         return timestamp;
     }
 
-    public int getUserProfileImage() {
+    public String getUserProfileImage() {
         return userProfileImage;
     }
 
