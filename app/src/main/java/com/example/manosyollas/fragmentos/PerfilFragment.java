@@ -130,7 +130,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         btnDona.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new HistDonUsuFragment());  // Cambiar a MenuListaFragment
+                loadFragment(new HistDonacionFragment());  // Cambiar a MenuListaFragment
             }
         });
 
