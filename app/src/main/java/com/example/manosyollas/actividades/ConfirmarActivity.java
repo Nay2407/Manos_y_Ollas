@@ -77,8 +77,10 @@ public class ConfirmarActivity extends AppCompatActivity {
 
         ImageView icFlotante = findViewById(R.id.ic_flotante);
         icFlotante.setOnClickListener(v -> {
-            Intent intent = new Intent(ConfirmarActivity.this, SuministroActivity.class);
-            startActivity(intent);
+            // Inicio de sesión exitoso, redirigir a la siguiente Activity
+            Intent principal = new Intent(ConfirmarActivity.this, MenuActivity.class);
+            principal.putExtra("id", 5);
+            startActivity(principal);
             finish();
         });
 
@@ -86,9 +88,10 @@ public class ConfirmarActivity extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConfirmarActivity.this, SuministroActivity.class);
-                intent.putStringArrayListExtra("itemsSeleccionados", itemsSeleccionados);
-                startActivity(intent);
+                // Inicio de sesión exitoso, redirigir a la siguiente Activity
+                Intent principal = new Intent(ConfirmarActivity.this, MenuActivity.class);
+                principal.putExtra("id", 5);
+                startActivity(principal);
                 finish();
             }
         });

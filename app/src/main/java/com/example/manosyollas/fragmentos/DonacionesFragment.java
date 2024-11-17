@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +18,14 @@ import com.example.manosyollas.actividades.RegistrateActivity;
 import com.example.manosyollas.actividades.SobreNosotrosActivity;
 import com.example.manosyollas.actividades.SuministroActivity;
 import com.example.manosyollas.actividades.TransferenciaActivity;
+import com.example.manosyollas.clases.Menu;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link DonacionesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DonacionesFragment extends Fragment implements View.OnClickListener {
+public class DonacionesFragment extends Fragment implements View.OnClickListener, Menu {
     Button btnDonar, btnTransferencia;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,6 +67,7 @@ public class DonacionesFragment extends Fragment implements View.OnClickListener
         }
     }
 
+    Fragment[] fragments;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,6 +75,9 @@ public class DonacionesFragment extends Fragment implements View.OnClickListener
         View vista = inflater.inflate(R.layout.fragment_donaciones, container, false);
         btnDonar = vista.findViewById(R.id.btnDonarSuministro);
         btnTransferencia = vista.findViewById(R.id.btnTransferencia);
+
+        fragments = new Fragment[1];
+        fragments[0] = new SuministroFragment();
 
         btnDonar.setOnClickListener(this);
         btnTransferencia.setOnClickListener(this);
@@ -91,7 +98,15 @@ public class DonacionesFragment extends Fragment implements View.OnClickListener
     }
 
     private void DonarSum() {
-        Intent registro = new Intent(getActivity(), SuministroActivity.class);
-        startActivity(registro);
+        int id = 0;
+        onClickMenu(id);
+    }
+
+    @Override
+    public void onClickMenu(int id) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.menRelArea, fragments[id]);
+        ft.commit();
     }
 }

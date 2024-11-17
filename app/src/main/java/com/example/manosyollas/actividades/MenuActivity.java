@@ -20,6 +20,7 @@ import com.example.manosyollas.fragmentos.ForosFragment;
 import com.example.manosyollas.fragmentos.InicioFragment;
 import com.example.manosyollas.fragmentos.MenuLocalFragment;
 import com.example.manosyollas.fragmentos.PerfilFragment;
+import com.example.manosyollas.fragmentos.SuministroFragment;
 
 import java.util.List;
 
@@ -36,12 +37,13 @@ public class MenuActivity extends AppCompatActivity implements Menu {
             return insets;
         });
 
-        fragments = new Fragment[5];
+        fragments = new Fragment[6];
         fragments[0] = new PerfilFragment();
         fragments[1] = new MenuLocalFragment();
         fragments[2] = new InicioFragment();
         fragments[3] = new ForosFragment();
         fragments[4] = new DonacionesFragment();
+        fragments[5] = new SuministroFragment();
 
         int id = getIntent().getIntExtra("id", -1);
         onClickMenu(id);
