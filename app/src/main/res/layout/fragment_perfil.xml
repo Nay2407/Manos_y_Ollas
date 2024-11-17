@@ -37,11 +37,15 @@
             android:gravity="center"
             android:orientation="vertical">
 
+
             <ImageView
+
                 android:id="@+id/vperImagen"
                 android:layout_width="210dp"
                 android:layout_height="173dp"
                 android:layout_gravity="center"
+
+
                 android:src="@drawable/cereales" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,6 +77,14 @@
                 android:layout_height="wrap_content"
                 android:text="                "
                 android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/vperImgEditar"
+                android:layout_width="51dp"
+                android:layout_height="51dp"
+                android:layout_gravity="center"
+
+                android:src="@drawable/editar" />
 
 
         </LinearLayout>

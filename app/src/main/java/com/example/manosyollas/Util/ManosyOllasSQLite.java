@@ -195,7 +195,7 @@ public class ManosyOllasSQLite extends SQLiteOpenHelper {
                 String content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT));
                 String userId = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USER_ID));
                 String timestamp = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIMESTAMP));
-                int userProfileImage = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USER_PROFILE_IMAGE)));
+                String userProfileImage = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USER_PROFILE_IMAGE));
                 String userName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USER_NAME));  // Obtener el nombre de usuario
 
                 MessageItem messageItem = new MessageItem(messageId, forumId, content, userId, timestamp, userProfileImage, userName);

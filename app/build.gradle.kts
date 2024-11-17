@@ -45,6 +45,12 @@ dependencies {
     implementation("com.loopj.android:android-async-http:1.4.9")
     implementation("com.android.volley:volley:1.2.1")
     implementation ("org.osmdroid:osmdroid-android:6.1.10")
+
+    //16-11-2024
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
