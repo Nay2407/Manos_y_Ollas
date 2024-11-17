@@ -36,6 +36,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.manosyollas.R;
+import com.example.manosyollas.fragmentos.InicioFragment;
+import com.example.manosyollas.fragmentos.MenuFragment;
 import com.example.manosyollas.fragmentos.PerfilFragment;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
@@ -212,9 +214,8 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
 
     }
     private void regresar() {
-        Intent sesion = new Intent(this, PerfilFragment.class );
+        Intent sesion = new Intent(this, InicioFragment.class );
         startActivity(sesion);
-
     }
 
 
@@ -356,7 +357,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
                     if (message.equals("Usuario editado exitosamente")) {
                         Toast.makeText(EditarPerfilActivity.this, "Usuario editado correctamente", Toast.LENGTH_SHORT).show();
                         // Opcional: puedes redirigir a otra actividad después de la edición
-                        Intent intent = new Intent(EditarPerfilActivity.this, PrincipalActivity.class);
+                        Intent intent = new Intent(EditarPerfilActivity.this, MenuActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
