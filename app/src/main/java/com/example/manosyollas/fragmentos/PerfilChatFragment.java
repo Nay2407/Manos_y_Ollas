@@ -71,7 +71,7 @@ public class PerfilChatFragment extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_perfil_chat, container, false);
         txtdonacion = vista.findViewById(R.id.chatPerfDonacionTex);
         txtdonacion.setOnClickListener(v-> {
-            selectFragment(new HistDonacionFragment());
+            selectFragment(new HistDonUsuFragment());
         });
         btnVolver = vista.findViewById(R.id.ic_flotante);
         btnVolver.setOnClickListener(v1-> {
@@ -85,7 +85,7 @@ public class PerfilChatFragment extends Fragment {
         t.replace(R.id.menRelArea,ff).commit();
     }
 
-    private void selectFragment(HistDonacionFragment hdf) {
+    private void selectFragment(HistDonUsuFragment hdf) {
         FragmentTransaction t = getParentFragmentManager().beginTransaction();
         t.replace(R.id.menRelArea,hdf).commit();
 

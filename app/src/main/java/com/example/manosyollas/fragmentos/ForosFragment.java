@@ -127,8 +127,17 @@ public class ForosFragment extends Fragment {
         // Aquí puedes pasar datos del foro seleccionado
         Bundle args = new Bundle();
         args.putString("foroId", String.valueOf(foro.getForoId()));
+
+
+
         args.putString("foroTitle", foro.getTitle());
         chatFragment.setArguments(args);
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("ForoPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("foroId", String.valueOf(foro.getForoId()));
+        editor.apply();
+
 
 
         //fragmentTransaction.add(chatFragment,"s");

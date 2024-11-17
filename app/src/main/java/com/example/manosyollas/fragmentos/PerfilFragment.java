@@ -38,6 +38,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -86,6 +87,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -107,6 +114,11 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
     private String userUrl = null;
     private Uri uriImg;
     private String stringBase64;
+
+
+    TextView perNombre, perCorreo, perApellido;
+    Integer idUsuario;
+    ImageView vperImagen;
 
 
 
@@ -160,7 +172,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         Button btnNoti = vista.findViewById(R.id.btnPerNoti);
         // Referencia al ImageView
         imagenEditarPerfil = vista.findViewById(R.id.vperImgEditar);
-        imagenPerfil = vista.findViewById(R.id.imageverPerfil);
+        imagenPerfil = vista.findViewById(R.id.vperImagen);
         sharedPreferences = getActivity().getSharedPreferences("IdUsuario", Context.MODE_PRIVATE);
         userId = sharedPreferences.getInt("idUsuario", -1);
 
@@ -168,6 +180,16 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
 
 
 
+        perCorreo = vista.findViewById(R.id.perCorreo);
+        perNombre = vista.findViewById(R.id.perNombre);
+        perApellido = vista.findViewById(R.id.perApellido);
+
+        sharedPreferences = getActivity().getSharedPreferences("IdUsuario", Context.MODE_PRIVATE);
+        idUsuario = sharedPreferences.getInt("idUsuario", -1);
+
+        if (idUsuario != -1) {
+            mostrarUsuario(idUsuario);
+        }
 
         btnCerrar = vista.findViewById(R.id.vperbtnCerrarSesion);
         btnEditarPerfil = vista.findViewById(R.id.vperbtnEditarPerfil);
@@ -198,7 +220,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         btnDona.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new HistDonUsuFragment());  // Cambiar a MenuListaFragment
+                loadFragment(new HistDonacionFragment());  // Cambiar a MenuListaFragment
             }
         });
 
@@ -210,6 +232,32 @@ public class PerfilFragment extends Fragment implements View.OnClickListener{
         });
         return vista;
     }
+
+
+    private void mostrarUsuario(int idUsuario) {
+        String url = URL_MOSTRAR_USUARIO + "?idUsuario=" + idUsuario;
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(url, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    //vperImagen.setI
+                    perNombre.setText(response.getString("nombre"));
+                    perApellido.setText(response.getString("apellidos"));
+                    perCorreo.setText(response.getString("correo"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Toast.makeText(getActivity().getApplicationContext(), "Error al obtener los datos", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
     private void cerrarSesion() {
         // 1. Eliminar los datos de SharedPreferences
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userPreferences", Context.MODE_PRIVATE);

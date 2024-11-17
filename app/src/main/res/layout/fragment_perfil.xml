@@ -10,6 +10,7 @@
     android:foregroundTint="#FFFFFF"
     tools:context=".fragmentos.PerfilFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,25 +39,43 @@
 
 
             <ImageView
-                android:id="@+id/imageverPerfil"
+
+                android:id="@+id/vperImagen"
                 android:layout_width="210dp"
                 android:layout_height="173dp"
                 android:layout_gravity="center"
 
 
                 android:src="@drawable/cereales" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/perNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="              "
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/perApellido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="                        "
+                    android:layout_marginHorizontal="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+
 
             <TextView
+                android:id="@+id/perCorreo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/vpertxtNombre"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vpertxtCorreo"
+                android:text="                "
                 android:textColor="#000000" />
 
             <ImageView
@@ -116,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/backgroundColor"
-                android:text="Notificaciones"
+                android:text="Grupos"
                 android:textAllCaps="false"
                 android:textColor="@color/btnNaranja" />
         </LinearLayout>
@@ -126,6 +145,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
+
+
+
 
         </FrameLayout>
 
