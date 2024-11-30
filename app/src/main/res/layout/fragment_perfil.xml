@@ -142,11 +142,9 @@
 
         <FrameLayout
             android:id="@+id/frgContainerCambio"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="398dp"
+            android:layout_height="318dp"
             android:layout_weight="1">
-
-
 
 
         </FrameLayout>

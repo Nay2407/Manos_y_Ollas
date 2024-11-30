@@ -18,9 +18,10 @@
                 android:id="@+id/ic_flotante"
                 android:layout_width="41dp"
                 android:layout_height="43dp"
-                android:src="@drawable/ic_volver"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="25dp"/>
+                android:src="@drawable/ic_volver"
+                android:visibility="invisible" />
 
             <TextView
                 android:layout_width="match_parent"
