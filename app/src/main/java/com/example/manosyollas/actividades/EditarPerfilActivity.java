@@ -100,7 +100,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         editTxtFechaNac.setOnClickListener(this);
         btnCrear.setOnClickListener(this);
 
-        btnRegresar.setOnClickListener(this);
+        btnRegresar.setOnClickListener(v -> finish());
 
 
         llenarDistritos();
@@ -208,15 +208,15 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
             seleccionarFecha();
         else if (view.getId() == R.id.editPerBtnCrear)
             editarCuenta();
-        else if (view.getId() == R.id.editPerBtnRegresar)
-            regresar();
+        //else if (view.getId() == R.id.editPerBtnRegresar)
+         //   regresar();
 
 
     }
-    private void regresar() {
-        Intent sesion = new Intent(this, InicioFragment.class );
-        startActivity(sesion);
-    }
+    //private void regresar() {
+     //   Intent sesion = new Intent(EditarPerfilActivity.this, PerfilFragment.class );
+     //   startActivity(sesion);
+      //  finish();}
 
 
     private void seleccionarFecha() {
