@@ -1,17 +1,23 @@
 package com.example.manosyollas.fragmentos;
 
 import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.manosyollas.R;
 import com.example.manosyollas.clases.Menu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,10 +26,13 @@ import com.example.manosyollas.clases.Menu;
  */
 public class MenuFragment extends Fragment {
     private final static int BOTONES []= {R.id.frgPerfil, R.id.frgSedes, R.id.frgInicio, R.id.frgForos, R.id.frgDonaciones };
+    private View selectedButton = null;  // Para almacenar el botón seleccionado
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,6 +70,7 @@ public class MenuFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,4 +90,5 @@ public class MenuFragment extends Fragment {
         }
         return vista;
     }
+
 }
