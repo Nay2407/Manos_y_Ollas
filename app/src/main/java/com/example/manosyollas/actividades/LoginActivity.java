@@ -101,11 +101,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     });
 
                 } catch (ApiException e) {
-                    e.printStackTrace();
+                        e.printStackTrace();
+                    }
                 }
             }
-        }
-    });
+        });
 
 
 
