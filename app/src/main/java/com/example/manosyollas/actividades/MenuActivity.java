@@ -21,6 +21,7 @@ import com.example.manosyollas.fragmentos.InicioFragment;
 import com.example.manosyollas.fragmentos.MenuLocalFragment;
 import com.example.manosyollas.fragmentos.PerfilFragment;
 import com.example.manosyollas.fragmentos.SuministroFragment;
+import com.example.manosyollas.fragmentos.TransferenciaFragment;
 
 import java.util.List;
 
@@ -37,13 +38,14 @@ public class MenuActivity extends AppCompatActivity implements Menu {
             return insets;
         });
 
-        fragments = new Fragment[6];
+        fragments = new Fragment[7];
         fragments[0] = new PerfilFragment();
         fragments[1] = new MenuLocalFragment();
         fragments[2] = new InicioFragment();
         fragments[3] = new ForosFragment();
         fragments[4] = new DonacionesFragment();
         fragments[5] = new SuministroFragment();
+        fragments[6] = new TransferenciaFragment();
 
         int id = getIntent().getIntExtra("id", -1);
         onClickMenu(id);
@@ -59,4 +61,14 @@ public class MenuActivity extends AppCompatActivity implements Menu {
         Log.d("FragmentCount", "Active fragments: " + fragments.size());
         ft.commit();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack(); // Retroceder al fragmento anterior
+        } else {
+            super.onBackPressed(); // Finalizar la actividad si no hay más fragmentos
+        }
+    }
+
 }
