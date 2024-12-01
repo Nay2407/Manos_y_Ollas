@@ -23,6 +23,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -71,12 +72,12 @@ public class MapsFragment extends Fragment {
                 String titulo= bundle.getString("titulo","");
                 double latitud = bundle.getDouble("latitud", 0.0);
                 double longitud = bundle.getDouble("longitud", 0.0);
-
                 // Centra el mapa en las coordenadas recibidas
                 LatLng posicion = new LatLng(latitud, longitud);
                 Marker marker = googleMap.addMarker(new MarkerOptions()
                         .position(posicion)
                         .title("Ubicación Seleccionada: "+titulo)); // Título del marcador
+
 
 
                 // Muestra la ventana de información automáticamente
@@ -98,6 +99,8 @@ public class MapsFragment extends Fragment {
                         Marker marker;
                         String titulo;
                         double latitud, longitud;
+                        int olla_id;
+
 
                         try {
                             LatLng primerLugar = null;
@@ -108,6 +111,15 @@ public class MapsFragment extends Fragment {
                                 lugar =new LatLng(latitud,longitud);
                                 titulo = jsonArray.getJSONObject(i).getString("olla_nombre");
                                 marker = googleMap.addMarker(new MarkerOptions().position(lugar).title(titulo));
+                                olla_id = jsonArray.getJSONObject(i).getInt("olla_id");
+                                switch (olla_id){
+                                    case 1: marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.olla2));break;
+                                    case 2: marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.olla2));break;
+                                    case 3: marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.olla2));break;
+                                    case 4: marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.olla2));break;
+                                    case 5: marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.olla2));break;
+                                    case 6: marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.olla2));break;
+                                }
                                 if(i==0)
                                     primerLugar=lugar;
                             }

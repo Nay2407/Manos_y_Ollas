@@ -20,6 +20,10 @@ import com.example.manosyollas.clases.ForumItem;
 import com.example.manosyollas.clases.OllaItem;
 import com.example.manosyollas.controladores.ForumAdapter;
 import com.example.manosyollas.controladores.OllaAdapter;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 
@@ -169,7 +173,9 @@ public class ListaFragment extends Fragment implements View.OnClickListener {
             }
 
 
+
         });
+
     }
 
     private void cargarOllasLocalmente() {
@@ -196,6 +202,7 @@ public class ListaFragment extends Fragment implements View.OnClickListener {
         bundle.putDouble("latitud", Double.parseDouble(olla.getLatitud()));
         bundle.putDouble("longitud", Double.parseDouble(olla.getLongitud()));
 
+
         // Asigna el Bundle al fragmento
         mapsFragment.setArguments(bundle);
 
@@ -204,7 +211,10 @@ public class ListaFragment extends Fragment implements View.OnClickListener {
         transaction.replace(R.id.frgContainer, mapsFragment);
         transaction.addToBackStack(null); // Para poder volver al fragmento anterior
         transaction.commit();
+
     }
+
+
 
 
     @Override

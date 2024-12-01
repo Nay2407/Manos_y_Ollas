@@ -70,7 +70,7 @@ public class HistDonUsuFragment extends Fragment {
 
         // Botón de volver
         ImageView btnVolver = vista.findViewById(R.id.ic_flotante);
-        btnVolver.setOnClickListener(v -> selectFragment(new PerfilChatFragment()));
+        btnVolver.setOnClickListener(v -> selectFragment(new ForosFragment()));
 
         return vista;
     }

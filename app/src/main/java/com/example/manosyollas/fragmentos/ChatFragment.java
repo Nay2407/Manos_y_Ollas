@@ -190,7 +190,7 @@ public class ChatFragment extends Fragment {
             }
         });
         chatTitle.setOnClickListener(v-> {
-            selectFragment(new PerfilChatFragment());
+            selectFragment(new HistDonUsuFragment());
         });
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,7 +208,7 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
-    private void selectFragment(PerfilChatFragment pf) {
+    private void selectFragment(HistDonUsuFragment pf) {
         FragmentTransaction t = getParentFragmentManager().beginTransaction();
         t.replace(R.id.menRelArea,pf).commit();
     }
