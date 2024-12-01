@@ -346,7 +346,6 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         params.put("correo", correo);
         params.put("clave", contrasena);  // Hashea la clave si es necesario
         params.put("id_distrito", distritocv);
-        params.put("avatar", "Default");  // Si el avatar es un valor por defecto
 
         client.post(URL_REGISTER, params, new JsonHttpResponseHandler() {
             @Override
