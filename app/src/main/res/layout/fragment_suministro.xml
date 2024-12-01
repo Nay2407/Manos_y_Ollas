@@ -79,7 +79,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Arroz"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -100,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Aceite"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -121,7 +123,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Harina"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -142,7 +145,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Leche"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -163,7 +167,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Azúcar"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -184,7 +189,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Fideos"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -205,7 +211,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Lentejas"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -226,7 +234,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Conservas "
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -247,7 +256,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Huevos"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -268,7 +279,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Atún "
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -289,7 +301,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Cereales"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -303,14 +316,16 @@
                     android:id="@+id/ic_sal"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/sal" />
+                    android:src="@drawable/sal"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Sal"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
 
@@ -327,9 +342,10 @@
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/orange"
+                android:textAllCaps="false"
                 android:text="Aceptar"
                 android:textColor="@android:color/white"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
 
         </LinearLayout>
