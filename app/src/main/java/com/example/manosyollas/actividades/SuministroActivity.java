@@ -1,4 +1,3 @@
-
 package com.example.manosyollas.actividades;
 
 import android.content.Context;
