@@ -10,10 +10,15 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.manosyollas.R;
+import com.example.manosyollas.clases.Menu;
 
-public class TransferenciaFragment extends Fragment {
+public class TransferenciaFragment extends Fragment implements Menu {
+
+    Fragment[] fragments;
 
     @Nullable
     @Override
@@ -30,13 +35,20 @@ public class TransferenciaFragment extends Fragment {
         btnPlin.setOnClickListener(v -> navigateToFragment(new PlinFragment()));
         btnVisa.setOnClickListener(v -> navigateToFragment(new VisaFragment()));
 
+        fragments = new Fragment[2];
+        fragments[0] = new SuministroFragment();
+        fragments[1] = new DonacionesFragment();
+
         btnBackToDonaciones.setOnClickListener(v -> {
-            if (getParentFragmentManager().getBackStackEntryCount() > 0) {
-                getParentFragmentManager().popBackStack();
-            }
+            volverDonaciones();
         });
 
         return view;
+    }
+
+    private void volverDonaciones() {
+        int id = 1;
+        onClickMenu(id);
     }
 
     private void navigateToFragment(Fragment fragment) {
@@ -45,6 +57,14 @@ public class TransferenciaFragment extends Fragment {
                 .replace(R.id.menRelArea, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onClickMenu(int id) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.menRelArea, fragments[id]);
+        ft.commit();
     }
 }
 

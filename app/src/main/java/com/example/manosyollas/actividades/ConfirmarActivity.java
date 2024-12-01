@@ -183,7 +183,9 @@ public class ConfirmarActivity extends AppCompatActivity {
                             registrarDetalleDonacion(ultimoIdDonacion, parts[0], parts[1]);
                         }
                         Toast.makeText(ConfirmarActivity.this, "Donación confirmada", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ConfirmarActivity.this, TransferenciaActivity.class));
+                        Intent principal = new Intent(ConfirmarActivity.this, MenuActivity.class);
+                        principal.putExtra("id", 4);
+                        startActivity(principal);
                         finish();
                     } else {
                         Toast.makeText(ConfirmarActivity.this, "Error al obtener último ID de donación", Toast.LENGTH_SHORT).show();

@@ -96,12 +96,12 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:textAllCaps="false"
             android:id="@+id/btnConfirmar"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"
             android:text="Confirmar"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 

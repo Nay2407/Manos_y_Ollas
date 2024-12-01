@@ -23,12 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Colabora con Nosotros"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="30sp"
         android:textColor="@android:color/black"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/ic_flotante"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -37,7 +35,7 @@
         android:id="@+id/tvAgradecimiento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="Gracias por tu apoyo !! Todas las donaciones serán utilizadas para continuar preparando alimentos y apoyando a las familias en necesidad. ¡Cada aporte hace la diferencia!"
@@ -52,7 +50,7 @@
         android:id="@+id/ivImagenCentral"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ollascomunes1"
         app:layout_constraintTop_toBottomOf="@id/tvAgradecimiento"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,6 +165,8 @@
                 android:layout_height="wrap_content"
                 android:text="CCI: 009-123-00004567890123-11" />
         </LinearLayout>
+    </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -176,10 +176,9 @@
                 android:name="com.example.manosyollas.fragmentos.MenuFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 tools:layout="@layout/fragment_menu" />
         </RelativeLayout>
 
-    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

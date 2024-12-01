@@ -73,7 +73,6 @@
                 android:name="com.example.manosyollas.fragmentos.MenuFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 tools:layout="@layout/fragment_menu" />
         </RelativeLayout>
     </LinearLayout>
