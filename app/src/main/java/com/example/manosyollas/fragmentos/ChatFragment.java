@@ -179,7 +179,6 @@ public class ChatFragment extends Fragment {
         ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
         //dbHelper.deleteAllMensajes();
         cargarMensajesFromNube(foroId);
-        ;
 
 
         // Cambiar el título en el Toolbar o ActionBar
@@ -209,6 +208,7 @@ public class ChatFragment extends Fragment {
 
                 enviarMensaje(foroId,editTextMessage.getText().toString(),String.valueOf(idUsuario),icon_predeterminado,"Usuario2");
                 editTextMessage.setText("");
+                cargarMensajesFromNube(foroId); // Recargar mensajes después de enviar uno nuevo
 
             }
         });
@@ -229,10 +229,17 @@ public class ChatFragment extends Fragment {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
 
         MessageItem messageItem = new MessageItem(messageId, forumId, content, userId, timestamp, userProfileImage, userName);
+        messageItem.setPending(true); // Marcarlo como pendiente (debes agregar un campo en la clase `MessageItem`)
 
-        crearMensaje(forumId,Integer.parseInt(userId),content);
+        // Actualizar la lista en el adaptador
+        MessageAdapter holita = (MessageAdapter) recyclerView.getAdapter();
+        if (holita != null) {
+            holita.getMessageList().add(messageItem);
+            holita.notifyItemInserted(holita.getMessageList().size() - 1);
+            recyclerView.scrollToPosition(holita.getMessageList().size() - 1);
+        }
 
-        cargarMensajesFromNube(forumId); // Recargar mensajes después de enviar uno nuevo
+        crearMensaje(forumId,Integer.parseInt(userId),content,holita,messageItem);
 
     }
 
@@ -275,8 +282,9 @@ public class ChatFragment extends Fragment {
                                     dbHelper.insertMessage(messageItem);
                                 }
                             }
-
                             cargarChatsLocalmente(idForo);
+
+
 
                         } else {
                             //Log.e("MensajesResponse", "Respuesta inesperada: " + rawJsonResponse);
@@ -301,12 +309,16 @@ public class ChatFragment extends Fragment {
                 return null;
             }
         });
+        cargarChatsLocalmente(idForo);
+
     }
 
     private List<MessageItem> cargarChatsLocalmente(int forumId) {
         ManosyOllasSQLite dbHelper = new ManosyOllasSQLite(getActivity().getApplicationContext());
         List<MessageItem> messageList = dbHelper.getMessagesByForumId(forumId);
-        MessageAdapter messageAdapter = new MessageAdapter(messageList);
+        sharedPreferences = getActivity().getSharedPreferences("IdUsuario", Context.MODE_PRIVATE);
+        idUsuario = sharedPreferences.getInt("idUsuario", -1);
+        MessageAdapter messageAdapter = new MessageAdapter(messageList,String.valueOf(idUsuario));
 
 
         recyclerView.setAdapter(messageAdapter);
@@ -320,7 +332,7 @@ public class ChatFragment extends Fragment {
         return messageList;
 
     }
-    private void crearMensaje(int idForo, int idUsuario, String contenido) {
+    private void crearMensaje(int idForo, int idUsuario, String contenido,MessageAdapter adapter,MessageItem messageItem) {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("idForo", idForo);
@@ -334,6 +346,12 @@ public class ChatFragment extends Fragment {
                 try {
                     if (response.getBoolean("success")) {
                         Toast.makeText(getContext(), "Mensaje enviado correctamente", Toast.LENGTH_SHORT).show();
+                        int index = adapter.getMessageList().indexOf(messageItem);
+                        if (index != -1) {
+                            adapter.getMessageList().get(index).setPending(false);
+                            adapter.notifyItemChanged(index);
+                        }
+
 
                     } else {
                         Toast.makeText(getContext(), "Error al enviar mensaje", Toast.LENGTH_SHORT).show();

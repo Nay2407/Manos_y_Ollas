@@ -21,17 +21,50 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
 
-    private List<MessageItem> messageList;
 
-    public MessageAdapter(List<MessageItem> messageList) {
+    public List<MessageItem> getMessageList() {
+        return messageList;
+    }
+
+
+    public void setMessageList(List<MessageItem> messageList) {
         this.messageList = messageList;
+    }
+
+    private List<MessageItem> messageList;
+    private static final int VIEW_TYPE_RIGHT = 1;
+    private static final int VIEW_TYPE_LEFT = 2;
+    private String currentUserId; // ID del usuario actual
+
+    public MessageAdapter(List<MessageItem> messageList,String currentUserId) {
+        this.messageList = messageList;
+        this.currentUserId = currentUserId;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        // Determinar el tipo de vista según el ID del usuario
+        MessageItem message = messageList.get(position);
+        if (message.getUserId().equals(currentUserId)) {
+            return VIEW_TYPE_RIGHT; // Mensaje del usuario actual
+        } else {
+            return VIEW_TYPE_LEFT; // Mensaje de otro usuario
+        }
     }
 
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat_message, parent, false);
-        return new MessageViewHolder(view);
+
+        if (viewType == VIEW_TYPE_RIGHT) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_chat_message_right, parent, false);
+            return new MessageViewHolder(view);
+        } else {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_chat_message, parent, false);
+            return new MessageViewHolder(view);
+        }
     }
 
     @Override
@@ -48,6 +81,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         // Cargar la imagen de perfil usando Glide
         holder.imgUserProfile.setImageURI(uri);
+
+
     }
 
 

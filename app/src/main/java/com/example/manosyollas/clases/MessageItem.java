@@ -9,9 +9,11 @@ public class MessageItem {
     @PrimaryKey
     @NonNull
     private String messageId;
+
     private int forumId;
     private String content;
     private String userId;
+    private boolean isPending;
     private String timestamp;
     private String userProfileImage;
     private String userName;  // Nuevo campo para el nombre del usuario
@@ -52,6 +54,15 @@ public class MessageItem {
 
     public String getUserName() {
         return userName;
+    }
+
+
+    public boolean isPending() {
+        return isPending;
+    }
+
+    public void setPending(boolean pending) {
+        isPending = pending;
     }
 }
 
