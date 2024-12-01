@@ -346,7 +346,6 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         params.put("correo", correo);
         params.put("clave", contrasena);  // Hashea la clave si es necesario
         params.put("id_distrito", distritocv);
-        params.put("avatar", "Default");  // Si el avatar es un valor por defecto
 
         client.post(URL_REGISTER, params, new JsonHttpResponseHandler() {
             @Override
@@ -357,8 +356,15 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
                     if (message.equals("Usuario editado exitosamente")) {
                         Toast.makeText(EditarPerfilActivity.this, "Usuario editado correctamente", Toast.LENGTH_SHORT).show();
                         // Opcional: puedes redirigir a otra actividad después de la edición
-                        Intent intent = new Intent(EditarPerfilActivity.this, MenuActivity.class);
-                        startActivity(intent);
+                        //SI LO DESCOMENTAS SE CAE
+                        //Intent intent = new Intent(EditarPerfilActivity.this, MenuActivity.class);
+                        //startActivity(intent);
+                        //finish();
+
+                        //MI INTENTO DE LEVANTAR LA MONDÁ- ARREGLADO CARAJO
+                        Intent menu = new Intent(EditarPerfilActivity.this, MenuActivity.class);
+                        menu.putExtra("id", 0);
+                        startActivity(menu);
                         finish();
                     } else {
                         Toast.makeText(EditarPerfilActivity.this, "Error al editar usuario", Toast.LENGTH_SHORT).show();
