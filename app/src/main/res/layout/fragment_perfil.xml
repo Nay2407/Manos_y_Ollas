@@ -42,7 +42,7 @@
 
                 android:id="@+id/vperImagen"
                 android:layout_width="210dp"
-                android:layout_height="173dp"
+                android:layout_height="118dp"
                 android:layout_gravity="center"
 
 

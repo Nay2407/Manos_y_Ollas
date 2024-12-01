@@ -25,7 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import com.example.manosyollas.R;
-import com.example.manosyollas.fragmentos.DonacionesFragment;
 import com.loopj.android.http.AsyncHttpClient;
 
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
@@ -184,7 +183,7 @@ public class ConfirmarActivity extends AppCompatActivity {
                             registrarDetalleDonacion(ultimoIdDonacion, parts[0], parts[1]);
                         }
                         Toast.makeText(ConfirmarActivity.this, "Donación confirmada", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ConfirmarActivity.this, DonacionesFragment.class));
+                        startActivity(new Intent(ConfirmarActivity.this, TransferenciaActivity.class));
                         finish();
                     } else {
                         Toast.makeText(ConfirmarActivity.this, "Error al obtener último ID de donación", Toast.LENGTH_SHORT).show();
